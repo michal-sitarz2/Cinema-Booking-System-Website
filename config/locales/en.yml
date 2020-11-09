@@ -30,7 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-
-  app_title: Cinema Booking
+  app_title: Cinema Town
   app_description: A place where you reserve cinema tickets.
+  home:
+    home:
+      title: Cinema Town
+      welcome: Welcome to Cinema Booking website.
