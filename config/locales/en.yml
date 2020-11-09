@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+
+  app_title: Cinema Booking
+  app_description: A place where you reserve cinema tickets.
