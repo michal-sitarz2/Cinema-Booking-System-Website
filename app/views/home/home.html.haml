@@ -1,6 +1,8 @@
 
 %h1= t('.title')
-%p= t('.welcome')
+
+//%p= t('.welcome')
+%p{id: "welcome_id"} Welcome to my beatiful site.
 
 .jumbotron.text-center
   %h1= "My first Bootstrap Page"
@@ -17,3 +19,21 @@
     .col-sm-4
       %h3= 'Column 3'
       %p= 'Lorem ipsum dolor..'
+
+
+%h2{id: "wf", onclick:"ToggleText(this)"} Web webform
+%p{id: "wfp"} Some text about my web form
+
+%br
+
+%h2{id: "tb", onclick:"ToggleText(this)"} Resource Table
+%p{id: "tbp"} Some text about my resource table
+
+%br
+
+%input#smallb{onclick:"SetFontSize('80%')", type: "button", value: "Small"}
+%input#mediumb{onclick:"SetFontSize('100%')", type: "button", value: "Medium"}
+%input#largeb{onclick:"SetFontSize('120%')", type: "button", value: "Large"}
+
+%br
+%br

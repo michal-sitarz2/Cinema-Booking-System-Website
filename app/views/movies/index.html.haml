@@ -1,0 +1,6 @@
+.list-movies
+%ul
+  - @movies.each do |movie|
+    %li
+      = movie.title + " " + movie.genre + " "  + movie.director + " "
+      = link_to "Hide", "", class: 'Hide', data: {'js-hide-link' => true}
