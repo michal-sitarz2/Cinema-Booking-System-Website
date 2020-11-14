@@ -37,6 +37,7 @@ gem 'modernizr-rails'
 gem 'jquery-rails'
 gem 'jquery-validation-rails'
 
+gem 'rails-controller-testing'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

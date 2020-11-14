@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   resources :movies
   root 'home#home'
-  get 'home/webform'
-  get 'home/restable'
-
+  get 'contact', to: 'home#contact'
+  post 'request_contact', to: 'home#request_contact'
+  
   get 'movies/index'
   get 'addmovie', to: 'home#webform'
+
+  get 'home/webform'
+  get 'home/restable'
 end
