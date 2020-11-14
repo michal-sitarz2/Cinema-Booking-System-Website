@@ -1,2 +1,9 @@
-%header
-  %h1 Welcome to my Website
+#mySidebar.sidebar
+  %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"} ×
+  %a{:href => "/"} Home
+  %a{:href => "/addmovie"} Book Tickets
+  %a{:href => "#"} News
+  %a{:href => "#"} Sign Up
+  %a{:href => "#"} Contact
+#navbar_button
+  %button.openbtn{:onclick => "openNav()"} ☰ Open Sidebar

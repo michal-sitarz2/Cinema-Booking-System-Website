@@ -4,8 +4,14 @@ class HomeController < ApplicationController
 
   end
 
-  def webform
+  def contact
 
+  end
+
+  
+
+  def webform
+    @movie = Movie.new
   end
 
   def restable

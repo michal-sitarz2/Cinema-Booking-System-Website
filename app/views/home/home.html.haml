@@ -1,39 +1,44 @@
+#main
+  %h1= t('.title')
 
-%h1= t('.title')
+  //%p= t('.welcome')
+  %p{id: "welcome_id"} Welcome to my beatiful site.
 
-//%p= t('.welcome')
-%p{id: "welcome_id"} Welcome to my beatiful site.
+  %br
 
-.jumbotron.text-center
-  %h1= "My first Bootstrap Page"
-  %p= "Resize this responsive page to see the effect!"
+  %h2{id: "news", onclick:"ToggleText(this)"} News
+  %p{id: "newsp"} Some text about news
 
-.container
-  .row
-    .col-sm-4
-      %h3= 'Column 1'
-      %p= 'Lorem ipsum dolor..'
-    .col-sm-4
-      %h3= 'Column 2'
-      %p= 'Lorem ipsum dolor..'
-    .col-sm-4
-      %h3= 'Column 3'
-      %p= 'Lorem ipsum dolor..'
+  %br
 
+  %h2{id: "tm", onclick:"ToggleText(this)"} Top Movies in Cinema
+  %p{id: "tmp"} Some text about Top Movies
 
-%h2{id: "wf", onclick:"ToggleText(this)"} Web webform
-%p{id: "wfp"} Some text about my web form
+  %br
 
-%br
+  %h2{id: "um", onclick:"ToggleText(this)"} Upcoming Movies
+  %p{id: "ump"} Some text about Upcoming Movies
+  .container
+    .row
+      .col-sm-4
+        %h3= 'Column 1'
+        %p= 'Lorem ipsum dolor..'
+      .col-sm-4
+        %h3= 'Column 2'
+        %p= 'Lorem ipsum dolor..'
+      .col-sm-4
+        %h3= 'Column 3'
+        %p= 'Lorem ipsum dolor..'
 
-%h2{id: "tb", onclick:"ToggleText(this)"} Resource Table
-%p{id: "tbp"} Some text about my resource table
+  %br
 
-%br
+  %h2{id: "tb", onclick:"ToggleText(this)"} Resource Table
+  %p{id: "tbp"} Some text about my resource table
 
-%input#smallb{onclick:"SetFontSize('80%')", type: "button", value: "Small"}
-%input#mediumb{onclick:"SetFontSize('100%')", type: "button", value: "Medium"}
-%input#largeb{onclick:"SetFontSize('120%')", type: "button", value: "Large"}
+  %br
 
-%br
-%br
+  %h2{id: "wf", onclick:"ToggleText(this)"} Web webform
+  %p{id: "wfp"} Some text about my web form
+
+  %br
+//%input#smallb{onclick:"SetFontSize('80%')", type: "button", value: "Small"}
