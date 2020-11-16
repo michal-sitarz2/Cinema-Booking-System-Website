@@ -33,6 +33,18 @@ function closeNav() {
   document.body.style.backgroundColor = "white";
 }
 
+function ValidateContactForm(){
+  $(request_contact_path).validate({
+    rules: {
+      "name" : {required: true}
+    },
+    messages: {
+      "name" : {required: "You must enter the Name"}
+    }
+  });
+
+}
+
 function ValidateMovieForm(){
 
     $('#MovieForm').validate({
@@ -75,6 +87,10 @@ $(document).ready(function(){
 
   if(document.getElementById('MovieForm')){
     ValidateMovieForm();
+  }
+
+  if(document.getElementById('ContactForm')){
+    ValidateContactForm();
   }
 
   $('[data-js-hide-link]').click(function(event){
