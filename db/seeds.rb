@@ -6,4 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Movie.create(title:"Honest Thief", director: "Mark Williams", genre: "Action", duration: 99, year: 2020, country: "USA", release_date: Date.new(2020,11,12), poster: "https://m.media-amazon.com/images/M/MV5BZjEwNjYyMTMtODc5Yi00NTg5LTkwMzAtZTkyOTcyNTFkMGIyXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX182_CR0,0,182,268_AL_.jpg", actors: ["Liam Neeson", "Kate Walsh"])
+welcome = Movie.where(title: 'Honest Thief').first
+welcome.delete if welcome
+
+movies = Movie.create(title:"Honest Thief", director: "Mark Williams", genre: "Action", duration: 99, year: 2020, country: "USA", release_date: Date.new(2020,11,12), poster: "https://m.media-amazon.com/images/M/MV5BZjEwNjYyMTMtODc5Yi00NTg5LTkwMzAtZTkyOTcyNTFkMGIyXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX182_CR0,0,182,268_AL_.jpg", actors: ["Liam Neeson", "Katherine"])
