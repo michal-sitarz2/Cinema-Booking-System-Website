@@ -1,6 +1,6 @@
 class ActorsController < ApplicationController
   before_action :set_actor, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_movie, only: [:new, :create]
   # GET /actors
   # GET /actors.json
   def index
@@ -14,7 +14,7 @@ class ActorsController < ApplicationController
 
   # GET /actors/new
   def new
-    @actor = Actor.new
+    @actor = @movie.actors.new
   end
 
   # GET /actors/1/edit
@@ -24,7 +24,7 @@ class ActorsController < ApplicationController
   # POST /actors
   # POST /actors.json
   def create
-    @actor = Actor.new(actor_params)
+    @actor = @movie.actors.new(actor_params)
 
     respond_to do |format|
       if @actor.save
@@ -67,8 +67,12 @@ class ActorsController < ApplicationController
       @actor = Actor.find(params[:id])
     end
 
+    def set_movie
+      @movie = Movie.find_by(id: params[:movie_id]) || Movie.find(actor_params[:movie_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def actor_params
-      params.require(:actor).permit(:movie, :name, :surname)
+      params.require(:actor).permit(:movie_id, :name, :surname)
     end
 end

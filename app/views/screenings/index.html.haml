@@ -1,0 +1,31 @@
+%h1 Listing screenings
+
+%table
+  %thead
+    %tr
+      %th Num seats
+      %th Num sold
+      %th Screening date
+      %th Screening time
+      %th Arena
+      %th Price
+      %th
+      %th
+      %th
+
+  %tbody
+    - @screenings.each do |screening|
+      %tr
+        %td= screening.num_seats
+        %td= screening.num_sold
+        %td= screening.screening_date
+        %td= screening.screening_time
+        %td= screening.arena
+        %td= screening.price
+        %td= link_to 'Show', screening
+        %td= link_to 'Edit', edit_screening_path(screening)
+        %td= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Screening', new_screening_path

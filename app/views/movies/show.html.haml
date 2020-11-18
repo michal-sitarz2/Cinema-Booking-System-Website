@@ -25,6 +25,19 @@
   %b Summary:
   = @movie.summary
 
+%p Actors:
+%table
+  %tbody
+    - @movie.actors.each do |actor|
+      %tr
+        %td= actor.name
+        %td= actor.surname
+        %td= link_to 'Show', actor
+        %td= link_to 'Edit', edit_actor_path(actor)
+        %td= link_to 'Destroy', actor, :method => :delete, :data => {:confirm => 'Are you serious?'}
+
+%p= link_to 'Add Actor', new_actor_path(movie_id: @movie)
+
 = link_to 'Edit', edit_movie_path(@movie)
 \|
 = link_to 'Back', movies_path

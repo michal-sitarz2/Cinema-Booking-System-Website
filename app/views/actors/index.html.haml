@@ -13,7 +13,7 @@
   %tbody
     - @actors.each do |actor|
       %tr
-        %td= actor.movie
+        %td= actor.movie.title
         %td= actor.name
         %td= actor.surname
         %td= link_to 'Show', actor

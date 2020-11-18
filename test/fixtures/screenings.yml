@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_seats: 1
+  num_sold: 1
+  screening_date: 2020-11-18
+  screening_time: 2020-11-18 11:20:14
+  arena: MyString
+  price: 
+
+two:
+  num_seats: 1
+  num_sold: 1
+  screening_date: 2020-11-18
+  screening_time: 2020-11-18 11:20:14
+  arena: MyString
+  price: 

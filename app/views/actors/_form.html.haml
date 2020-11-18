@@ -8,7 +8,8 @@
 
   .field
     = f.label :movie
-    = f.text_field :movie
+    %p= @actor.movie.title
+    = f.hidden_field :movie_id, value: @actor.movie.id
   .field
     = f.label :name
     = f.text_field :name

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @cinema.name
+%p
+  %b Location:
+  = @cinema.location
+
+= link_to 'Edit', edit_cinema_path(@cinema)
+\|
+= link_to 'Back', cinemas_path

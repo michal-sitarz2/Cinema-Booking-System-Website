@@ -1,0 +1,16 @@
+= form_for @cinema do |f|
+  - if @cinema.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cinema.errors.count, "error")} prohibited this cinema from being saved:"
+      %ul
+        - @cinema.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :location
+    = f.text_field :location
+  .actions
+    = f.submit 'Save'

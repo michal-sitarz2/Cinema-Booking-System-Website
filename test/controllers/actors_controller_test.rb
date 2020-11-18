@@ -3,6 +3,7 @@ require 'test_helper'
 class ActorsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @actor = actors(:one)
+    @movie = movies(:one)
   end
 
   test "should get index" do
@@ -17,7 +18,7 @@ class ActorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create actor" do
     assert_difference('Actor.count') do
-      post actors_url, params: { actor: { movie: @actor.movie, name: @actor.name, surname: @actor.surname } }
+      post actors_url, params: { actor: { movie: @movie, name: @actor.name, surname: @actor.surname } }
     end
 
     assert_redirected_to actor_url(Actor.last)
@@ -34,7 +35,7 @@ class ActorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update actor" do
-    patch actor_url(@actor), params: { actor: { movie: @actor.movie, name: @actor.name, surname: @actor.surname } }
+    patch actor_url(@actor), params: { actor: { movie: @movie, name: @actor.name, surname: @actor.surname } }
     assert_redirected_to actor_url(@actor)
   end
 

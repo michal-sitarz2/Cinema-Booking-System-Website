@@ -1,0 +1,28 @@
+= form_for @screening do |f|
+  - if @screening.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@screening.errors.count, "error")} prohibited this screening from being saved:"
+      %ul
+        - @screening.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :num_seats
+    = f.number_field :num_seats
+  .field
+    = f.label :num_sold
+    = f.number_field :num_sold
+  .field
+    = f.label :screening_date
+    = f.date_select :screening_date
+  .field
+    = f.label :screening_time
+    = f.time_select :screening_time
+  .field
+    = f.label :arena
+    = f.text_field :arena
+  .field
+    = f.label :price
+    = f.text_field :price
+  .actions
+    = f.submit 'Save'
