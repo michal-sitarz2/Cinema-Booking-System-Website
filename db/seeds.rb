@@ -9,4 +9,4 @@
 welcome = Movie.where(title: 'Honest Thief').first
 welcome.delete if welcome
 
-movies = Movie.create(title:"Honest Thief", director: "Mark Williams", genre: "Action", duration: 99, year: 2020, country: "USA", release_date: Date.new(2020,11,12), poster: "https://m.media-amazon.com/images/M/MV5BZjEwNjYyMTMtODc5Yi00NTg5LTkwMzAtZTkyOTcyNTFkMGIyXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX182_CR0,0,182,268_AL_.jpg", actors: ["Liam Neeson", "Katherine"])
+movies = Movie.create(title:"Honest Thief", director: "Mark Williams", genre: "Action", duration: 99, country: "USA", release_date: Date.new(2020,11,12), poster: "https://m.media-amazon.com/images/M/MV5BZjEwNjYyMTMtODc5Yi00NTg5LTkwMzAtZTkyOTcyNTFkMGIyXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX182_CR0,0,182,268_AL_.jpg", summary: "This is the movie summary")

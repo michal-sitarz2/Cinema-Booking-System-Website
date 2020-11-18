@@ -14,7 +14,6 @@ class MoviesTest < ApplicationSystemTestCase
     visit movies_url
     click_on "New Movie"
 
-    fill_in "Actors", with: @movie.actors
     fill_in "Country", with: @movie.country
     fill_in "Director", with: @movie.director
     fill_in "Duration", with: @movie.duration
@@ -23,7 +22,6 @@ class MoviesTest < ApplicationSystemTestCase
     fill_in "Release date", with: @movie.release_date
     fill_in "Summary", with: @movie.summary
     fill_in "Title", with: @movie.title
-    fill_in "Year", with: @movie.year
     click_on "Create Movie"
 
     assert_text "Movie was successfully created"
@@ -34,7 +32,6 @@ class MoviesTest < ApplicationSystemTestCase
     visit movies_url
     click_on "Edit", match: :first
 
-    fill_in "Actors", with: @movie.actors
     fill_in "Country", with: @movie.country
     fill_in "Director", with: @movie.director
     fill_in "Duration", with: @movie.duration
@@ -43,7 +40,6 @@ class MoviesTest < ApplicationSystemTestCase
     fill_in "Release date", with: @movie.release_date
     fill_in "Summary", with: @movie.summary
     fill_in "Title", with: @movie.title
-    fill_in "Year", with: @movie.year
     click_on "Update Movie"
 
     assert_text "Movie was successfully updated"

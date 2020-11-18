@@ -1,25 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  director: MyString
-  genre: MyString
-  duration: 1
-  year: 1
-  country: MyString
-  release_date: 2020-11-11
-  poster: MyString
-  summary: MyText
-  actors: MyString
+  title: Tenet
+  director: Christopher Nolan
+  genre: Action
+  duration: 150
+  country: USA
+  release_date: 2020-08-27
+  poster: https://i.pinimg.com/originals/ec/ff/37/ecff37de7ec1d99af3576403b4d91204.png
+  summary: A secret agent embarks on a dangerous, time-bending mission to prevent the start of World War III.
 
 two:
-  title: MyString
-  director: MyString
-  genre: MyString
-  duration: 1
-  year: 1
-  country: MyString
-  release_date: 2020-11-11
-  poster: MyString
-  summary: MyText
-  actors: MyString
+  title: Morbius
+  director: Daniel Espinosa
+  genre: Action
+  duration: 120
+  country: USA
+  release_date: 2021-03-19
+  poster: https://posterspy.com/wp-content/uploads/2020/01/Morbius_Plan-de-travail-1-1500x2121.png
+  summary: A biochemist transforms into a vampire while searching for a cure for a rare blood disease.

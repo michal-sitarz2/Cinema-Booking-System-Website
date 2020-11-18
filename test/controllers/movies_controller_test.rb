@@ -17,7 +17,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create movie" do
     assert_difference('Movie.count') do
-      post movies_url, params: { movie: { actors: @movie.actors, country: @movie.country, director: @movie.director, duration: @movie.duration, genre: @movie.genre, poster: @movie.poster, release_date: @movie.release_date, summary: @movie.summary, title: @movie.title, year: @movie.year } }
+      post movies_url, params: { movie: { country: @movie.country, director: @movie.director, duration: @movie.duration, genre: @movie.genre, poster: @movie.poster, release_date: @movie.release_date, summary: @movie.summary, title: @movie.title } }
     end
 
     assert_redirected_to movie_url(Movie.last)
@@ -34,7 +34,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update movie" do
-    patch movie_url(@movie), params: { movie: { actors: @movie.actors, country: @movie.country, director: @movie.director, duration: @movie.duration, genre: @movie.genre, poster: @movie.poster, release_date: @movie.release_date, summary: @movie.summary, title: @movie.title, year: @movie.year } }
+    patch movie_url(@movie), params: { movie: { country: @movie.country, director: @movie.director, duration: @movie.duration, genre: @movie.genre, poster: @movie.poster, release_date: @movie.release_date, summary: @movie.summary, title: @movie.title } }
     assert_redirected_to movie_url(@movie)
   end
 

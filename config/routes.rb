@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :actors
   resources :movies
   root 'home#home'
   get 'contact', to: 'home#contact'
