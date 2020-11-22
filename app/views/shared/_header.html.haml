@@ -1,9 +1,31 @@
-#mySidebar.sidebar
-  %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"} ×
-  %a{:href => "/"} Home
-  %a{:href => "/addmovie"} Book Tickets
-  %a{:href => "#"} News
-  %a{:href => "#"} Sign Up
-  %a{:href => "/contact"} Contact
-#navbar_button
-  %button.openbtn{:onclick => "openNav()"} ☰ Open Sidebar
+%header{:id => "pageHeader"}
+  #nav_title
+    = image_tag("film-roll.png", :alt => "Cinema Town Logo", :id => "imageLogo")
+    %h1{:id => "pageTitle"}= t('.title')
+
+  %hr{:id => "horizontalLine"}
+
+  #navbar_button
+    %button.openbtn{:onclick => "openNav()"} ☰
+
+  #nav
+    %nav{:class => "navbar navbar-static-top navbar-expand-sm nav-pills nav-fill bg-dark navbar-dark justify-content-center"}
+      %ul{:class => "navbar-nav"}
+        %li{:class => "nav-item"}
+          %a{:class => "nav-link", :href => "/"}= t('.home')
+        %li{:class => "nav-item"}
+          %a{:class => "nav-link", :href => "#"}= t('.book_tickets')
+        %li{:class => "nav-item"}
+          %a{:class => "nav-link", :href => "#"}= t('.news')
+        %li{:class => "nav-item"}
+          %a{:class => "nav-link", :href => "#"}= t('.sign_up')
+        %li{:class => "nav-item"}
+          %a{:class => "nav-link", :href => "contact"}= t('.contact')
+
+  #mySidebar.sidebar
+    %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"} ×
+    %a{:href => "/"}= t('.home')
+    %a{:href => "#"}= t('.book_tickets')
+    %a{:href => "#"}= t('.news')
+    %a{:href => "#"}= t('.sign_up')
+    %a{:href => "/contact"}= t('.contact')

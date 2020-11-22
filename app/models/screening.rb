@@ -1,2 +1,0 @@
-class Screening < ApplicationRecord
-end

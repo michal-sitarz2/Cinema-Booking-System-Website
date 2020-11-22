@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_192014) do
+ActiveRecord::Schema.define(version: 2020_11_18_190035) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "movie_id", null: false
@@ -40,17 +40,6 @@ ActiveRecord::Schema.define(version: 2020_11_18_192014) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_movies_on_title", unique: true
-  end
-
-  create_table "screenings", force: :cascade do |t|
-    t.integer "num_seats", null: false
-    t.integer "num_sold", default: 0
-    t.date "screening_date", null: false
-    t.time "screening_time", null: false
-    t.string "arena", null: false
-    t.decimal "price", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

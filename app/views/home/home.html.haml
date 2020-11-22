@@ -1,18 +1,69 @@
 #main
-  %h1= t('.title')
+  #currentMovies
+    %h2{id: "currently_playing"}= t('.currently_playing')
 
-  %p= t('.welcome')
-  //%p{id: "welcome_id"} Welcome to my beatiful site.
+    #movies
+      %p
+      :ruby
+        movies = {}
+        @movies.each do |movie|
+          movies[movie['title']] = movie['release_date']
+        end
+        movies.sort_by {|k,v| v}.reverse
+        counter = 0
+        movies.each do |movie,date|
+          if counter == 0
+             @movie1 = movie
+           elsif counter == 1
+             @movie2 = movie
+           elsif counter == 2
+             @movie3 = movie
+           end
+           counter = counter + 1
+        end
+      %h4
+        #{@movie1}
+      %h4
+        #{@movie2}
+      %h4
+        #{@movie3}
 
-  %br
+
+
+
+
+
 
   %h2{id: "news", onclick:"ToggleText(this)"} News
   %p{id: "newsp"} Some text about news
 
   %br
 
-  %h2{id: "tm", onclick:"ToggleText(this)"} Top Movies in Cinema
-  %p{id: "tmp"} Some text about Top Movies
+
+
+  %br
+  %table
+    %thead
+      %tr
+        %th Title
+        %th Director
+        %th Genre
+        %th Duration
+        %th Country
+        %th Release date
+        %th Poster
+        %th Summary
+    %tbody
+      %tr
+        %td Title
+        %td Director
+        %td Genre
+        %td Duration
+        %td Country
+        %td Release date
+        %td Poster
+        %td Summary
+
 
   %br
 

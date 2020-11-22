@@ -19,10 +19,17 @@
 //= require turbolinks
 //= require_tree .
 
+
+function outputCurrentMovies(){
+
+
+}
+
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
+  document.getElementById("pageHeader").style.marginLeft = "250px";
   document.body.style.backgroundColor = "rgba(0,0,0,0.9)"
 }
 
@@ -30,6 +37,8 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
+  document.getElementById("pageHeader").style.marginLeft = "0";
+  //document.getElementsByClass("navbar-nav")[0].style.color = "rgba(0,0,0,0.9)"
   document.body.style.backgroundColor = "white";
 }
 
@@ -80,7 +89,6 @@ function SetFontSize(val){
 }
 
 $(document).ready(function(){
-
   if(document.getElementById('welcome_id')){
     $('#wfp, #tbp, #newsp, #tmp, .ump').hide();
   }

@@ -32,10 +32,17 @@
 en:
   app_title: Cinema Town
   app_description: A place where you reserve cinema tickets.
+  shared:
+    header:
+      title: Cinema Town
+      home: Home
+      book_tickets: Book Tickets
+      news: News
+      sign_up: Sign Up
+      contact: Contact Us
   home:
     home:
-      title: Cinema Town
-      welcome: Welcome to Cinema Booking website.
+      currently_playing: Currently Playing
 
     contact:
       title: Get in Touch

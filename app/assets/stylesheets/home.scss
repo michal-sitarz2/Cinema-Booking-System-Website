@@ -2,6 +2,64 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*
+If the screen window is smaller than 960px it will display the collapsible side bar
+Otherwise normal navigation bar will be displayed
+*/
+
+/*
+  Header Style
+*/
+#pageHeader {
+  background: #161616;
+  padding-top: 30px;
+}
+
+
+#pageTitle {
+  text-align: center;
+  color: white;
+}
+
+.navbar.navbar-expand-sm.nav-pills.nav-fill.bg-dark.navbar-dark.justify-content-center {
+  background: #161616 !important;
+}
+
+.navbar-nav li a {
+   color: #D3D3D3 !important;
+}
+
+.navbar-nav li a:hover {
+   color: white !important;
+   font-weight: bold !important;
+   background-color: 	#282828 !important;
+}
+
+.navbar-nav li {
+   padding-left: 20px;
+   padding-right: 20px;
+}
+
+.openbtn {
+  float: left;
+}
+
+.nav_title h1{
+    margin-right: 1px;
+    position: absolute;
+}
+
+#imageLogo {
+  float:right;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+  padding: 5px;
+  filter: grayscale(1) invert(1);
+}
+
 /* The sidebar menu */
 .sidebar {
  height: 100%; /* 100% Full-height */
@@ -33,7 +91,7 @@
 
 /* Position and style the close button (top right corner) */
 .sidebar .closebtn {
- position: absolute;
+ position: relative;
  top: 0;
  right: 25px;
  font-size: 36px;
@@ -46,7 +104,7 @@
 .openbtn {
  font-size: 20px;
  cursor: pointer;
- background-color: #111;
+ background-color: #343a40;
  color: white;
  padding: 10px 15px;
  border: none;
@@ -56,8 +114,17 @@
  background-color: #444;
 }
 
+#horizontalLine {
+  width: 500px;
+}
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
+ transition: margin-left .5s; /* If you want a transition effect */
+ padding: 20px;
+}
+
+#pageHeader {
  transition: margin-left .5s; /* If you want a transition effect */
  padding: 20px;
 }
@@ -66,6 +133,43 @@
 @media screen and (max-height: 450px) {
  .sidebar {padding-top: 15px;}
  .sidebar a {font-size: 18px;}
+}
+
+@media screen and (max-width:750px) {
+  .openbtn {visibility: visible;}
+  .navbar.navbar-expand-sm.nav-pills.nav-fill.bg-dark.navbar-dark.justify-content-center {visibility: hidden;}
+}
+
+@media screen and (min-width:750px){
+  .openbtn {visibility: hidden;  z-index: 0;}
+  .navbar.navbar-expand-sm.nav-pills.nav-fill.bg-dark.navbar-dark.justify-content-center {visibility: visible;}
+}
+
+
+/*
+  Home Page Style
+*/
+
+#main {
+
+  #currentMovies {
+    color: white;
+    background: #161616;
+    margin: -40px -20px 50px -20px;
+    padding-bottom: 50px;
+    padding-left:30px;
+
+    #currently_playing {
+      margin-bottom: 20px;
+    }
+
+  }
+
+
+
+
+
+
 }
 
 form label, form input {
