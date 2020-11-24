@@ -1,23 +1,20 @@
 %p#notice= notice
 
 %p
-  %b Num seats:
-  = @screening.num_seats
-%p
-  %b Num sold:
-  = @screening.num_sold
-%p
-  %b Screening date:
-  = @screening.screening_date
+  %b Price:
+  = @screening.price
 %p
   %b Screening time:
   = @screening.screening_time
 %p
+  %b Screening date:
+  = @screening.screening_date
+%p
   %b Arena:
   = @screening.arena
 %p
-  %b Price:
-  = @screening.price
+  %b Available seats:
+  = @screening.available_seats
 
 = link_to 'Edit', edit_screening_path(@screening)
 \|

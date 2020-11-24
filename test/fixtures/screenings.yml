@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 9.99
+  screening_time: 2020-11-24 08:14:39
+  screening_date: 2020-11-24
+  arena: MyString
+  available_seats: 1
+
+two:
+  price: 9.99
+  screening_time: 2020-11-24 08:14:39
+  screening_date: 2020-11-24
+  arena: MyString
+  available_seats: 1

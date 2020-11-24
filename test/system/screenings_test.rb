@@ -15,8 +15,7 @@ class ScreeningsTest < ApplicationSystemTestCase
     click_on "New Screening"
 
     fill_in "Arena", with: @screening.arena
-    fill_in "Num seats", with: @screening.num_seats
-    fill_in "Num sold", with: @screening.num_sold
+    fill_in "Available seats", with: @screening.available_seats
     fill_in "Price", with: @screening.price
     fill_in "Screening date", with: @screening.screening_date
     fill_in "Screening time", with: @screening.screening_time
@@ -31,8 +30,7 @@ class ScreeningsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Arena", with: @screening.arena
-    fill_in "Num seats", with: @screening.num_seats
-    fill_in "Num sold", with: @screening.num_sold
+    fill_in "Available seats", with: @screening.available_seats
     fill_in "Price", with: @screening.price
     fill_in "Screening date", with: @screening.screening_date
     fill_in "Screening time", with: @screening.screening_time
