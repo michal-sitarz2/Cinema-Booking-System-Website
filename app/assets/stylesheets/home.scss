@@ -163,14 +163,75 @@ Otherwise normal navigation bar will be displayed
       margin-bottom: 20px;
     }
 
+    .movies-container {
+      display: grid;
+      grid-template-columns: 2fr 2fr 2fr 2fr;
+      grid-template-rows: 2fr 2fr 1fr;
+      gap:0px 0px;
+      grid-template-areas:
+        "Div-1 Div-1 Div-2 Div-2"
+        "Div-1 Div-1 Div-3 Div-3"
+        ". . . .";
+      margin:auto;
+      width: 1200px;
+      padding:10px;
+      height: 750px;
+
+    }
+
+    #Div-1 {
+      grid-area: Div-1;
+      background: red;
+      height: 700px;
+      padding-left: 60px;
+      padding-top: 430px;
+    }
+    #Div-2 {
+      grid-area: Div-2;
+      background: blue;
+      height: 350px;
+      padding-left: 60px;
+      padding-top: 150px;
+    }
+    #Div-3 {
+      grid-area: Div-3;
+      background: green;
+      height: 350px;
+      padding-left: 60px;
+      padding-top: 150px;
+    }
+
+    .movie_title_current {
+      font-weight: bold;
+      font-size: 45px;
+      color: white;
+    }
+
+    .movie_info_container {
+      padding: 3px;
+    }
+
+    .release_date_current {
+      font-weight: bold;
+      color:white;
+      //color: #C0C0C0;
+    }
+
+    #view_more {
+      padding-top: 5px;
+      padding-right: 300px;
+      float:right;
+
+      #view_more_link {
+          text-decoration: bold;
+          font-size: 15px;
+      }
+    }
   }
-
-
-
-
-
-
 }
+
+
+
 
 form label, form input {
   display: block;

@@ -19,12 +19,6 @@
 //= require turbolinks
 //= require_tree .
 
-
-function outputCurrentMovies(){
-
-
-}
-
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
@@ -89,6 +83,7 @@ function SetFontSize(val){
 }
 
 $(document).ready(function(){
+
   if(document.getElementById('welcome_id')){
     $('#wfp, #tbp, #newsp, #tmp, .ump').hide();
   }

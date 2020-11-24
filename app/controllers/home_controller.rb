@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 
   def home
     @movies = Movie.all
+    @cinemas = Cinema.all
   end
 
   def contact

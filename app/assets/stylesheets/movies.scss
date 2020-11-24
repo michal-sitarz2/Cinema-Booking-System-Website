@@ -1,3 +1,39 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#movie_title_container{
+  height: 40px;
+  margin-bottom: 30px;
+}
+
+#movie_title_container h2 {
+  padding-top: 3px;
+  padding-left: 20px;
+  font-size: 35px;
+  text-decoration: bold;
+}
+
+.grid-container {
+  display: grid;
+  height:800px;
+  grid-template-columns: 0fr 0.5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 40px 40px;
+  grid-template-areas:
+    "movies_poster_container movies_poster_container movies_information_container movies_information_container"
+    "movies_poster_container movies_poster_container movies_information_container movies_information_container";
+}
+
+.movies_poster_container {
+  grid-area: movies_poster_container;
+
+  #poster_image{
+    width: 400px;
+    height: 500px;
+  }
+}
+
+.movies_information_container {
+  grid-area: movies_information_container;
+}

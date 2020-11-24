@@ -1,69 +1,81 @@
 #main
   #currentMovies
-    %h2{id: "currently_playing"}= t('.currently_playing')
+    //%h2{id: "currently_playing"}= t('.currently_playing')
 
-    #movies
-      %p
-      :ruby
-        movies = {}
-        @movies.each do |movie|
-          movies[movie['title']] = movie['release_date']
-        end
-        movies.sort_by {|k,v| v}.reverse
-        counter = 0
-        movies.each do |movie,date|
-          if counter == 0
-             @movie1 = movie
-           elsif counter == 1
-             @movie2 = movie
-           elsif counter == 2
-             @movie3 = movie
-           end
-           counter = counter + 1
-        end
-      %h4
-        #{@movie1}
-      %h4
-        #{@movie2}
-      %h4
-        #{@movie3}
+    :ruby
+      movies = {}
+      @movies.each do |movie|
+        movies[movie] = movie['release_date']
+      end
+      movies.sort_by {|k,v| v}.reverse
+      counter = 0
 
+      #Save an object
+      movies.each do |movie,date|
+        if counter == 0
+           @movie1 = movie
+         elsif counter == 1
+           @movie2 = movie
+         elsif counter == 2
+           @movie3 = movie
+         end
+         counter = counter + 1
+      end
 
+    .movies-container
+      #Div-1
+        .movie_info_container
+          %h2{class:"movie_title_current"}
+            #{@movie1.title}
+        .movie_info_container
+          %h4{class:"release_date_current"}
+            #{@movie1.release_date.strftime("%d/%m/%Y")}
+        .movie_info_container
+          %p{class:"movie_info_current"}
+            #{@movie1.genre + " · " + @movie1.director + " · " + @movie1.duration.to_s + " min"}
+      #Div-2
+        .movie_info_container
+          %h2{class:"movie_title_current"}
+            #{@movie2.title}
+        .movie_info_container
+          %h4{class:"release_date_current"}
+            #{@movie2.release_date.strftime("%d/%m/%Y")}
+        .movie_info_container
+          %p{class:"movie_info_current"}
+            #{@movie2.genre + " · " + @movie2.director + " · " + @movie2.duration.to_s + " min"}
+      #Div-3
+        .movie_info_container
+          %h2{class:"movie_title_current"}
+            #{@movie3.title}
+        .movie_info_container
+          %h4{class:"release_date_current"}
+            #{@movie3.release_date.strftime("%d/%m/%Y")}
+        .movie_info_container
+          %p{class:"movie_info_current"}
+            #{@movie3.genre + " · " + @movie3.director + " · " + @movie3.duration.to_s + " min"}
 
-
-
-
-
-  %h2{id: "news", onclick:"ToggleText(this)"} News
-  %p{id: "newsp"} Some text about news
+    #view_more
+      %p{id:"view_more_link"}
+        %a{:href=>'contact'}= t('.view_more_current')
 
   %br
 
+  #cinemas_display
+    %h2= t('.cinemas_title')
+    .dropdown.show
+      %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
+        =t('.cinema_dropdown')
 
+      .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
+        - @cinemas.each do |cinema|
+          %a{class:"dropdown-item", href:"#"} #{cinema.name + " - " + cinema.location}
+    .dropdown.show
+      %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownMoviesLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
+        =t('.movies_dropdown')
 
-  %br
-  %table
-    %thead
-      %tr
-        %th Title
-        %th Director
-        %th Genre
-        %th Duration
-        %th Country
-        %th Release date
-        %th Poster
-        %th Summary
-    %tbody
-      %tr
-        %td Title
-        %td Director
-        %td Genre
-        %td Duration
-        %td Country
-        %td Release date
-        %td Poster
-        %td Summary
-
+      .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
+        - @movies.each do |movie|
+          %a{class:"dropdown-item", href:"movies/#{movie.id}"} #{movie.title}
 
   %br
 
@@ -81,15 +93,6 @@
         %h3= 'Column 3'
         %p= 'Lorem ipsum dolor..'
 
-  %br
 
-  %h2{id: "tb", onclick:"ToggleText(this)"} Resource Table
-  %p{id: "tbp"} Some text about my resource table
 
   %br
-
-  %h2{id: "wf", onclick:"ToggleText(this)"} Web webform
-  %p{id: "wfp"} Some text about my web form
-
-  %br
-//%input#smallb{onclick:"SetFontSize('80%')", type: "button", value: "Small"}

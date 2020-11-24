@@ -1,43 +1,55 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @movie.title
-%p
-  %b Director:
-  = @movie.director
-%p
-  %b Genre:
-  = @movie.genre
-%p
-  %b Duration:
-  = @movie.duration
-%p
-  %b Country:
-  = @movie.country
-%p
-  %b Release date:
-  = @movie.release_date
-%p
-  %b Poster:
-  = @movie.poster
-%p
-  %b Summary:
-  = @movie.summary
+#movie_title_container
+  %h2= @movie.title
 
-%p Actors:
-%table
-  %tbody
+.grid-container
+  .movies_poster_container
+    %img{'src'=>@movie.poster, 'alt'=>@movie.title, id:"poster_image"}
+  .movies_information_container
+    %p
+      %b Director:
+      = @movie.director
+    %p
+      %b Genre:
+      = @movie.genre
+    %p
+      %b Duration:
+      = @movie.duration
+
+    %p
+      %b Country:
+      = @movie.country
+
+    %p
+      %b Release date:
+      = @movie.release_date
+
+    %p
+      %b Actors:
     - @movie.actors.each do |actor|
-      %tr
-        %td= actor.name
-        %td= actor.surname
-        %td= link_to 'Show', actor
-        %td= link_to 'Edit', edit_actor_path(actor)
-        %td= link_to 'Destroy', actor, :method => :delete, :data => {:confirm => 'Are you serious?'}
+      %p
+        = actor.name
+        = actor.surname
 
-%p= link_to 'Add Actor', new_actor_path(movie_id: @movie)
+    %p
+      %b Summary:
+    %p
+      = @movie.summary
 
-= link_to 'Edit', edit_movie_path(@movie)
-\|
-= link_to 'Back', movies_path
+-# %p Actors:
+-# %table
+-#   %tbody
+-#     - @movie.actors.each do |actor|
+-#       %tr
+-#         %td= actor.name
+-#         %td= actor.surname
+-#         %td= link_to 'Show', actor
+-#         %td= link_to 'Edit', edit_actor_path(actor)
+-#         %td= link_to 'Destroy', actor, :method => :delete, :data => {:confirm => 'Are you serious?'}
+-#
+-# %p= link_to 'Add Actor', new_actor_path(movie_id: @movie)
+-#
+-# = link_to 'Edit', edit_movie_path(@movie)
+-# \|
+-# = link_to 'Back', movies_path
