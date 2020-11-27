@@ -3,6 +3,8 @@ require 'test_helper'
 class ScreeningsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @screening = screenings(:one)
+    @movie = movies(:one)
+    @cinema = cinemas(:one)
   end
 
   test "should get index" do
@@ -17,7 +19,7 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create screening" do
     assert_difference('Screening.count') do
-      post screenings_url, params: { screening: { arena: @screening.arena, available_seats: @screening.available_seats, price: @screening.price, screening_date: @screening.screening_date, screening_time: @screening.screening_time } }
+      post screenings_url, params: { screening: { arena: @screening.arena, available_seats: @screening.available_seats, price: @screening.price, screening_time: @screening.screening_time + " create"} }
     end
 
     assert_redirected_to screening_url(Screening.last)
@@ -34,7 +36,7 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update screening" do
-    patch screening_url(@screening), params: { screening: { arena: @screening.arena, available_seats: @screening.available_seats, price: @screening.price, screening_date: @screening.screening_date, screening_time: @screening.screening_time } }
+    patch screening_url(@screening), params: { screening: { arena: @screening.arena, available_seats: @screening.available_seats, price: @screening.price, screening_time: @screening.screening_time } }
     assert_redirected_to screening_url(@screening)
   end
 
