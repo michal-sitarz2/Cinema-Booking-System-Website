@@ -12,16 +12,16 @@ class ActorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_actor_url
+    get new_actor_url(movie_id: @movie.id)
     assert_response :success
   end
 
   test "should create actor" do
     assert_difference('Actor.count') do
-      post actors_url, params: { actor: { movie: @movie, name: @actor.name, surname: @actor.surname } }
+    post actors_url, params: { actor: { movie_id: @movie.id, name: @actor.name, surname: @actor.surname } }
     end
 
-    assert_redirected_to actor_url(Actor.last)
+    assert_redirected_to actor_url(assigns(:actor))
   end
 
   test "should show actor" do
@@ -35,7 +35,7 @@ class ActorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update actor" do
-    patch actor_url(@actor), params: { actor: { movie: @movie, name: @actor.name, surname: @actor.surname } }
+    patch actor_url(@actor), params: { actor: { movie_id: @movie.id, name: @actor.name, surname: @actor.surname } }
     assert_redirected_to actor_url(@actor)
   end
 
