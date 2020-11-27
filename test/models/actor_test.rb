@@ -15,7 +15,7 @@ class ActorTest < ActiveSupport::TestCase
     refute actor.valid?
   end
 
-  test 'should not save empty actor' do
+  test 'should not save actor without movie' do
     actor = Actor.new
     actor.name = "name"
     actor.surname = "surname"
