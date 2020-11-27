@@ -3,11 +3,38 @@ class HomeController < ApplicationController
   def home
     @movies = Movie.all
     @cinemas = Cinema.all
+
+    movies = {}
+    @upcoming_movies = []
+    
+    @movies.each do |movie|
+      if movie.release_date <= Date.today
+        movies[movie] = movie['release_date']
+      else
+        @upcoming_movies.append(movie)
+      end
+    end
+
+    movies.sort_by {|k,v| v}.reverse
+    counter = 0
+    movies.each do |movie,date|
+      if counter == 0
+         @movie1 = movie
+       elsif counter == 1
+         @movie2 = movie
+       elsif counter == 2
+         @movie3 = movie
+       end
+       counter = counter + 1
+    end
+
   end
+
 
   def contact
 
   end
+
 
   def request_contact
     name = params[:name]
@@ -28,6 +55,9 @@ class HomeController < ApplicationController
 
 
 
+
+
+
   def webform
     @movie = Movie.new
   end
@@ -35,4 +65,5 @@ class HomeController < ApplicationController
   def restable
 
   end
+
 end

@@ -173,7 +173,7 @@ Otherwise normal navigation bar will be displayed
         "Div-1 Div-1 Div-3 Div-3"
         ". . . .";
       margin:auto;
-      width: 1200px;
+      width: 60%;
       padding:10px;
       height: 750px;
 
@@ -181,21 +181,21 @@ Otherwise normal navigation bar will be displayed
 
     #Div-1 {
       grid-area: Div-1;
-      background: red;
+      //background: red;
       height: 700px;
       padding-left: 60px;
       padding-top: 430px;
     }
     #Div-2 {
       grid-area: Div-2;
-      background: blue;
+      //background: blue;
       height: 350px;
       padding-left: 60px;
       padding-top: 150px;
     }
     #Div-3 {
       grid-area: Div-3;
-      background: green;
+      //background: green;
       height: 350px;
       padding-left: 60px;
       padding-top: 150px;

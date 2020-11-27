@@ -2,25 +2,25 @@
   #currentMovies
     //%h2{id: "currently_playing"}= t('.currently_playing')
 
-    :ruby
-      movies = {}
-      @movies.each do |movie|
-        movies[movie] = movie['release_date']
-      end
-      movies.sort_by {|k,v| v}.reverse
-      counter = 0
-
-      #Save an object
-      movies.each do |movie,date|
-        if counter == 0
-           @movie1 = movie
-         elsif counter == 1
-           @movie2 = movie
-         elsif counter == 2
-           @movie3 = movie
-         end
-         counter = counter + 1
-      end
+    -# # :ruby
+    -# #   movies = {}
+    -# #   @movies.each do |movie|
+    -# #     movies[movie] = movie['release_date']
+    -# #   end
+    -# #   movies.sort_by {|k,v| v}.reverse
+    -# #   counter = 0
+    -# #
+    -# #   #Save an object
+    -# #   movies.each do |movie,date|
+    -# #     if counter == 0
+    -# #        @movie1 = movie
+    -# #      elsif counter == 1
+    -# #        @movie2 = movie
+    -# #      elsif counter == 2
+    -# #        @movie3 = movie
+    -# #      end
+    -# #      counter = counter + 1
+    -# #   end
 
     .movies-container
       #Div-1
