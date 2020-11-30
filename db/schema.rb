@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_141342) do
+ActiveRecord::Schema.define(version: 2020_11_24_161439) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "movie_id", null: false
@@ -19,15 +19,6 @@ ActiveRecord::Schema.define(version: 2020_11_27_141342) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_actors_on_movie_id"
-  end
-
-  create_table "cinemas", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "location", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "screening_id"
-    t.index ["screening_id"], name: "index_cinemas_on_screening_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -41,19 +32,21 @@ ActiveRecord::Schema.define(version: 2020_11_27_141342) do
     t.text "summary", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "screening_id"
-    t.index ["screening_id"], name: "index_movies_on_screening_id"
     t.index ["title"], name: "index_movies_on_title", unique: true
   end
 
   create_table "screenings", force: :cascade do |t|
     t.decimal "price", null: false
     t.time "screening_time", null: false
+    t.date "screening_date", null: false
     t.string "arena", null: false
     t.integer "available_seats", null: false
+    t.string "cinema", null: false
+    t.integer "sold_seats", default: 0
+    t.integer "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "release_date"
+    t.index ["movie_id"], name: "index_screenings_on_movie_id"
   end
 
 end

@@ -28,8 +28,8 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
-        format.json { render :show, status: :created, location: @movie }
+        format.html { redirect_to "/allresources", notice: 'Movie was successfully created.' }
+        format.json { render :show, status: :created, location: "/allresources" }
       else
         format.html { render :new }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
-        format.json { render :show, status: :ok, location: @movie }
+        format.html { redirect_to "/allresources", notice: 'Movie was successfully updated.' }
+        format.json { render :show, status: :ok, location: "/allresources" }
       else
         format.html { render :edit }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -54,24 +54,10 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
-    screenings = Screening.all
-    check = true
-
-    screenings.each do |screening|
-      if screening.movie.title.eql? @movie.title
-        check = false
-      end
-    end
-
-    if check
-      @movie.destroy
-      respond_to do |format|
-        format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    else
-      flash[:failure] = "There was a problem deleting this item. Can't delete the item if it is linked to Screening."
-      redirect_to "/allresources"
+    @movie.destroy
+    respond_to do |format|
+      format.html { redirect_to "/allresources", notice: 'Movie was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

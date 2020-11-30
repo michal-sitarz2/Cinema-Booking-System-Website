@@ -1,6 +1,6 @@
 class Movie < ApplicationRecord
 
-    belongs_to :screening, optional: true
+    has_many :screenings, dependent: :destroy
     has_many :actors, dependent: :destroy
 
     validates :title, :genre, :duration, :release_date, :summary, presence: true

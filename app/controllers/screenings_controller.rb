@@ -1,5 +1,6 @@
 class ScreeningsController < ApplicationController
   before_action :set_screening, only: [:show, :edit, :update, :destroy]
+  # before_action :set_movie, only: [:create]
 
   # GET /screenings
   # GET /screenings.json
@@ -25,7 +26,7 @@ class ScreeningsController < ApplicationController
   # POST /screenings.json
   def create
     @screening = Screening.new(screening_params)
-
+# movie: @movie, price: screening_params[:price], screening_time: screening_params[:screening_time], arena: screening_params[:arena], available_seats: screening_params[:available_seats]
     respond_to do |format|
       if @screening.save
         format.html { redirect_to @screening, notice: 'Screening was successfully created.' }
@@ -66,9 +67,14 @@ class ScreeningsController < ApplicationController
     def set_screening
       @screening = Screening.find(params[:id])
     end
-    
+    #
+    # def set_movie
+    #   @movie = Movie.find_by(id: screening_params[:movie])
+    # end
+
+
     # Only allow a list of trusted parameters through.
     def screening_params
-      params.require(:screening).permit(:price, :screening_time, :arena, :available_seats)
+      params.require(:screening).permit(:movie_id, :screening_date, :cinema, :price, :screening_time, :arena, :available_seats)
     end
 end

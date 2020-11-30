@@ -1,27 +1,5 @@
 #main
   #currentMovies
-    //%h2{id: "currently_playing"}= t('.currently_playing')
-
-    -# # :ruby
-    -# #   movies = {}
-    -# #   @movies.each do |movie|
-    -# #     movies[movie] = movie['release_date']
-    -# #   end
-    -# #   movies.sort_by {|k,v| v}.reverse
-    -# #   counter = 0
-    -# #
-    -# #   #Save an object
-    -# #   movies.each do |movie,date|
-    -# #     if counter == 0
-    -# #        @movie1 = movie
-    -# #      elsif counter == 1
-    -# #        @movie2 = movie
-    -# #      elsif counter == 2
-    -# #        @movie3 = movie
-    -# #      end
-    -# #      counter = counter + 1
-    -# #   end
-
     .movies-container
       #Div-1
         .movie_info_container
@@ -62,13 +40,13 @@
 
   #cinemas_display
     %h2= t('.cinemas_title')
-    .dropdown.show
-      %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
-        =t('.cinema_dropdown')
-
-      .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
-        - @cinemas.each do |cinema|
-          %a{class:"dropdown-item", href:"#"} #{cinema.name + " - " + cinema.location}
+    -# .dropdown.show
+    -#   %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
+    -#     =t('.cinema_dropdown')
+    -#
+    -#   .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
+    -#     - @cinemas.each do |cinema|
+    -#       %a{class:"dropdown-item", href:"#"} #{cinema.name + " - " + cinema.location}
     .dropdown.show
       %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownMoviesLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
         =t('.movies_dropdown')

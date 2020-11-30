@@ -2,7 +2,6 @@ class HomeController < ApplicationController
 
   def home
     @movies = Movie.all
-    @cinemas = Cinema.all
 
     movies = {}
     @upcoming_movies = []
@@ -44,7 +43,6 @@ class HomeController < ApplicationController
     end
 
 
-    @cinemas = Cinema.all
     @screenings = Screening.all
   end
 

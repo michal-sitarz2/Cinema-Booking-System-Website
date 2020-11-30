@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :screenings
-  resources :cinemas
   resources :actors
   resources :movies
 
