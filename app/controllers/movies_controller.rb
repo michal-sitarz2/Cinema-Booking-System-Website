@@ -70,7 +70,8 @@ class MoviesController < ApplicationController
         format.json { head :no_content }
       end
     else
-      format.html { redirect_to movies_url, notice: 'Movie was not destroyed, belongs to a screening.' }
+      flash[:failure] = "There was a problem deleting this item. Can't delete the item if it is linked to Screening."
+      redirect_to "/allresources"
     end
   end
 
