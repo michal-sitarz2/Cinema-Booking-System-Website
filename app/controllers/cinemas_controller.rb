@@ -54,10 +54,23 @@ class CinemasController < ApplicationController
   # DELETE /cinemas/1
   # DELETE /cinemas/1.json
   def destroy
-    @cinema.destroy
-    respond_to do |format|
-      format.html { redirect_to cinemas_url, notice: 'Cinema was successfully destroyed.' }
-      format.json { head :no_content }
+    screenings = Screening.all
+    check = true
+
+    screenings.each do |screening|
+      if screening.cinema.name.eql? @cinema.name
+        check = false
+      end
+    end
+
+    if check
+      @cinema.destroy
+      respond_to do |format|
+        format.html { redirect_to "/allresources", notice: 'Cinema was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      format.html { redirect_to "/allresources", notice: 'Cinema was not destroyed, belongs to a screening.' }
     end
   end
 

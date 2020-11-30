@@ -37,14 +37,15 @@
    width: 500px;
  }
 
+.movie_res_table_cell{
+  vertical-align: middle !important;
+}
+
  #cinema_table {
    width:50%;
  }
 
-td.odd {
-  background-color: #CCC;
-}
-
-td.even {
-  background-color: #EEE;
+.movie_poster_res_table {
+  height: 180px;
+  width: 120px;
 }

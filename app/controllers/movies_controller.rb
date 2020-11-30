@@ -54,10 +54,23 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
-    @movie.destroy
-    respond_to do |format|
-      format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
-      format.json { head :no_content }
+    screenings = Screening.all
+    check = true
+
+    screenings.each do |screening|
+      if screening.movie.title.eql? @movie.title
+        check = false
+      end
+    end
+
+    if check
+      @movie.destroy
+      respond_to do |format|
+        format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      format.html { redirect_to movies_url, notice: 'Movie was not destroyed, belongs to a screening.' }
     end
   end
 
