@@ -19,10 +19,10 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create screening" do
     assert_difference('Screening.count') do
-      post screenings_url, params: { screening: { arena: @screening.arena, available_seats: @screening.available_seats, price: @screening.price, screening_time: @screening.screening_time + " create"} }
+      post screenings_url, params: { screening: { arena: @screening.arena, available_seats: @screening.available_seats, price: @screening.price, screening_time: @screening.screening_time} }
     end
-
-    assert_redirected_to screening_url(Screening.last)
+    assert_redirected_to screening_path(assigns(:screening))
+    #assert_redirected_to screening_url(Screening.last)
   end
 
   test "should show screening" do

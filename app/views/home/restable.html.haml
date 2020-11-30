@@ -1,0 +1,140 @@
+%h2 Movies Table
+-# %table{:id => "movies_table"}
+-#   %thead
+-#     %tr
+-#       %th Poster
+-#       %th Title
+-#       %th Director
+-#       %th Genre
+-#       %th Duration
+-#       %th Country
+-#       %th Release date
+-#       %th Summary
+-#       %th
+-#       %th
+-#       %th
+-#       %th Actors
+-#
+-#   %tbody
+-#     - @movies.each_with_index do |movie, i|
+-#       - row_class = ""
+-#       - if i % 2 == 0
+-#         - row_class = "even"
+-#       - else
+-#         - row_class = "odd"
+-#
+-#       %tr
+-#         %td{:class => "#{row_class}"}= "Poster"
+-#         %td{:class => "#{row_class}"}= movie.title
+-#         %td{:class => "#{row_class}"}= movie.director
+-#         %td{:class => "#{row_class}"}= movie.genre
+-#         %td{:class => "#{row_class}"}= movie.duration
+-#         %td{:class => "#{row_class}"}= movie.country
+-#         %td{:class => "#{row_class}"}= movie.release_date
+-#         %td{:class => "#{row_class}"}= movie.summary
+-#         %td{:class => "#{row_class}"}= link_to 'Show', movie
+-#         %td{:class => "#{row_class}"}= link_to 'Edit', edit_movie_path(movie)
+-#         %td{:class => "#{row_class}"}= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }
+-#         %td{:class => "#{row_class}"}
+-#           %a{:href => "#"}= @actors[i].delete_suffix('| ')
+
+%br
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th{:scope => "col"} Poster
+      %th{:scope => "col"} Title
+      %th{:scope => "col"} Director
+      %th{:scope => "col"} Genre
+      %th{:scope => "col"} Duration
+      %th{:scope => "col"} Country
+      %th{:scope => "col"} Release Date
+      %th{:scope => "col", :id => "summary_column"} Summary
+      %th{:scope => "col"} Actors
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+  %tbody
+    - @movies.each_with_index do |movie,i|
+      %tr
+        %td{:scope => "row"}= "Poster"
+        %td{:scope => "row"}= movie.title
+        %td{:scope => "row"}= movie.director
+        %td{:scope => "row"}= movie.genre
+        %td{:scope => "row"}= movie.duration
+        %td{:scope => "row"}= movie.country
+        %td{:scope => "row"}= movie.release_date
+        %td{:scope => "row"}= movie.summary
+        %td{:scope => "row"}
+          %a{:href => "#"}= @actors[i].delete_suffix('| ')
+        %td{:scope => "row"}= link_to 'Show', movie
+        %td{:scope => "row"}= link_to 'Edit', edit_movie_path(movie)
+        %td{:scope => "row"}= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }
+
+
+%br
+
+= link_to 'New Movie', new_movie_path
+
+%br
+
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th{:scope => "col"} #
+      %th{:scope => "col"} Price
+      %th{:scope => "col"} Screening Time
+      %th{:scope => "col"} Arena
+      %th{:scope => "col"} Available Seats
+      %th{:scope => "col"} Movie
+      %th{:scope => "col"} Cinema
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+  %tbody
+    - @screenings.each_with_index do |screening,i|
+      %tr
+        %td{:scope => "row"}= i
+        %td{:scope => "row"}= screening.price
+        %td{:scope => "row"}= screening.screening_time
+        %td{:scope => "row"}= screening.arena
+        %td{:scope => "row"}= screening.available_seats
+        %td{:scope => "row"}= screening.movie.title
+        %td{:scope => "row"}= screening.cinema.name + " " + screening.cinema.location
+        %td{:scope => "row"}= link_to 'Show', screening
+        %td{:scope => "row"}= link_to 'Edit', edit_screening_path(screening)
+        %td{:scope => "row"}= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }
+
+
+
+%br
+
+= link_to 'New Screening', new_screening_path
+
+%br
+
+
+%h2 Cinemas Table
+
+%table.table.table-hover{:id => "cinema_table"}
+  %thead
+    %tr
+      %th{:scope => "col"} Name
+      %th{:scope => "col"} Location
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+  %tbody
+    - @cinemas.each do |cinema|
+      %tr
+        %td{:scope => "row"}= cinema.name
+        %td{:scope => "row"}= cinema.location
+        %td{:scope => "row"}= link_to 'Show', cinema
+        %td{:scope => "row"}= link_to 'Edit', edit_cinema_path(cinema)
+        %td{:scope => "row"}= link_to 'Destroy', cinema, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Cinema', new_cinema_path

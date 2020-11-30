@@ -66,7 +66,7 @@ class ScreeningsController < ApplicationController
     def set_screening
       @screening = Screening.find(params[:id])
     end
-
+    
     # Only allow a list of trusted parameters through.
     def screening_params
       params.require(:screening).permit(:price, :screening_time, :arena, :available_seats)

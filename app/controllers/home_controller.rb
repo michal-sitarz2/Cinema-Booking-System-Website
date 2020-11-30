@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
     movies = {}
     @upcoming_movies = []
-    
+
     @movies.each do |movie|
       if movie.release_date <= Date.today
         movies[movie] = movie['release_date']
@@ -28,6 +28,24 @@ class HomeController < ApplicationController
        counter = counter + 1
     end
 
+  end
+
+  def restable
+    @movies = Movie.all
+    @actors_m = Actor.all
+
+    @actors = []
+    @movies.each do |movie|
+      movie_actors = ""
+      movie.actors.each do |actor|
+        movie_actors = movie_actors + actor.name + " " + actor.surname + " | "
+      end
+      @actors.append(movie_actors)
+    end
+
+
+    @cinemas = Cinema.all
+    @screenings = Screening.all
   end
 
 
@@ -54,16 +72,8 @@ class HomeController < ApplicationController
   end
 
 
-
-
-
-
   def webform
     @movie = Movie.new
-  end
-
-  def restable
-
   end
 
 end

@@ -32,3 +32,19 @@
  h1 {
    text-transform: uppercase;
  }
+
+ #summary_column {
+   width: 500px;
+ }
+
+ #cinema_table {
+   width:50%;
+ }
+
+td.odd {
+  background-color: #CCC;
+}
+
+td.even {
+  background-color: #EEE;
+}
