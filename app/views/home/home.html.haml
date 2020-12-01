@@ -1,36 +1,36 @@
 #main
-  #currentMovies
-    .movies-container
-      #Div-1
-        .movie_info_container
-          %h2{class:"movie_title_current"}
-            #{@movie1.title}
-        .movie_info_container
-          %h4{class:"release_date_current"}
-            #{@movie1.release_date.strftime("%d/%m/%Y")}
-        .movie_info_container
-          %p{class:"movie_info_current"}
-            #{@movie1.genre + " · " + @movie1.director + " · " + @movie1.duration.to_s + " min"}
-      #Div-2
-        .movie_info_container
-          %h2{class:"movie_title_current"}
-            #{@movie2.title}
-        .movie_info_container
-          %h4{class:"release_date_current"}
-            #{@movie2.release_date.strftime("%d/%m/%Y")}
-        .movie_info_container
-          %p{class:"movie_info_current"}
-            #{@movie2.genre + " · " + @movie2.director + " · " + @movie2.duration.to_s + " min"}
-      #Div-3
-        .movie_info_container
-          %h2{class:"movie_title_current"}
-            #{@movie3.title}
-        .movie_info_container
-          %h4{class:"release_date_current"}
-            #{@movie3.release_date.strftime("%d/%m/%Y")}
-        .movie_info_container
-          %p{class:"movie_info_current"}
-            #{@movie3.genre + " · " + @movie3.director + " · " + @movie3.duration.to_s + " min"}
+  -# #currentMovies
+  -#   .movies-container
+  -#     #Div-1
+  -#       .movie_info_container
+  -#         %h2{class:"movie_title_current"}
+  -#           #{@movie1.title}
+  -#       .movie_info_container
+  -#         %h4{class:"release_date_current"}
+  -#           #{@movie1.release_date.strftime("%d/%m/%Y")}
+  -#       .movie_info_container
+  -#         %p{class:"movie_info_current"}
+  -#           #{@movie1.genre + " · " + @movie1.director + " · " + @movie1.duration.to_s + " min"}
+  -#     #Div-2
+  -#       .movie_info_container
+  -#         %h2{class:"movie_title_current"}
+  -#           #{@movie2.title}
+  -#       .movie_info_container
+  -#         %h4{class:"release_date_current"}
+  -#           #{@movie2.release_date.strftime("%d/%m/%Y")}
+  -#       .movie_info_container
+  -#         %p{class:"movie_info_current"}
+  -#           #{@movie2.genre + " · " + @movie2.director + " · " + @movie2.duration.to_s + " min"}
+  -#     #Div-3
+  -#       .movie_info_container
+  -#         %h2{class:"movie_title_current"}
+  -#           #{@movie3.title}
+  -#       .movie_info_container
+  -#         %h4{class:"release_date_current"}
+  -#           #{@movie3.release_date.strftime("%d/%m/%Y")}
+  -#       .movie_info_container
+  -#         %p{class:"movie_info_current"}
+  -#           #{@movie3.genre + " · " + @movie3.director + " · " + @movie3.duration.to_s + " min"}
 
     #view_more
       %p{id:"view_more_link"}
@@ -40,13 +40,6 @@
 
   #cinemas_display
     %h2= t('.cinemas_title')
-    -# .dropdown.show
-    -#   %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
-    -#     =t('.cinema_dropdown')
-    -#
-    -#   .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
-    -#     - @cinemas.each do |cinema|
-    -#       %a{class:"dropdown-item", href:"#"} #{cinema.name + " - " + cinema.location}
     .dropdown.show
       %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownMoviesLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
         =t('.movies_dropdown')
@@ -57,20 +50,16 @@
 
   %br
 
-  %h2{id: "um", onclick:"ToggleText(this)"} Upcoming Movies
-  %p{id: "ump"} Some text about Upcoming Movies
+  %h2{id: "upcoming_mov"} Upcoming Movies
+  %br
+  %br
   .container
     .row
-      .col-sm-4
-        %h3= 'Column 1'
-        %p= 'Lorem ipsum dolor..'
-      .col-sm-4
-        %h3= 'Column 2'
-        %p= 'Lorem ipsum dolor..'
-      .col-sm-4
-        %h3= 'Column 3'
-        %p= 'Lorem ipsum dolor..'
-
-
+      - @upcoming_movies.each do |movie|
+        .col-sm-4
+          %a{:href => "movies/#{movie.id}"}
+            %img{:src => "#{movie.poster}", :alt => "#{movie.title} poster currently unavailable"}
+          %h2
+            %a{:href => "movies/#{movie.id}", :class => "title_links_upcoming"}= movie.title
 
   %br

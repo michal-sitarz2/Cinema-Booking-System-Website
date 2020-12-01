@@ -15,13 +15,11 @@ Otherwise normal navigation bar will be displayed
   padding-top: 30px;
 }
 
-
 #pageTitle {
   text-align: center;
 }
 
 #pageTitleLink {
-  color: red;
   text-decoration: none;
   color: white;
 }
@@ -155,6 +153,27 @@ Otherwise normal navigation bar will be displayed
   Home Page Style
 */
 
+#upcoming_mov {
+  text-align: center;
+}
+
+.col-sm-4 {
+  margin-bottom: 30px;
+}
+.title_links_upcoming {
+  text-decoration: underline;
+  color: black;
+}
+
+.title_links_upcoming:visited {
+  color: black;
+}
+
+.title_links_upcoming:hover {
+  text-decoration: none;
+  color: white;
+}
+
 #main {
 
   #currentMovies {
@@ -235,10 +254,10 @@ Otherwise normal navigation bar will be displayed
   }
 }
 
-
-//Table Pictures
-//width: 120px;
-//height: 178px;
+#resources_div {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 
 form label, form input {

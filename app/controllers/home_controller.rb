@@ -5,12 +5,16 @@ class HomeController < ApplicationController
 
     movies = {}
     @upcoming_movies = []
+    upcoming_counter = 0
 
     @movies.each do |movie|
       if movie.release_date <= Date.today
         movies[movie] = movie['release_date']
       else
-        @upcoming_movies.append(movie)
+        if upcoming_counter <= 6
+          @upcoming_movies.append(movie)
+          upcoming_counter+=1
+        end
       end
     end
 
@@ -74,6 +78,18 @@ class HomeController < ApplicationController
     @movies = Movie.all
     @screenings = Screening.all
     @cinemas = Cinema.all
+
+    @dates_week = []
+    today = Date.today
+
+    i = 0
+    loop do
+      if i == 7
+        break
+      end
+      @dates_week.append(today+i)
+      i+=1
+    end
   end
 
 end

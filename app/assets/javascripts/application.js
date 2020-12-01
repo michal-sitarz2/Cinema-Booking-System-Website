@@ -82,13 +82,6 @@ function displaySessions(id){
 
 $(document).ready(function(){
 
-  if(document.getElementById('book_screenings')){
-    $("table > tbody > tr").each(function () {
-      $(this).hide();
-    });
-  }
-
-
   if(document.getElementById('MovieForm')){
     ValidateMovieForm();
   }

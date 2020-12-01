@@ -11,6 +11,18 @@
       - @cinemas.each do |cinema|
         %a{class:"dropdown-item", onclick:"displaySessions('#{cinema.id}')"} #{cinema.name}
 
+
+.btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+  - @dates_week.each_with_index do |date,i|
+    - if i == 0
+      %label.btn.btn-secondary.active
+        %input{:autocomplete => "off", :name => "options", :type => "radio", :checked => "checked"}
+        = date.strftime("%d %b")
+    - else
+      %label.btn.btn-secondary
+        %input{:autocomplete => "off", :name => "options", :type => "radio"}
+        = date.strftime("%d %b")
+
 %table.table.table-hover
   %thead
     %tr
