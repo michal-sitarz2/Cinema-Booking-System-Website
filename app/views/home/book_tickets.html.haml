@@ -1,0 +1,44 @@
+#book_screenings
+  %h2= "Currently Screening"
+
+#cinemas_display
+  %h4= "Available Cinemas"
+  .dropdown.show
+    %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
+      ="Cinemas"
+
+    .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
+      - @cinemas.each do |cinema|
+        %a{class:"dropdown-item", onclick:"displaySessions('#{cinema.id}')"} #{cinema.name}
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th{:scope => "col"} Movie
+      %th{:scope => "col"} Price
+      %th{:scope => "col"} Screening Time
+      %th{:scope => "col"} Screening Date
+      %th{:scope => "col"} Cinema
+      %th{:scope => "col"} Arena
+      %th{:scope => "col"} Available Seats
+      %th{:scope => "col"} Sold Seats
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+  %tbody
+    - @screenings.each do |screening|
+      - class_name = Cinema.where :name => screening.cinema
+      - movie_played = Movie.where :id => screening.movie_id
+      %tr{:class => "#{class_name[0].id}"}
+        %td{:scope => "row"}= screening.movie.title
+        %td{:scope => "row"}= screening.price
+        %td{:scope => "row"}= screening.screening_time.strftime("%H:%M")
+        %td{:scope => "row"}= screening.screening_date.strftime("%d/%m/%Y")
+        %td{:scope => "row"}= screening.cinema
+        %td{:scope => "row"}= screening.arena
+        %td{:scope => "row"}= screening.available_seats
+        %td{:scope => "row"}= screening.sold_seats
+        %td{:scope => "row"}= link_to 'Show', screening
+        %td{:scope => "row"}= link_to 'Edit', edit_screening_path(screening)
+        %td{:scope => "row"}= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }
+%br

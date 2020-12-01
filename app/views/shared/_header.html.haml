@@ -1,7 +1,8 @@
 %header{:id => "pageHeader"}
   #nav_title
     = image_tag("film-roll.png", :alt => "Cinema Town Logo", :id => "imageLogo")
-    %h1{:id => "pageTitle"}= t('.title')
+    %h1{:id => "pageTitle"}
+      %a{:id=>"pageTitleLink", :href => "/"}= t('.title')
 
   %hr{:id => "horizontalLine"}
 
@@ -14,7 +15,7 @@
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/"}= t('.home')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "#"}= t('.book_tickets')
+          %a{:class => "nav-link", :href => "booking"}= t('.book_tickets')
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "#"}= t('.news')
         %li{:class => "nav-item"}

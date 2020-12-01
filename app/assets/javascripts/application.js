@@ -68,25 +68,26 @@ function ValidateMovieForm(){
     });
 }
 
-function ToggleText(elem){
-  $('#'+elem.id+"p").toggle();
 
-  if(elem.id+"p" == "ump"){
-    $(".container").toggle();
-  }
-}
-
-function SetFontSize(val){
-  $('*').each(function(i,e){
-    e.style.fontSize = val
+function displaySessions(id){
+  $("table > tbody > tr").each(function () {
+    $(this).hide();
   });
+
+  $('.'+id).each(function() {
+    $(this).show();
+  })
 }
+
 
 $(document).ready(function(){
 
-  if(document.getElementById('welcome_id')){
-    $('#wfp, #tbp, #newsp, #tmp, .ump').hide();
+  if(document.getElementById('book_screenings')){
+    $("table > tbody > tr").each(function () {
+      $(this).hide();
+    });
   }
+
 
   if(document.getElementById('MovieForm')){
     ValidateMovieForm();
@@ -95,12 +96,5 @@ $(document).ready(function(){
   if(document.getElementById('ContactForm')){
     ValidateContactForm();
   }
-
-  $('[data-js-hide-link]').click(function(event){
-    $(this).parents('li').hide();
-    alert('You clicked the Hide link');
-    event.preventDefault();
-  });
-
 
 });

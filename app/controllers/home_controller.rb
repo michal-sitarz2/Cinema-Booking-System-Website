@@ -70,9 +70,10 @@ class HomeController < ApplicationController
 
   end
 
-
-  def webform
-    @movie = Movie.new
+  def book_tickets
+    @movies = Movie.all
+    @screenings = Screening.all
+    @cinemas = Cinema.all
   end
 
 end
