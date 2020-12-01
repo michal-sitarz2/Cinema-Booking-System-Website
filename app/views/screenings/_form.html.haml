@@ -11,7 +11,7 @@
     = f.collection_select :movie_id, Movie.all, :id, :title
   .field
     = f.label :cinema
-    = f.text_field :cinema
+    = f.collection_select :cinema, Cinema.all, :name, :name
   .field
     = f.label :price
     = f.text_field :price
@@ -29,33 +29,3 @@
     = f.number_field :available_seats
   .actions
     = f.submit 'Save'
-
-    -# = form_for @screening do |f|
-    -#   - if @screening.errors.any?
-    -#     #error_explanation
-    -#       %h2= "#{pluralize(@screening.errors.count, "error")} prohibited this screening from being saved:"
-    -#       %ul
-    -#         - @screening.errors.full_messages.each do |message|
-    -#           %li= message
-    -#
-    -#   .field
-    -#     = f.label :movie
-    -#     = f.collection_select :movie, Movie.all, :id, :title
-    -#   .field
-    -#     = f.label :cinema
-    -#     = f.collection_select :cinema, Cinema.all, :id , :name
-    -#   .field
-    -#     = f.label :price
-    -#     = f.text_field :price
-    -#   .field
-    -#     = f.label :screening_time
-    -#     = f.time_select :screening_time
-    -#   .field
-    -#     = f.label :arena
-    -#     = f.text_field :arena
-    -#   .field
-    -#     = f.label :available_seats
-    -#     = f.number_field :available_seats
-    -#   .actions
-    -#     = f.submit 'Save'
-    -#

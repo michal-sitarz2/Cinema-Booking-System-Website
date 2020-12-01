@@ -77,9 +77,33 @@
         %td{:scope => "row"}= link_to 'Show', screening
         %td{:scope => "row"}= link_to 'Edit', edit_screening_path(screening)
         %td{:scope => "row"}= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }
-
-
-
 %br
 
 = link_to 'New Screening', new_screening_path
+
+%br
+%br
+
+%h2 Cinemas List
+
+%table.table.table-hover{:id => "cinema_res_table"}
+  %thead
+    %tr
+      %th{:scope => "col"} Name
+      %th{:scope => "col"} Address
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+
+  %tbody
+    - @cinemas.each do |cinema|
+      %tr
+        %td{:scope => "row"}= cinema.name
+        %td{:scope => "row"}= cinema.address
+        %td{:scope => "row"}= link_to 'Show', cinema
+        %td{:scope => "row"}= link_to 'Edit', edit_cinema_path(cinema)
+        %td{:scope => "row"}= link_to 'Destroy', cinema, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Cinema', new_cinema_path

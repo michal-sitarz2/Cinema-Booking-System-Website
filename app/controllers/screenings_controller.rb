@@ -29,8 +29,8 @@ class ScreeningsController < ApplicationController
 # movie: @movie, price: screening_params[:price], screening_time: screening_params[:screening_time], arena: screening_params[:arena], available_seats: screening_params[:available_seats]
     respond_to do |format|
       if @screening.save
-        format.html { redirect_to @screening, notice: 'Screening was successfully created.' }
-        format.json { render :show, status: :created, location: @screening }
+        format.html { redirect_to "/allresources", notice: 'Screening was successfully created.' }
+        format.json { render :show, status: :created, location: "/allresources" }
       else
         format.html { render :new }
         format.json { render json: @screening.errors, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class ScreeningsController < ApplicationController
   def update
     respond_to do |format|
       if @screening.update(screening_params)
-        format.html { redirect_to @screening, notice: 'Screening was successfully updated.' }
-        format.json { render :show, status: :ok, location: @screening }
+        format.html { redirect_to "/allresources", notice: 'Screening was successfully updated.' }
+        format.json { render :show, status: :ok, location: "/allresources" }
       else
         format.html { render :edit }
         format.json { render json: @screening.errors, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class ScreeningsController < ApplicationController
   def destroy
     @screening.destroy
     respond_to do |format|
-      format.html { redirect_to screenings_url, notice: 'Screening was successfully destroyed.' }
+      format.html { redirect_to "/allresources", notice: 'Screening was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

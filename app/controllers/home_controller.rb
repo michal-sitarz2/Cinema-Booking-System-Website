@@ -31,6 +31,7 @@ class HomeController < ApplicationController
 
   def restable
     @movies = Movie.all
+    @cinemas = Cinema.all
     @actors_m = Actor.all
 
     @actors = []
