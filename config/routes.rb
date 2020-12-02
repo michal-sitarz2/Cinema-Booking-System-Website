@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   resources :cinemas
   resources :screenings
-  resources :actors
   resources :movies
 
   root 'home#home'

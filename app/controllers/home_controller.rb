@@ -36,18 +36,6 @@ class HomeController < ApplicationController
   def restable
     @movies = Movie.all
     @cinemas = Cinema.all
-    @actors_m = Actor.all
-
-    @actors = []
-    @movies.each do |movie|
-      movie_actors = ""
-      movie.actors.each do |actor|
-        movie_actors = movie_actors + actor.name + " " + actor.surname + " | "
-      end
-      @actors.append(movie_actors)
-    end
-
-
     @screenings = Screening.all
   end
 

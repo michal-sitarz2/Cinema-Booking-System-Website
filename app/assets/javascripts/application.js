@@ -68,8 +68,7 @@ function ValidateMovieForm(){
     });
 }
 
-
-function displaySessions(id){
+function displayScreenings(id){
   $("table > tbody > tr").each(function () {
     $(this).hide();
   });
@@ -81,6 +80,27 @@ function displaySessions(id){
 
 
 $(document).ready(function(){
+
+  // Get click event, assign button to var, and get values from that var
+  $('#aBtnGroup button').on('click', function() {
+    var thisBtn = $(this);
+
+    thisBtn.addClass('active').siblings().removeClass('active');
+    var btnText = thisBtn.text();
+    var btnValue = thisBtn.val();
+
+    $('#selectedVal').text(btnValue);
+
+
+  });
+
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  var date = dd + '-' + mm +'-' + yyyy;
+  $('#'+date).click();
 
   if(document.getElementById('MovieForm')){
     ValidateMovieForm();

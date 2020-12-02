@@ -30,8 +30,7 @@
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.country
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.release_date
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.summary
-          %td{:scope => "row", :class => "movie_res_table_cell"}
-            %a{:href => "#"}= @actors[i].delete_suffix('| ')
+          %td{:scope => "row", :class => "movie_res_table_cell"}= "Actors"
           %td{:scope => "row", :class => "movie_res_table_cell"}= link_to 'Show', movie
           %td{:scope => "row", :class => "movie_res_table_cell"}= link_to 'Edit', edit_movie_path(movie)
           %td{:scope => "row", :class => "movie_res_table_cell"}= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }

@@ -9,19 +9,28 @@
 
     .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
       - @cinemas.each do |cinema|
-        %a{class:"dropdown-item", onclick:"displaySessions('#{cinema.id}')"} #{cinema.name}
+        %a{class:"dropdown-item", onclick:"displayScreenings('#{cinema.id}')"} #{cinema.name}
+-#
+-#
+-# #aBtnGroup.btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+-#   - @dates_week.each_with_index do |date,i|
+-#     - if i == 0
+-#       %label.btn.btn-secondary.active
+-#         %input{:autocomplete => "off", :name => "options", :type => "radio", :checked => "checked", onclick:"displayScreeningsByDate()"}
+-#         = date.strftime("%d %b")
+-#     - else
+-#       %label.btn.btn-secondary
+-#         %input{:autocomplete => "off", :name => "options", :type => "radio", onclick:"displayScreeningsByDate()"}
+-#         = date.strftime("%d %b")
 
+#aBtnGroup.btn-group
+  - @dates_week.each do |date|
+    %button.btn.btn-default{:id => "#{date.strftime("%d-%m-%Y")}", :type => "button", :value => "#{date}"}= date.strftime("%d %b")
+%p
+%div
+  Selected Val:
+  %span#selectedVal
 
-.btn-group.btn-group-toggle{"data-toggle" => "buttons"}
-  - @dates_week.each_with_index do |date,i|
-    - if i == 0
-      %label.btn.btn-secondary.active
-        %input{:autocomplete => "off", :name => "options", :type => "radio", :checked => "checked"}
-        = date.strftime("%d %b")
-    - else
-      %label.btn.btn-secondary
-        %input{:autocomplete => "off", :name => "options", :type => "radio"}
-        = date.strftime("%d %b")
 
 %table.table.table-hover
   %thead
