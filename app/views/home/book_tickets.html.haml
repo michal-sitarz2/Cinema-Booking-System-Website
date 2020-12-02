@@ -10,18 +10,7 @@
     .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
       - @cinemas.each do |cinema|
         %a{class:"dropdown-item", onclick:"displayScreenings('#{cinema.id}')"} #{cinema.name}
--#
--#
--# #aBtnGroup.btn-group.btn-group-toggle{"data-toggle" => "buttons"}
--#   - @dates_week.each_with_index do |date,i|
--#     - if i == 0
--#       %label.btn.btn-secondary.active
--#         %input{:autocomplete => "off", :name => "options", :type => "radio", :checked => "checked", onclick:"displayScreeningsByDate()"}
--#         = date.strftime("%d %b")
--#     - else
--#       %label.btn.btn-secondary
--#         %input{:autocomplete => "off", :name => "options", :type => "radio", onclick:"displayScreeningsByDate()"}
--#         = date.strftime("%d %b")
++
 
 #aBtnGroup.btn-group
   - @dates_week.each do |date|
@@ -48,9 +37,8 @@
       %th{:scope => "col"}
   %tbody
     - @screenings.each do |screening|
-      - class_name = Cinema.where :name => screening.cinema
-      - movie_played = Movie.where :id => screening.movie_id
-      %tr{:class => "#{class_name[0].id}"}
+      - cinema_class = Cinema.where :name => screening.cinema
+      %tr{:class => "#{cinema_class[0].id}"}
         %td{:scope => "row"}= screening.movie.title
         %td{:scope => "row"}= screening.price
         %td{:scope => "row"}= screening.screening_time.strftime("%H:%M")

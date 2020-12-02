@@ -13,27 +13,31 @@
         %th{:scope => "col"} Duration
         %th{:scope => "col"} Country
         %th{:scope => "col"} Release Date
-        %th{:scope => "col", :id => "summary_column"} Summary
         %th{:scope => "col"} Actors
-        %th{:scope => "col"}
-        %th{:scope => "col"}
+        %th{:scope => "col"} Restrict
+        %th{:scope => "col", :id => "summary_column"} Summary
         %th{:scope => "col"}
     %tbody
       - @movies.each_with_index do |movie,i|
         %tr
           %td{:scope => "row", :class => "movie_res_table_cell"}
-            %img{:src => "#{movie.poster}", :alt => "NaN", :class => "movie_poster_res_table"}
-          %td{:scope => "row", :class => "movie_res_table_cell"}= movie.title
+            %a{:href => "movies/#{movie.id}"}
+              %img{:src => "#{movie.poster}", :alt => "NaN", :class => "movie_poster_res_table"}
+          %td{:scope => "row", :class => "movie_res_table_cell"}
+            %a{:href => "movies/#{movie.id}", :class => "resource_table_links"}= movie.title
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.director
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.genre
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.duration
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.country
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.release_date
+          %td{:scope => "row", :class => "movie_res_table_cell"}= movie.actors
+          %td{:scope => "row", :class => "movie_res_table_cell"}= movie.restrictions
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.summary
-          %td{:scope => "row", :class => "movie_res_table_cell"}= "Actors"
-          %td{:scope => "row", :class => "movie_res_table_cell"}= link_to 'Show', movie
-          %td{:scope => "row", :class => "movie_res_table_cell"}= link_to 'Edit', edit_movie_path(movie)
-          %td{:scope => "row", :class => "movie_res_table_cell"}= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }
+          %td{:scope => "row", :class => "movie_res_table_cell", :id => "movie_res_table_cell_links"}
+            = link_to 'Edit', edit_movie_path(movie)
+            %br
+            = link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }
+
 
   %br
 
@@ -57,6 +61,7 @@
         %th{:scope => "col"} Arena
         %th{:scope => "col"} Available Seats
         %th{:scope => "col"} Sold Seats
+        %th{:scope => "col"} Type
         %th{:scope => "col"}
         %th{:scope => "col"}
         %th{:scope => "col"}
@@ -71,6 +76,7 @@
           %td{:scope => "row"}= screening.arena
           %td{:scope => "row"}= screening.available_seats
           %td{:scope => "row"}= screening.sold_seats
+          %td{:scope => "row"}= screening.types
           %td{:scope => "row"}= link_to 'Show', screening
           %td{:scope => "row"}= link_to 'Edit', edit_screening_path(screening)
           %td{:scope => "row"}= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }

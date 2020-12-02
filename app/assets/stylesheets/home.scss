@@ -259,6 +259,23 @@ Otherwise normal navigation bar will be displayed
   padding-right: 20px;
 }
 
+.resource_table_links:link {
+  color:blue;
+  text-decoration: underline;
+}
+
+.resource_table_links:hover {
+  color:white;
+}
+
+.resource_table_links:visited {
+  color:blue;
+  text-decoration: underline;
+}
+
+#movie_res_table_cell_links{
+  font-size: 15px;
+}
 
 form label, form input {
   display: block;

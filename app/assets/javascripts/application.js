@@ -49,37 +49,45 @@ function ValidateContactForm(){
 }
 
 function ValidateMovieForm(){
-
     $('#MovieForm').validate({
       rules: {
         'movie[title]' : {required: true},
-        'movie[director]' : {required: true},
         'movie[genre]' : {required: true},
         'movie[duration]' : {required: true, digits: true, range: [1, 250]},
-        'movie[year]' : {digits: true, range: [1900, 2030]}
+        'movie[poster]' : {required:true, url: true},
+        'movie[summary]' : {required: true}
       },
       messages: {
         'movie[title]' : {required: "You must enter the movie title"},
-        'movie[director]' : {required: "You must enter the movie director"},
         'movie[genre]' : {required: "You must enter the movie genre"},
         'movie[duration]' : {required: "You must enter the movie duration", digits: "Only digits", range: "The duration must range from 1 to 250"},
-        'movie[year]' : {digits: "You must use digits", range: "The year must range from 1900 to 2030"}
+        'movie[poster]' : {required: "Must enter a poster URL", url: "Must enter a poster URL"},
+        'movie[summary]' : {required: "You must enter the movie summary"}
       }
     });
 }
 
-function displayScreenings(id){
+
+function displayScreenings(cinema_id){
   $("table > tbody > tr").each(function () {
     $(this).hide();
   });
 
-  $('.'+id).each(function() {
+  $('.'+cinema_id).each(function() {
     $(this).show();
-  })
+  });
+
 }
 
-
 $(document).ready(function(){
+
+  if(document.getElementById('MovieForm')){
+    ValidateMovieForm();
+  }
+
+  if(document.getElementById('ContactForm')){
+    ValidateContactForm();
+  }
 
   // Get click event, assign button to var, and get values from that var
   $('#aBtnGroup button').on('click', function() {
@@ -90,8 +98,6 @@ $(document).ready(function(){
     var btnValue = thisBtn.val();
 
     $('#selectedVal').text(btnValue);
-
-
   });
 
   var today = new Date();
@@ -101,13 +107,5 @@ $(document).ready(function(){
 
   var date = dd + '-' + mm +'-' + yyyy;
   $('#'+date).click();
-
-  if(document.getElementById('MovieForm')){
-    ValidateMovieForm();
-  }
-
-  if(document.getElementById('ContactForm')){
-    ValidateContactForm();
-  }
 
 });
