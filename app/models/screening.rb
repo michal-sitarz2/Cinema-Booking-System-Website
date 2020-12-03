@@ -1,7 +1,7 @@
 class Screening < ApplicationRecord
 
   belongs_to :movie
-  validates :price, :screening_date, :screening_time, :arena, :available_seats, presence: true
+  validates :movie, :price, :screening_date, :cinema, :screening_time, :arena, :available_seats, presence: true
 
   def self.search(search)
     if search
