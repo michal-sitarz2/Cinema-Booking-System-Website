@@ -5,7 +5,19 @@ class ScreeningsController < ApplicationController
   # GET /screenings
   # GET /screenings.json
   def index
-    @screenings = Screening.search(params[:screening])
+    screenings = Screening.search(params[:screening])
+    @screenings = {}
+    screenings.each do |screening|
+      if @screenings.key?(screening.movie)
+        @screenings[screening.movie].append(screening)
+      else
+        @screenings[screening.movie] = []
+        @screenings[screening.movie].append(screening)
+      end
+    end
+
+    date = params[:screening][:":screening_date"].split('-')
+    @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
   end
 
   # GET /screenings/1

@@ -1,3 +1,29 @@
 // Place all the styles related to the Screenings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#screenings_container{
+    border-style: solid;
+    border-color: #B8B8B8;
+    border-radius: 15px;
+}
+
+.screening_index_images {
+  width: 150px;
+  height: 222.5px;
+}
+
+.screening_button_times{
+  width:75px;
+  height: 40px;
+}
+
+.text_screening_type {
+  text-align: center;
+}
+
+.col-xs-2{
+  width: 110px !important;
+  height: 60px !important;
+}

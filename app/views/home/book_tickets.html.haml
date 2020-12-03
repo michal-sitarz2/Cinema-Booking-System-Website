@@ -1,67 +1,14 @@
 #book_screenings
   %h2= "Currently Screening"
 
--# #cinemas_display
--#   %h4= "Available Cinemas"
--#   .dropdown.show
--#     %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
--#       ="Cinemas"
--#
--#     .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
--#       - @cinemas.each do |cinema|
--#         %a{class:"dropdown-item", onclick:"displayScreenings('#{cinema.id}')"}=cinema.name
--#
--# #aBtnGroup.btn-group
--#   - @dates_week.each do |date|
--#     %button.btn.btn-default{:id => "#{date.strftime("%d/%m")}", :type => "button", :value => "#{date.strftime("%d/%m")}"}= date.strftime("%d/%m")
+  .container
+    %h3= "Search by:"
+    =form_tag(screenings_path, method:"get") do
+      %select{:name => "screening[:cinema]", :class => "form-control"}
+        - @cinemas.each do |cinema|
+          %option{:value => "#{cinema.name}"}= cinema.name
 
-.container
-  %h3= "Search by:"
-  =form_tag(screenings_path, method:"get") do
-    %select{:name => "screening[:cinema]", :class => "form-control"}
-      - @cinemas.each do |cinema|
-        %option{:value => "#{cinema.name}"}= cinema.name
-
-    %select{:name => "screening[:screening_date]", :class => "form-control"}
-      - @dates_week.each do |date|
-        %option{:value => "#{date}"}= date
-    =submit_tag("Search")
-%br
-%br
-
-%p
-%div
-  Selected Val:
-  %span#selectedVal
-
-
-%table.table.table-hover
-  %thead
-    %tr
-      %th{:scope => "col"} Movie
-      %th{:scope => "col"} Price
-      %th{:scope => "col"} Screening Time
-      %th{:scope => "col"} Screening Date
-      %th{:scope => "col"} Cinema
-      %th{:scope => "col"} Arena
-      %th{:scope => "col"} Available Seats
-      %th{:scope => "col"} Sold Seats
-      %th{:scope => "col"}
-      %th{:scope => "col"}
-      %th{:scope => "col"}
-  %tbody
-    - @screenings.each do |screening|
-      - cinema_class = Cinema.where :name => screening.cinema
-      %tr{:class => "#{cinema_class[0].id} #{screening.screening_date.strftime('%d/%m')}"}
-        %td{:scope => "row"}= screening.movie.title
-        %td{:scope => "row"}= screening.price
-        %td{:scope => "row"}= screening.screening_time.strftime("%H:%M")
-        %td{:scope => "row"}= screening.screening_date.strftime("%d/%m/%Y")
-        %td{:scope => "row"}= screening.cinema
-        %td{:scope => "row"}= screening.arena
-        %td{:scope => "row"}= screening.available_seats
-        %td{:scope => "row"}= screening.sold_seats
-        %td{:scope => "row"}= link_to 'Show', screening
-        %td{:scope => "row"}= link_to 'Edit', edit_screening_path(screening)
-        %td{:scope => "row"}= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }
-%br
+      %select{:name => "screening[:screening_date]", :class => "form-control"}
+        - @dates_week.each do |date|
+          %option{:value => "#{date}"}= date
+      =submit_tag("Search")

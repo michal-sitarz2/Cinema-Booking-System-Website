@@ -1,28 +1,42 @@
-%h1 Listing screenings
-
-%table
-  %thead
-    %tr
-      %th Price
-      %th Screening time
-      %th Screening date
-      %th Arena
-      %th Available seats
-      %th
-      %th
-      %th
-
-  %tbody
-    - @screenings.each do |screening|
-      %tr
-        %td= screening.price
-        %td= screening.screening_time
-        %td= screening.arena
-        %td= screening.available_seats
-        %td= link_to 'Show', screening
-        %td= link_to 'Edit', edit_screening_path(screening)
-        %td= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }
+-# #aBtnGroup.btn-group
+-#   - @dates_week.each do |date|
+-#     %button.btn.btn-default{:id => "#{date.strftime("%d/%m")}", :type => "button", :value => "#{date.strftime("%d/%m")}"}= date.strftime("%d/%m")
 
 %br
 
-= link_to 'New Screening', new_screening_path
+.container{:id => "screenings_container"}
+  %h1{:id => "screenig_index_header"}= "Screenings for #{@date.strftime("%d %B")}"
+  %hr
+  -@screenings.each do |movie, screenings|
+    %br
+    .row
+      .col-xs-4.col-sm-3
+        %img{:class => "screening_index_images", :src => "#{movie.poster}", :alt => "#{movie.title} Poster Currently Unavailable"}
+      .col-xs-7
+        %h3= "#{movie.title}"
+        %p
+          %b
+            = "Director: "
+          = movie.director
+        %p
+          %b
+            = "Actors: "
+          = movie.actors
+        %p
+          %b
+            = "Genre: "
+          = movie.genre
+        %p
+          %b
+            = "Duration: "
+          = "#{movie.duration} min"
+    %br
+    %hr
+    .row.justify-content-start
+      -screenings.each do |screening|
+        .col-xs-2
+          %button{:class => "screening_button_times", :onclick => "alert('Hello world!')", :type => "button"}= screening.screening_time.strftime("%H:%M")
+          %p{:class => "text_screening_type"}
+            %b= screening.screening_type
+    %hr
+    %br
