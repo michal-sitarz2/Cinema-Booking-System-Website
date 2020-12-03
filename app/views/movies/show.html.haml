@@ -2,7 +2,9 @@
 
 #movie_container_show
   %hr
-  %iframe{:height => "345", :src => "https://www.youtube.com/watch?v=jG1X67vnYM0", :width => "420"}
+  -if @movie.video != nil
+    .container{:id => "trailer_container"}
+      %iframe{:allow => "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :src => "#{@movie.video}"}
   .container
     .row
       .Header.col-sm-11
@@ -44,33 +46,3 @@
 
       .col-sm-4
         %img{'src'=>@movie.poster, 'alt'=>@movie.title, id:"poster_image"}
-
-#movie_title_container
-  %h2= @movie.title
-
-.grid-container
-  .movies_poster_container
-    //%img{'src'=>@movie.poster, 'alt'=>@movie.title, id:"poster_image"}
-  .movies_information_container
-    %p
-      %b Director:
-      = @movie.director
-    %p
-      %b Genre:
-      = @movie.genre
-    %p
-      %b Duration:
-      = @movie.duration
-
-    %p
-      %b Country:
-      = @movie.country
-
-    %p
-      %b Release date:
-      = @movie.release_date
-
-    %p
-      %b Summary:
-    %p
-      = @movie.summary

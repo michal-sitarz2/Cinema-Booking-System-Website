@@ -2,9 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#movie_title_container{
+#movie_title_container {
   height: 40px;
   margin-bottom: 30px;
+}
+
+#trailer_container {
+
+  height: 475px;
+
+  iframe{
+    width:100%;
+    height:100%;
+    margin: auto;
+    padding: 10px;
+  }
 }
 
 #movie_title_container h2 {
@@ -29,20 +41,9 @@
   }
 }
 
-iframe {
-  align-items: center;
-}
 
-
-.grid-container {
-  display: grid;
-  height:800px;
-  grid-template-columns: 0fr 0.5fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 40px 40px;
-  grid-template-areas:
-    "movies_poster_container movies_poster_container movies_information_container movies_information_container"
-    "movies_poster_container movies_poster_container movies_information_container movies_information_container";
+.movie_res_table_cell_first_col{
+  width:120px;
 }
 
 .movies_poster_container {

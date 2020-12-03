@@ -21,12 +21,15 @@
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "#"}= t('.sign_up')
         %li{:class => "nav-item"}
+          %a{:class => "nav-link", :href => "#"}= "About Us"
+        %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "contact"}= t('.contact')
 
   #mySidebar.sidebar
     %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"} ×
     %a{:href => "/"}= t('.home')
-    %a{:href => "#"}= t('.book_tickets')
-    %a{:href => "#"}= t('.news')
+    %a{:href => "/booking"}= t('.book_tickets')
+    %a{:href => "/allresources"}= "Resource Table"
     %a{:href => "#"}= t('.sign_up')
+    %a{:href => "#"}= "About Us"
     %a{:href => "/contact"}= t('.contact')
