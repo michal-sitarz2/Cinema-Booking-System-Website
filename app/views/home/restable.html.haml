@@ -76,7 +76,7 @@
           %td{:scope => "row"}= screening.arena
           %td{:scope => "row"}= screening.available_seats
           %td{:scope => "row"}= screening.sold_seats
-          %td{:scope => "row"}= screening.types
+          %td{:scope => "row"}= screening.screening_type
           %td{:scope => "row"}= link_to 'Show', screening
           %td{:scope => "row"}= link_to 'Edit', edit_screening_path(screening)
           %td{:scope => "row"}= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }

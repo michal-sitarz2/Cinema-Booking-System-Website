@@ -152,9 +152,11 @@ Otherwise normal navigation bar will be displayed
 /*
   Home Page Style
 */
-
-#upcoming_mov {
-  text-align: center;
+.dropdown.show {
+  width: 200px !important;
+}
+.dropdown-menu {
+    width: 200px !important;
 }
 
 .col-sm-4 {

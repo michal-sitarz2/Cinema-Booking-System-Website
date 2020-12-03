@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'home#contact'
   get 'allresources', to: 'home#restable'
   get 'booking', to: 'home#book_tickets'
-
+  
   post 'request_contact', to: 'home#request_contact'
 
 

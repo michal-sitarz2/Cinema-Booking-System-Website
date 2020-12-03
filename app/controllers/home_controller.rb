@@ -5,16 +5,13 @@ class HomeController < ApplicationController
 
     movies = {}
     @upcoming_movies = []
-    upcoming_counter = 0
 
     @movies.each do |movie|
       if movie.release_date <= Date.today
         movies[movie] = movie['release_date']
       else
-        if upcoming_counter <= 6
-          @upcoming_movies.append(movie)
-          upcoming_counter+=1
-        end
+        @upcoming_movies.append(movie)
+
       end
     end
 
@@ -65,7 +62,7 @@ class HomeController < ApplicationController
   def book_tickets
 
     # screening array be a dictionary Screening -> Array of times
-    #
+    # *************************************
     @movies = Movie.all
     @screenings = Screening.all
     @cinemas = Cinema.all

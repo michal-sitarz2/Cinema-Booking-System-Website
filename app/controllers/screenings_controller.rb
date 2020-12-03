@@ -1,11 +1,11 @@
 class ScreeningsController < ApplicationController
   before_action :set_screening, only: [:show, :edit, :update, :destroy]
-  # before_action :set_movie, only: [:create]
+
 
   # GET /screenings
   # GET /screenings.json
   def index
-    @screenings = Screening.all
+    @screenings = Screening.search(params[:screening])
   end
 
   # GET /screenings/1
@@ -67,11 +67,6 @@ class ScreeningsController < ApplicationController
     def set_screening
       @screening = Screening.find(params[:id])
     end
-    #
-    # def set_movie
-    #   @movie = Movie.find_by(id: screening_params[:movie])
-    # end
-
 
     # Only allow a list of trusted parameters through.
     def screening_params

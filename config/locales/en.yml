@@ -32,7 +32,7 @@
 en:
   app_title: Cinema Town
   app_description: A place where you reserve cinema tickets.
-  
+
   shared:
     header:
       title: Cinema Town
@@ -46,7 +46,7 @@ en:
       currently_playing: Currently Playing
       view_more_current: View more currently playing movies...
       cinema_dropdown: Cinemas
-      movies_dropdown: Movies
+      movies_dropdown: All the available movies
       cinemas_title: Cinema Program
 
 

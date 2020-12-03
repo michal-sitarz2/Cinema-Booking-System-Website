@@ -14,6 +14,26 @@
   text-decoration: bold;
 }
 
+#movie_container_show {
+  margin-top: -20px;
+  padding-top: -20px;
+  background-color: #161616;
+  td {
+    color:white;
+  }
+  h2 {
+    color:white;
+  }
+  p {
+    color:white;
+  }
+}
+
+iframe {
+  align-items: center;
+}
+
+
 .grid-container {
   display: grid;
   height:800px;

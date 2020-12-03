@@ -1,20 +1,34 @@
 #book_screenings
   %h2= "Currently Screening"
 
-#cinemas_display
-  %h4= "Available Cinemas"
-  .dropdown.show
-    %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
-      ="Cinemas"
+-# #cinemas_display
+-#   %h4= "Available Cinemas"
+-#   .dropdown.show
+-#     %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownCinemasLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
+-#       ="Cinemas"
+-#
+-#     .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
+-#       - @cinemas.each do |cinema|
+-#         %a{class:"dropdown-item", onclick:"displayScreenings('#{cinema.id}')"}=cinema.name
+-#
+-# #aBtnGroup.btn-group
+-#   - @dates_week.each do |date|
+-#     %button.btn.btn-default{:id => "#{date.strftime("%d/%m")}", :type => "button", :value => "#{date.strftime("%d/%m")}"}= date.strftime("%d/%m")
 
-    .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
+.container
+  %h3= "Search by:"
+  =form_tag(screenings_path, method:"get") do
+    %select{:name => "screening[:cinema]", :class => "form-control"}
       - @cinemas.each do |cinema|
-        %a{class:"dropdown-item", onclick:"displayScreenings('#{cinema.id}')"} #{cinema.name}
-+
+        %option{:value => "#{cinema.name}"}= cinema.name
 
-#aBtnGroup.btn-group
-  - @dates_week.each do |date|
-    %button.btn.btn-default{:id => "#{date.strftime("%d-%m-%Y")}", :type => "button", :value => "#{date}"}= date.strftime("%d %b")
+    %select{:name => "screening[:screening_date]", :class => "form-control"}
+      - @dates_week.each do |date|
+        %option{:value => "#{date}"}= date
+    =submit_tag("Search")
+%br
+%br
+
 %p
 %div
   Selected Val:
@@ -38,7 +52,7 @@
   %tbody
     - @screenings.each do |screening|
       - cinema_class = Cinema.where :name => screening.cinema
-      %tr{:class => "#{cinema_class[0].id}"}
+      %tr{:class => "#{cinema_class[0].id} #{screening.screening_date.strftime('%d/%m')}"}
         %td{:scope => "row"}= screening.movie.title
         %td{:scope => "row"}= screening.price
         %td{:scope => "row"}= screening.screening_time.strftime("%H:%M")

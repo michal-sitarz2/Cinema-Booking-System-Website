@@ -38,22 +38,24 @@
 
   %br
 
-  #cinemas_display
+  .container
     %h2= t('.cinemas_title')
+    %br
     .dropdown.show
       %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownMoviesLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
         =t('.movies_dropdown')
-
       .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
         - @movies.each do |movie|
           %a{class:"dropdown-item", href:"movies/#{movie.id}"} #{movie.title}
 
   %br
 
-  %h2{id: "upcoming_mov"} Upcoming Movies
-  %br
-  %br
+
+
   .container
+    %h2{id: "upcoming_mov"} Upcoming Movies
+    %br
+    %br
     .row
       - @upcoming_movies.each do |movie|
         .col-sm-4

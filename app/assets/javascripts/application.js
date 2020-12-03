@@ -16,7 +16,6 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
@@ -81,12 +80,10 @@ function displayScreenings(cinema_id){
 
 $(document).ready(function(){
 
-  if(document.getElementById('MovieForm')){
-    ValidateMovieForm();
-  }
-
-  if(document.getElementById('ContactForm')){
-    ValidateContactForm();
+  if(document.getElementById('cinemas_display')){
+    $("table > tbody > tr").each(function () {
+      $(this).hide();
+    });
   }
 
   // Get click event, assign button to var, and get values from that var
@@ -97,15 +94,31 @@ $(document).ready(function(){
     var btnText = thisBtn.text();
     var btnValue = thisBtn.val();
 
-    $('#selectedVal').text(btnValue);
+    $("table > tbody > tr").each(function () {
+      $(this).hide();
+    });
+
+    $('.'+btnValue).each(function() {
+      $(this).show();
+    });
   });
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
 
-  var date = dd + '-' + mm +'-' + yyyy;
+  var date = dd + '/' + mm;
   $('#'+date).click();
+
+
+  if(document.getElementById('MovieForm')){
+    ValidateMovieForm();
+  }
+
+  if(document.getElementById('ContactForm')){
+    ValidateContactForm();
+  }
+
+
 
 });
