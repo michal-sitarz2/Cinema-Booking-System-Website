@@ -17,7 +17,7 @@ class CinemasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cinema" do
     assert_difference('Cinema.count') do
-      post cinemas_url, params: { cinema: { address: @cinema.address, name: @cinema.name } }
+      post cinemas_url, params: { cinema: { address: @cinema.address, name: @cinema.name + " create"} }
     end
 
     assert_redirected_to cinema_url(Cinema.last)

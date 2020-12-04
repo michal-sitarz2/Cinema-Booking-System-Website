@@ -17,10 +17,10 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create movie" do
     assert_difference('Movie.count') do
-      post movies_url, params: { movie: { country: @movie.country, director: @movie.director, duration: @movie.duration, genre: @movie.genre, poster: @movie.poster, release_date: @movie.release_date, summary: @movie.summary, title: @movie.title + " create"} }
+      post movies_url, params: { movie: {genre: @movie.genre, duration: @movie.duration, release_date: @movie.release_date, poster: @movie.poster, summary: @movie.summary, title: @movie.title + " create"} }
     end
 
-    assert_redirected_to movie_url(Movie.last)
+    assert_redirected_to "/allresources"
   end
 
   test "should show movie" do
@@ -35,7 +35,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update movie" do
     patch movie_url(@movie), params: { movie: { country: @movie.country, director: @movie.director, duration: @movie.duration, genre: @movie.genre, poster: @movie.poster, release_date: @movie.release_date, summary: @movie.summary, title: @movie.title } }
-    assert_redirected_to movie_url(@movie)
+    assert_redirected_to "/allresources"
   end
 
   test "should destroy movie" do
@@ -43,6 +43,6 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
       delete movie_url(@movie)
     end
 
-    assert_redirected_to movies_url
+    assert_redirected_to "/allresources"
   end
 end

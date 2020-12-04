@@ -15,9 +15,12 @@ class ScreeningsController < ApplicationController
         @screenings[screening.movie].append(screening)
       end
     end
-
-    date = params[:screening][:":screening_date"].split('-')
-    @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
+    if params[:screening]
+      date = params[:screening][:":screening_date"].split('-')
+      @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
+    else
+      @date = Date.today()
+    end
   end
 
   # GET /screenings/1
@@ -38,7 +41,7 @@ class ScreeningsController < ApplicationController
   # POST /screenings.json
   def create
     @screening = Screening.new(screening_params)
-# movie: @movie, price: screening_params[:price], screening_time: screening_params[:screening_time], arena: screening_params[:arena], available_seats: screening_params[:available_seats]
+
     respond_to do |format|
       if @screening.save
         format.html { redirect_to "/allresources", notice: 'Screening was successfully created.' }

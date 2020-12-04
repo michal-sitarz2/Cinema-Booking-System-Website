@@ -48,13 +48,18 @@
 
 .movies_poster_container {
   grid-area: movies_poster_container;
+}
 
-  #poster_image{
-    width: 300px;
-    height: 455px;
-  }
+#poster_image{
+  width: 300px;
+  height: 455px;
 }
 
 .movies_information_container {
   grid-area: movies_information_container;
+}
+
+.movie_res_table_cell_second_col {
+  padding-left: 25% !important;
+
 }

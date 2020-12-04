@@ -1,26 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: Tenet
+  title: title
   director: Christopher Nolan
   genre: Action
   actors: Actors
   duration: 150
   country: USA
-  release_date: 2020-08-27
+  release_date: 2020-10-02
   video: video_link
   restrictions: N/A
   poster: https://i.pinimg.com/originals/ec/ff/37/ecff37de7ec1d99af3576403b4d91204.png
   summary: A secret agent embarks on a dangerous, time-bending mission to prevent the start of World War III.
 
 two:
-  title: Morbius
+  title: title2
   director: Daniel Espinosa
   genre: Action
   actors: Actors
   duration: 120
   country: USA
-  release_date: 2021-03-19
+  release_date: 2020-10-02
   video: video_link
   restrictions: R
   poster: https://posterspy.com/wp-content/uploads/2020/01/Morbius_Plan-de-travail-1-1500x2121.png

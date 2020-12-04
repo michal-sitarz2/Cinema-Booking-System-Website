@@ -2,7 +2,7 @@
 
 #movie_container_show
   %hr
-  -if @movie.video != nil
+  -if @movie.video != ""
     .container{:id => "trailer_container"}
       %iframe{:allow => "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :src => "#{@movie.video}"}
   .container
@@ -15,7 +15,7 @@
           .col-6
             %p
               %b= "Release Date:"
-            %p= @movie.release_date
+            %p= @movie.release_date.strftime("%d/%m/%Y")
           .col-6
             %p
               %b= "Duration:"
@@ -27,22 +27,22 @@
           %tbody
             %tr
               %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "Title:"
-              %td{:scope => "row", :class => "movie_res_table_cell"}= @movie.title
+              %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.title
             %tr
               %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "Director:"
-              %td{:scope => "row", :class => "movie_res_table_cell"}= @movie.director
+              %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.director
             %tr
               %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "Genres:"
-              %td{:scope => "row", :class => "movie_res_table_cell"}= @movie.genre
+              %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.genre
             %tr
               %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "Country:"
-              %td{:scope => "row", :class => "movie_res_table_cell"}= @movie.country
+              %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.country
             %tr
               %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "Actors:"
-              %td{:scope => "row", :class => "movie_res_table_cell"}= @movie.actors
+              %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.actors
             %tr
               %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "Age restrictions:"
-              %td{:scope => "row", :class => "movie_res_table_cell"}= @movie.restrictions
+              %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.restrictions
 
       .col-sm-4
         %img{'src'=>@movie.poster, 'alt'=>@movie.title, id:"poster_image"}
