@@ -1,7 +1,7 @@
-%h1 Editing movie
+%h1= t('.header')
 
 = render 'form'
 
-= link_to 'Show', @movie
+= link_to t('show_button'), @movie
 \|
-= link_to 'Back', movies_path
+= link_to t('back_button'), movies_path

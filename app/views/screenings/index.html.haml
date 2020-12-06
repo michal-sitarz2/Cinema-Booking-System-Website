@@ -3,7 +3,6 @@
 -#     %button.btn.btn-default{:id => "#{date.strftime("%d/%m")}", :type => "button", :value => "#{date.strftime("%d/%m")}"}= date.strftime("%d/%m")
 
 %br
-
 .container{:id => "screenings_container"}
   %h1{:id => "screenig_index_header"}= "Screenings for #{@date.strftime("%d %B")}"
   %hr
@@ -15,21 +14,20 @@
       .col-xs-7
         %h3= "#{movie.title}"
         %p
-          %b
-            = "Director: "
+          %b= t('.director')
           = movie.director
         %p
           %b
-            = "Actors: "
+            = t('.actors')
           = movie.actors
         %p
           %b
-            = "Genre: "
+            = t('.genres')
           = movie.genre
         %p
           %b
-            = "Duration: "
-          = "#{movie.duration} min"
+            = t('.duration')
+          = "#{movie.duration} #{t('.minute')}"
     %br
     %hr
     .row.justify-content-start

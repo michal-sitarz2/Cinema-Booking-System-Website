@@ -3,14 +3,14 @@
 %p= "Could you get in touch with me please?"
 
 %dl
-  %dt Name:
+  %dt= t('.name')
   %dd= @name
-  %dt Email:
+  %dt= t('.email')
   %dd= @email
-  %dt Telephone:
+  %dt= t('.telephone')
   %dd= @telephone
 
 %p= @message
 
-%p Thanks,
+%p= t('.thanks')
 %p= @name

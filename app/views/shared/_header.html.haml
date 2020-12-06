@@ -1,13 +1,13 @@
 %header{:id => "pageHeader"}
   #nav_title
-    = image_tag("film-roll.png", :alt => "Cinema Town Logo", :id => "imageLogo")
+    = image_tag("film-roll.png", :alt => "#{t('app_title')} #{t('.logo')}", :id => "imageLogo")
     %h1{:id => "pageTitle"}
       %a{:id=>"pageTitleLink", :href => "/"}= t('.title')
 
   %hr{:id => "horizontalLine"}
 
   #navbar_button
-    %button.openbtn{:onclick => "openNav()"} ☰
+    %button.openbtn{:onclick => "openNav()"}= t('.burger_menu')
 
   #nav
     %nav{:class => "navbar navbar-static-top navbar-expand-sm nav-pills nav-fill bg-dark navbar-dark justify-content-center"}
@@ -17,19 +17,19 @@
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/booking"}= t('.book_tickets')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "/allresources"}= "Resource Table"
+          %a{:class => "nav-link", :href => "/allresources"}= t('.resources_table')
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "#"}= t('.sign_up')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "#"}= "About Us"
+          %a{:class => "nav-link", :href => "#"}= t('.about_us')
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/contact"}= t('.contact')
 
   #mySidebar.sidebar
-    %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"} ×
+    %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"}= t('.close_X')
     %a{:href => "/"}= t('.home')
     %a{:href => "/booking"}= t('.book_tickets')
-    %a{:href => "/allresources"}= "Resource Table"
+    %a{:href => "/allresources"}= t('.book_tickets')
     %a{:href => "#"}= t('.sign_up')
-    %a{:href => "#"}= "About Us"
+    %a{:href => "#"}= t('.about_us')
     %a{:href => "/contact"}= t('.contact')

@@ -61,8 +61,6 @@ class HomeController < ApplicationController
 
   def book_tickets
 
-    # screening array be a dictionary Screening -> Array of times
-    # *************************************
     @movies = Movie.all
     @screenings = Screening.all
     @cinemas = Cinema.all

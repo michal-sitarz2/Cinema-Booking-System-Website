@@ -13,6 +13,6 @@
   %b Available seats:
   = @screening.available_seats
 
-= link_to 'Edit', edit_screening_path(@screening)
+= link_to t('edit_button'), edit_screening_path(@screening)
 \|
-= link_to 'Back', screenings_path
+= link_to t('back_button'), '/allresources'

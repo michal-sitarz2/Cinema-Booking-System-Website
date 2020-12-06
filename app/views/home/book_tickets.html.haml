@@ -1,8 +1,8 @@
 #book_screenings
-  %h2= "Currently Screening"
+  %h2=t('.header_book')
 
   .container
-    %h3= "Search by:"
+    %h3= t('.search_by')
     =form_tag(screenings_path, method:"get") do
       %select{:name => "screening[:cinema]", :class => "form-control"}
         - @cinemas.each do |cinema|
@@ -11,4 +11,4 @@
       %select{:name => "screening[:screening_date]", :class => "form-control"}
         - @dates_week.each do |date|
           %option{:value => "#{date}"}= date
-      =submit_tag("Search")
+      =submit_tag(t('.submit_tag'))

@@ -6,8 +6,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_select 'title', 'Cinema Town'
-    assert_select 'h1', 'Cinema Town'
-    assert_select 'p', 'Welcome to Cinema Booking website.'
+    assert_select 'h2', 'Cinema Program'
+    assert_select 'a', 'All the available movies'
 
   end
 

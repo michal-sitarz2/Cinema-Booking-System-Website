@@ -1,7 +1,7 @@
-%h1 Editing screening
+%h1= t('.header')
 
 = render 'form'
 
-= link_to 'Show', @screening
+= link_to t('show_button'), @screening
 \|
-= link_to 'Back', screenings_path
+= link_to t('back_button'), '/allresources'

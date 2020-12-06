@@ -1,4 +1,33 @@
 #main
+  %br
+  .container
+    %h2= t('.cinemas_title')
+    %br
+
+    .dropdown.show
+      %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownMoviesLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
+        =t('.movies_dropdown')
+      .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
+        - @movies.each do |movie|
+          %a{class:"dropdown-item", href:"movies/#{movie.id}"} #{movie.title}
+
+  %br
+
+  .container
+    %h2{id: "upcoming_mov"}= t('.upcoming_movies')
+    %br
+    %br
+    .row
+      - @upcoming_movies.each do |movie|
+        .col-sm-4
+          %a{:href => "movies/#{movie.id}"}
+            %img{:src => "#{movie.poster}", :alt => "#{movie.title} #{t('.poster_unavailable')}"}
+          %h2
+            %a{:href => "movies/#{movie.id}", :class => "title_links_upcoming"}= movie.title
+
+  %br
+
+
   -# #currentMovies
   -#   .movies-container
   -#     #Div-1
@@ -35,33 +64,3 @@
     #view_more
       %p{id:"view_more_link"}
         %a{:href=>'contact'}= t('.view_more_current')
-
-  %br
-
-  .container
-    %h2= t('.cinemas_title')
-    %br
-    .dropdown.show
-      %a{class:"btn btn-secondary dropdown-toggle", href:"#", role:"button", id:"dropdownMoviesLink", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-haspopup"=>"true"}
-        =t('.movies_dropdown')
-      .dropdown-menu{"aria-labelledby"=>"dropdownMenuLink"}
-        - @movies.each do |movie|
-          %a{class:"dropdown-item", href:"movies/#{movie.id}"} #{movie.title}
-
-  %br
-
-
-
-  .container
-    %h2{id: "upcoming_mov"} Upcoming Movies
-    %br
-    %br
-    .row
-      - @upcoming_movies.each do |movie|
-        .col-sm-4
-          %a{:href => "movies/#{movie.id}"}
-            %img{:src => "#{movie.poster}", :alt => "#{movie.title} poster currently unavailable"}
-          %h2
-            %a{:href => "movies/#{movie.id}", :class => "title_links_upcoming"}= movie.title
-
-  %br

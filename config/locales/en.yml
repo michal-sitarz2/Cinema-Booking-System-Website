@@ -33,14 +33,70 @@ en:
   app_title: Cinema Town
   app_description: A place where you reserve cinema tickets.
 
+  show_button: Show
+  back_button: Back
+  edit_button: Edit
+  destroy_button: Destroy
+  destroy_confirm: Are you sure?
+  save_button: Save
+
+
+
+  cinemas:
+    edit:
+      header: Editing Cinema
+    new:
+      header: New Cinema
+
+  screenings:
+    edit:
+      header: Editing Screening
+    new:
+      header: New Screening
+    index:
+      director: "Director:"
+      actors: "Actors:"
+      genres: "Genres:"
+      duration: "Duration:"
+      minute: min
+
+  movies:
+    edit:
+      header: Editing Movie
+    new:
+      header: New Movie
+    show:
+      release_date: "Release Date:"
+      duration: "Duration:"
+      title: "Title:"
+      director: "Director:"
+      genres: "Genres:"
+      country: "Country:"
+      actors: "Actors:"
+      restrictions: "Age restrictions:"
+
   shared:
     header:
       title: Cinema Town
       home: Home
       book_tickets: Book Tickets
-      news: News
+      resources_table: Resources Table
       sign_up: Sign Up
       contact: Contact Us
+      about_us: About Us
+      logo: Logo
+      burger_menu: ☰
+      close_X: ×
+
+
+  contact_mailer:
+    contact_email:
+      in_touch_message: Could you get in touch with me please?
+      name: "Name:"
+      email: "Email:"
+      telephone: "Telephone:"
+      thanks: Thanks,
+
   home:
     home:
       currently_playing: Currently Playing
@@ -48,7 +104,42 @@ en:
       cinema_dropdown: Cinemas
       movies_dropdown: All the available movies
       cinemas_title: Cinema Program
+      poster_unavailable: poster currently unavailable
+      upcoming_movies: Upcoming Movies
 
+
+    restable:
+      header_movies: Movies
+      header_screenings: Screenings
+      header_cinemas: Cinemas
+
+      table_header_poster: Poster
+      table_header_title: Title
+      table_header_director: Director
+      table_header_genre: Genre
+      table_header_duration: Duration
+      table_header_country: Country
+      table_header_release_date: Release Date
+      table_header_actors: Actors
+      table_header_restrictions: Restrict
+      table_header_summary: Summary
+
+      table_header_movie: Movie
+      table_header_price: Price
+      table_header_screening_time: Screening Time
+      table_header_screening_date: Screening Date
+      table_header_cinema: Cinema
+      table_header_arena: Arena
+      table_header_available_seats: Available Seats
+      table_hedear_sold_seats: Sold Seats
+      table_header_type: Type
+
+      table_header_cinema_name: Name
+      table_header_address: Address
+
+      new_movie: New Movie
+      new_screening: New Screening
+      new_cinema: New Cinema
 
     contact:
       title: Get in Touch
@@ -67,3 +158,8 @@ en:
     request_contact:
       no_email: You must supply an email address
       email_sent: Thank you. We will be in touch shortly.
+
+    book_tickets:
+      header_book: "Currently Screening"
+      search_by: "Search By:"
+      submit_tag: Submit

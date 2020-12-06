@@ -1,5 +1,5 @@
-%h1 New movie
+%h1= t('.header')
 
 = render 'form'
 
-= link_to 'Back', movies_path
+= link_to t('back_button'), movies_path

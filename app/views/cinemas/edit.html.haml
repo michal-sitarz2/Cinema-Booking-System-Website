@@ -1,7 +1,7 @@
-%h1 Editing cinema
+%h1= t('.header')
 
 = render 'form'
 
-= link_to 'Show', @cinema
+= link_to t('show_button'), @cinema
 \|
-= link_to 'Back', cinemas_path
+= link_to t('back_button'), '/allresources'
