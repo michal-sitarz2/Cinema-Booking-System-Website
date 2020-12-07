@@ -1,6 +1,6 @@
 class ScreeningsController < ApplicationController
+  before_action :is_admin, only: [:show, :new, :edit, :create, :update, :destroy]
   before_action :set_screening, only: [:show, :edit, :update, :destroy]
-
 
   # GET /screenings
   # GET /screenings.json

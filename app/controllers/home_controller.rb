@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :is_admin, only: [:restable]
 
   def home
     @movies = Movie.all

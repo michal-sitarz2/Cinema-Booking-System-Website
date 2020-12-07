@@ -1,4 +1,5 @@
 class CinemasController < ApplicationController
+  before_action :is_admin, only: [:show, :new, :edit, :create, :update, :destroy]
   before_action :set_cinema, only: [:show, :edit, :update, :destroy]
 
   # GET /cinemas
@@ -71,4 +72,5 @@ class CinemasController < ApplicationController
     def cinema_params
       params.require(:cinema).permit(:name, :address)
     end
+
 end
