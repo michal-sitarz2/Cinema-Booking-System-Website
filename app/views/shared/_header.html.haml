@@ -29,7 +29,7 @@
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/allresources"}= t('.resources_table')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "#"}= t('.about_us')
+          %a{:class => "nav-link", :href => "/cinemas"}= t('.about_us')
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/contact"}= t('.contact')
         - if not user_signed_in?
@@ -44,7 +44,7 @@
     %a{:href => "/"}= t('.home')
     %a{:href => "/booking"}= t('.book_tickets')
     %a{:href => "/allresources"}= t('.resources_table')
-    %a{:href => "#"}= t('.about_us')
+    %a{:href => "/cinemas"}= t('.about_us')
     %a{:href => "/contact"}= t('.contact')
     - if not user_signed_in?
       = link_to t('login'),  new_user_session_path, class: "nav-link"

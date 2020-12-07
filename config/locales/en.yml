@@ -45,6 +45,12 @@ en:
       header: Editing Cinema
     new:
       header: New Cinema
+    index:
+      about_header: About Us!
+      about_paragraph: We are a cinema booking service. On our home page you can see the upcoming movies and the most recent releases. Our booking page shows all the current screenings available in all our cinemas. Below you can find all the locations and cinemas where we screen movies. If there is anything we can help you with please visit the contact page and send as a message.
+      image_missing: Image Missing
+      name: "Name:"
+      address: "Address:"
 
   screenings:
     edit:
@@ -135,6 +141,7 @@ en:
 
       table_header_cinema_name: Name
       table_header_address: Address
+      table_header_image: Image
 
       new_movie: New Movie
       new_screening: New Screening

@@ -1,23 +1,35 @@
-%h1 Listing cinemas
+%h2=t('.about_header')
+%p=t('.about_paragraph')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Address
-      %th
-      %th
-      %th
-
-  %tbody
+- if @cinemas.length != 0
+  .container
     - @cinemas.each do |cinema|
-      %tr
-        %td= cinema.name
-        %td= cinema.address
-        %td= link_to 'Show', cinema
-        %td= link_to 'Edit', edit_cinema_path(cinema)
-        %td= link_to 'Destroy', cinema, method: :delete, data: { confirm: 'Are you sure?' }
+      - if @counter.modulo(2) == 0
+        .row
+          .col-xs-6
+            %img{:class => "image_cinema_index",:src => "#{cinema.image}", :alt => "#{t('.image_missing')}"}
+          .col-xs-6
+            %p
+              %b= t('.name')
+            %p= cinema.name
+            %br
+            %p
+              %b= t('.name')
+            %p= cinema.name
 
-%br
-
-= link_to 'New Cinema', new_cinema_path
+      - else
+        .row
+          .col-xs-6
+            %p
+              %b= t('.name')
+            %p= cinema.name
+            %br
+            %p
+              %b= t('.address')
+            %p= cinema.address
+          .col-xs-6
+            %img{:class => "image_cinema_index", :src => "#{cinema.image}", :alt => "#{t('.image_missing')}"}
+      - @counter+=1
+      %br
+      %hr
+      %br

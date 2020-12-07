@@ -94,6 +94,7 @@
       %tr
         %th{:scope => "col"}= t('.table_header_cinema_name')
         %th{:scope => "col"}= t('.table_header_address')
+        %th{:scope => "col"}= t('.table_header_image')
         %th{:scope => "col"}
         %th{:scope => "col"}
         %th{:scope => "col"}
@@ -103,9 +104,10 @@
         %tr
           %td{:scope => "row"}= cinema.name
           %td{:scope => "row"}= cinema.address
-          %td{:scope => "row"}= link_to t('.show_button'), cinema
-          %td{:scope => "row"}= link_to t('.edit_button'), edit_cinema_path(cinema)
-          %td{:scope => "row"}= link_to t('.destroy_button'), cinema, method: :delete, data: { confirm: t('destroy_confirm') }
+          %td{:scope => "row"}= cinema.image
+          %td{:scope => "row"}= link_to t('show_button'), cinema
+          %td{:scope => "row"}= link_to t('edit_button'), edit_cinema_path(cinema)
+          %td{:scope => "row"}= link_to t('destroy_button'), cinema, method: :delete, data: { confirm: t('destroy_confirm') }
 
   %br
 
