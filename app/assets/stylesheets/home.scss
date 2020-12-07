@@ -24,6 +24,23 @@ Otherwise normal navigation bar will be displayed
   color: white;
 }
 
+#login_nav {
+  position: absolute;
+  right: 0px;
+  width: 250px;
+  padding: 10px;
+  color: white;
+
+  a{
+    color:white;
+    text-decoration: underline;
+  }
+  a:visited{
+    color:white;
+    text-decoration: underline;
+  }
+}
+
 .navbar.navbar-expand-sm.nav-pills.nav-fill.bg-dark.navbar-dark.justify-content-center {
   background: #161616 !important;
 }

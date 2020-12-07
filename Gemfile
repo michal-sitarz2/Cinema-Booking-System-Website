@@ -39,6 +39,8 @@ gem 'jquery-validation-rails'
 
 gem 'rails-controller-testing'
 
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

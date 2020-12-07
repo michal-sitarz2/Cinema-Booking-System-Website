@@ -40,8 +40,6 @@ en:
   destroy_confirm: Are you sure?
   save_button: Save
 
-
-
   cinemas:
     edit:
       header: Editing Cinema
@@ -82,6 +80,7 @@ en:
       book_tickets: Book Tickets
       resources_table: Resources Table
       sign_up: Sign Up
+      login: Login
       contact: Contact Us
       about_us: About Us
       logo: Logo

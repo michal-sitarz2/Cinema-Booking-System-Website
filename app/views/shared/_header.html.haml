@@ -1,4 +1,14 @@
 %header{:id => "pageHeader"}
+  - if user_signed_in?
+    %nav{:id => "login_nav"}
+      = "#{current_user.email} |"
+      = link_to t('profile'), edit_user_registration_path
+      = "|"
+      = link_to t('logout'), destroy_user_session_path, method: 'delete'
+    %br
+    %br
+
+
   #nav_title
     = image_tag("film-roll.png", :alt => "#{t('app_title')} #{t('.logo')}", :id => "imageLogo")
     %h1{:id => "pageTitle"}
@@ -19,17 +29,28 @@
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/allresources"}= t('.resources_table')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "#"}= t('.sign_up')
-        %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "#"}= t('.about_us')
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/contact"}= t('.contact')
+        - if not user_signed_in?
+          %li{:class => "nav-item"}
+            = link_to t('login'),  new_user_session_path, class: "nav-link"
+          %li{:class => "nav-item"}
+            = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
+
 
   #mySidebar.sidebar
     %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"}= t('.close_X')
     %a{:href => "/"}= t('.home')
     %a{:href => "/booking"}= t('.book_tickets')
-    %a{:href => "/allresources"}= t('.book_tickets')
-    %a{:href => "#"}= t('.sign_up')
+    %a{:href => "/allresources"}= t('.resources_table')
     %a{:href => "#"}= t('.about_us')
     %a{:href => "/contact"}= t('.contact')
+    - if not user_signed_in?
+      = link_to t('login'),  new_user_session_path, class: "nav-link"
+
+      = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
+
+
+- flash.each do |key, value|
+  = content_tag :div, content_tag(:p, value), id: "#{key}" unless value.blank?
