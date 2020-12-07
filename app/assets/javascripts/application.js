@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
 //= require jquery3
-//= require jquery_ujs
 //= require jquery.validate
 //= require rails-ujs
 //= require bootstrap-sprockets
@@ -67,49 +67,31 @@ function ValidateMovieForm(){
 }
 
 
-function displayScreenings(cinema_id){
-  $("table > tbody > tr").each(function () {
-    $(this).hide();
-  });
-
-  $('.'+cinema_id).each(function() {
-    $(this).show();
-  });
-
-}
-
 $(document).ready(function(){
 
-  if(document.getElementById('cinemas_display')){
-    $("table > tbody > tr").each(function () {
-      $(this).hide();
-    });
-  }
-
-  // Get click event, assign button to var, and get values from that var
-  $('#aBtnGroup button').on('click', function() {
-    var thisBtn = $(this);
-
-    thisBtn.addClass('active').siblings().removeClass('active');
-    var btnText = thisBtn.text();
-    var btnValue = thisBtn.val();
-
-    $("table > tbody > tr").each(function () {
-      $(this).hide();
-    });
-
-    $('.'+btnValue).each(function() {
-      $(this).show();
-    });
-  });
-
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0');
-
-  var date = dd + '/' + mm;
-  $('#'+date).click();
-
+  // // Get click event, assign button to var, and get values from that var
+  // $('#aBtnGroup button').on('click', function() {
+  //   var thisBtn = $(this);
+  //
+  //   thisBtn.addClass('active').siblings().removeClass('active');
+  //   var btnText = thisBtn.text();
+  //   var btnValue = thisBtn.val();
+  //
+  //   $("table > tbody > tr").each(function () {
+  //     $(this).hide();
+  //   });
+  //
+  //   $('.'+btnValue).each(function() {
+  //     $(this).show();
+  //   });
+  // });
+  //
+  // var today = new Date();
+  // var dd = String(today.getDate()).padStart(2, '0');
+  // var mm = String(today.getMonth() + 1).padStart(2, '0');
+  //
+  // var date = dd + '/' + mm;
+  // $('#'+date).click();
 
   if(document.getElementById('MovieForm')){
     ValidateMovieForm();

@@ -58,6 +58,7 @@ class MoviesController < ApplicationController
     @movie.destroy
     respond_to do |format|
       format.html { redirect_to "/allresources", notice: 'Movie was successfully destroyed.' }
+      format.js   { flash[:notice] = 'Movie was succesfully destroyed.'}
       format.json { head :no_content }
     end
   end

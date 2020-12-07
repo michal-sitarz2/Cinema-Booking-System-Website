@@ -58,7 +58,8 @@ class CinemasController < ApplicationController
   def destroy
     @cinema.destroy
     respond_to do |format|
-      format.html { redirect_to '/allresources', notice: 'Cinema was successfully destroyed.' }
+      format.html { redirect_to cinemas_url, notice: 'Cinema was successfully destroyed.' }
+      format.js   { flash[:notice] = 'Cinema was succesfully destroyed.'}
       format.json { head :no_content }
     end
   end

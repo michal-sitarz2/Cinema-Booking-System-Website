@@ -19,7 +19,7 @@
         %th{:scope => "col"}
     %tbody
       - @movies.each_with_index do |movie,i|
-        %tr
+        %tr{:id => "movie_#{movie.id}"}
           %td{:scope => "row", :class => "movie_res_table_cell"}
             %a{:href => "movies/#{movie.id}"}
               %img{:src => "#{movie.poster}", :alt => "NaN", :class => "movie_poster_res_table"}
@@ -36,7 +36,7 @@
           %td{:scope => "row", :class => "movie_res_table_cell", :id => "movie_res_table_cell_links"}
             = link_to t('edit_button'), edit_movie_path(movie)
             %br
-            = link_to t('destroy_button'), movie, method: :delete, data: { confirm: t('destroy_confirm') }
+            = link_to t('destroy_button'), movie, method: :delete, data: { confirm: t('destroy_confirm') }, remote: true
 
 
   %br
@@ -67,7 +67,7 @@
         %th{:scope => "col"}
     %tbody
       - @screenings.each do |screening|
-        %tr
+        %tr{:id => "screening_#{screening.id}"}
           %td{:scope => "row"}= screening.movie.title
           %td{:scope => "row"}= screening.price
           %td{:scope => "row"}= screening.screening_time.strftime("%H:%M")
@@ -79,7 +79,7 @@
           %td{:scope => "row"}= screening.screening_type
           %td{:scope => "row"}= link_to t('show_button'), screening
           %td{:scope => "row"}= link_to t('edit_button'), edit_screening_path(screening)
-          %td{:scope => "row"}= link_to t('destroy_button'), screening, method: :delete, data: { confirm: t('.destroy_confirm') }
+          %td{:scope => "row"}= link_to t('destroy_button'), screening, method: :delete, data: { confirm: t('.destroy_confirm') }, remote: true
   %br
 
   = link_to t('.new_screening'), new_screening_path
@@ -101,13 +101,13 @@
 
     %tbody
       - @cinemas.each do |cinema|
-        %tr
+        %tr{:id => "cinema_#{cinema.id}"}
           %td{:scope => "row"}= cinema.name
           %td{:scope => "row"}= cinema.address
           %td{:scope => "row"}= cinema.image
           %td{:scope => "row"}= link_to t('show_button'), cinema
           %td{:scope => "row"}= link_to t('edit_button'), edit_cinema_path(cinema)
-          %td{:scope => "row"}= link_to t('destroy_button'), cinema, method: :delete, data: { confirm: t('destroy_confirm') }
+          %td{:scope => "row"}= link_to t('destroy_button'), cinema, method: :delete, :data => { confirm: t('destroy_confirm')}, remote: true
 
   %br
 

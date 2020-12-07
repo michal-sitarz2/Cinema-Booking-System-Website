@@ -10,9 +10,9 @@
 
 
   #nav_title
-    = image_tag("film-roll.png", :alt => "#{t('app_title')} #{t('.logo')}", :id => "imageLogo")
     %h1{:id => "pageTitle"}
       %a{:id=>"pageTitleLink", :href => "/"}= t('.title')
+      = image_tag("film-roll.png", :alt => "#{t('app_title')} #{t('.logo')}", :id => "imageLogo")
 
   %hr{:id => "horizontalLine"}
 
