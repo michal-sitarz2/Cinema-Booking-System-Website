@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_210504) do
+ActiveRecord::Schema.define(version: 2020_12_08_092527) do
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cinemas", force: :cascade do |t|
     t.string "name", null: false
@@ -18,6 +23,15 @@ ActiveRecord::Schema.define(version: 2020_12_07_210504) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "screening_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["screening_id"], name: "index_line_items_on_screening_id"
   end
 
   create_table "movies", force: :cascade do |t|

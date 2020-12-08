@@ -3,6 +3,8 @@ class Screening < ApplicationRecord
   belongs_to :movie
   validates :movie, :price, :screening_date, :cinema, :screening_time, :arena, :available_seats, presence: true
 
+  has_many :line_items
+
   def self.search(search)
     if search
       screenings = Screening.all
