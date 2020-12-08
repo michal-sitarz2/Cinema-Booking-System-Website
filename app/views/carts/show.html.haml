@@ -8,7 +8,7 @@
   .container
     %hr
     - @cart.line_items.each do |item|
-      .row
+      .row{id:"item_#{item.id}"}
         .col-xs-3.col-sm-2.table-quantity-cart
           %p= item.quantity
         .col-xs-9.col-sm-10.col-mid-9
@@ -26,26 +26,9 @@
           %p
             = "Arena: "
             = item.screening.arena
-      .container
-        = link_to "Remove Item", item, method: :delete, data: {cofirm: "Are you sure?"}
+      .container{id:"item_#{item.id}_remove"}
+        = link_to "Remove Item", item, method: :delete, data: {cofirm: "Are you sure?"}, remote: true
       %hr
-
-
-  -# - @cart.line_items.each do |item|
-  -#   %h3
-  -#     = item.screening.movie.title
-  -#   %p
-  -#     = item.screening.screening_date.strftime("%d %B %Y")
-  -#     = " => "
-  -#     = item.screening.screening_time.strftime("%H:%M")
-  -#   %p
-  -#     = number_to_currency(item.screening.price)
-  -#     = " | Quantity: "
-  -#     =  item.quantity
-  -#   .buttons
-  -#     = link_to "Remove Item", item, method: :delete, data: {cofirm: "Are you sure?"}, class: "button is-small mb4"
-  -# %br
-  -# %br
 
 
   .container
