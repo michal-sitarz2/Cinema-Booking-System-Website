@@ -1,12 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :is_admin, only: [:new, :create, :index, :edit, :update, :destroy]
+  before_action :is_admin, except: [:show]
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-
-  # GET /movies
-  # GET /movies.json
-  def index
-    @movies = Movie.all
-  end
 
   # GET /movies/1
   # GET /movies/1.json

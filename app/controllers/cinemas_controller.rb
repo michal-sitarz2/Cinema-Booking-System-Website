@@ -1,6 +1,6 @@
 class CinemasController < ApplicationController
-  before_action :is_admin, only: [:show, :new, :edit, :create, :update, :destroy]
-  before_action :set_cinema, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin, except: [:index]
+  before_action :set_cinema, only: [:edit, :update, :destroy]
 
   # GET /cinemas
   # GET /cinemas.json
@@ -9,10 +9,6 @@ class CinemasController < ApplicationController
     @counter = 0
   end
 
-  # GET /cinemas/1
-  # GET /cinemas/1.json
-  def show
-  end
 
   # GET /cinemas/new
   def new

@@ -1,6 +1,6 @@
 class ScreeningsController < ApplicationController
-  before_action :is_admin, only: [:show, :new, :edit, :create, :update, :destroy]
-  before_action :set_screening, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin, except: [:index]
+  before_action :set_screening, only: [:edit, :update, :destroy]
 
   # GET /screenings
   # GET /screenings.json
@@ -21,11 +21,6 @@ class ScreeningsController < ApplicationController
     else
       @date = Date.today()
     end
-  end
-
-  # GET /screenings/1
-  # GET /screenings/1.json
-  def show
   end
 
   # GET /screenings/new
