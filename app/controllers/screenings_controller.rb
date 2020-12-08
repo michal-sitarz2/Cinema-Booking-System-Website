@@ -74,10 +74,8 @@ class ScreeningsController < ApplicationController
       if @screening.destroy
         format.html { redirect_to "/allresources", notice: 'Screening was successfully destroyed.' }
         format.js   { flash[:notice] = 'Screening was succesfully destroyed.'}
-      else
-        format.html { redirect_to "/allresources", notice: 'Cannot destroy screening.' }
+        format.json { head :no_content }
       end
-      format.json { head :no_content }
     end
   end
 

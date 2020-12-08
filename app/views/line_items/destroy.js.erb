@@ -1,2 +1,6 @@
 $('#item_<%= @line_item.id %>').hide();
 $('#item_<%= @line_item.id %>_remove').hide();
+
+number = $('#cart-number').html();
+decrement = "<%= @line_item.quantity %>"
+$('#cart-number').html(number-decrement);

@@ -8,9 +8,8 @@
       - if cart_has_items
         %spam{:id => "cart-link"}
           = link_to "Cart: ", cart_path(@cart)
+        %p{:id => "cart-number"}
           = cart_count_over_one
-
-
 
   #nav_title
     %h1{:id => "pageTitle"}

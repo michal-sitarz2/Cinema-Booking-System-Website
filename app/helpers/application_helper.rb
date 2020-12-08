@@ -2,7 +2,11 @@ module ApplicationHelper
 
   def cart_count_over_one
     if @cart.line_items.count > 0
-      return @cart.line_items.count
+      counter = 0
+      @cart.line_items.each do |item|
+        counter+=item.quantity
+      end
+      return counter
     end
   end
 
