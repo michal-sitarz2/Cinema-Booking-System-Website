@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include CurrentCart
+  before_action :set_cart
 
   protected
     def is_admin
@@ -11,5 +13,5 @@ class ApplicationController < ActionController::Base
         redirect_to new_user_session_path
       end
     end
-    
+
 end

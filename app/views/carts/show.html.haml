@@ -1,5 +1,15 @@
 %p#notice= notice
 
+%ul
+  - @cart.line_items.each do |item|
+    %li
+      = item.screening.movie.title
+      = ", £"
+      = item.screening.price
+      = ", "
+      = item.screening.screening_date.strftime("%d %B")
+      = " "
+      = item.screening.screening_time.strftime("%H:%M")
 
 = link_to 'Edit', edit_cart_path(@cart)
 \|

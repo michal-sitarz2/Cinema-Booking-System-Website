@@ -33,8 +33,10 @@
     .row.justify-content-start
       -screenings.each do |screening|
         .col-xs-2
-          %button{:class => "screening_button_times", :onclick => "alert('Hello world!')", :type => "button"}= screening.screening_time.strftime("%H:%M")
+          = button_to screening.screening_time.strftime("%H:%M"), line_items_path(screening_id: screening), data: { confirm: "Add this item to cart?" }, class: "screening_button_times"
           %p{:class => "text_screening_type"}
             %b= screening.screening_type
+            = " | £"
+            = screening.price
     %hr
     %br

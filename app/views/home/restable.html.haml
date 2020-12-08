@@ -79,7 +79,7 @@
           %td{:scope => "row"}= screening.screening_type
           %td{:scope => "row"}= link_to t('show_button'), screening
           %td{:scope => "row"}= link_to t('edit_button'), edit_screening_path(screening)
-          %td{:scope => "row"}= link_to t('destroy_button'), screening, method: :delete, data: { confirm: t('.destroy_confirm') }, remote: true
+          %td{:scope => "row"}= link_to t('destroy_button'), screening, method: :delete, data: { confirm: t('destroy_confirm') }, remote: true
   %br
 
   = link_to t('.new_screening'), new_screening_path

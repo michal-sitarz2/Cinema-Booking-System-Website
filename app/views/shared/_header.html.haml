@@ -5,8 +5,12 @@
       = link_to t('profile'), edit_user_registration_path
       = "|"
       = link_to t('logout'), destroy_user_session_path, method: 'delete'
+    %nav{:id => "shopping_cart"}
+      = "Cart: "
     %br
     %br
+
+
 
 
   #nav_title

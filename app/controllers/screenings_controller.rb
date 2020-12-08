@@ -70,10 +70,13 @@ class ScreeningsController < ApplicationController
   # DELETE /screenings/1
   # DELETE /screenings/1.json
   def destroy
-    @screening.destroy
     respond_to do |format|
-      format.html { redirect_to "/allresources", notice: 'Screening was successfully destroyed.' }
-      format.js   { flash[:notice] = 'Screening was succesfully destroyed.'}
+      if @screening.destroy
+        format.html { redirect_to "/allresources", notice: 'Screening was successfully destroyed.' }
+        format.js   { flash[:notice] = 'Screening was succesfully destroyed.'}
+      else
+        format.html { redirect_to "/allresources", notice: 'Cannot destroy screening.' }
+      end
       format.json { head :no_content }
     end
   end
