@@ -15,23 +15,6 @@ Otherwise normal navigation bar will be displayed
   padding-top: 30px;
 }
 
-#shopping_cart {
-  position: absolute;
-  width: 130px;
-  right: 0px;
-  padding: 10px;
-  color: white;
-}
-
-#pageTitle {
-  text-align: center;
-}
-
-#pageTitleLink {
-  text-decoration: none;
-  color: white;
-}
-
 #login_nav {
   position: absolute;
   width: 250px;
@@ -46,6 +29,21 @@ Otherwise normal navigation bar will be displayed
     color:white;
     text-decoration: underline;
   }
+
+}
+
+#cart-link {
+  font-size: 22px;
+  padding-top: 5px;
+}
+
+#pageTitle {
+  text-align: center;
+}
+
+#pageTitleLink {
+  text-decoration: none;
+  color: white;
 }
 
 .navbar.navbar-expand-sm.nav-pills.nav-fill.bg-dark.navbar-dark.justify-content-center {

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_111932) do
     t.integer "screening_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["screening_id"], name: "index_line_items_on_screening_id"
   end

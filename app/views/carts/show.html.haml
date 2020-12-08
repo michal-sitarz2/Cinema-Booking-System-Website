@@ -1,16 +1,61 @@
-%p#notice= notice
+%br
+.keep-shopping.pv1.mt4.has-text-right
+  = link_to "Other Screenings", '/booking', class: 'button is-warning'
 
-%ul
-  - @cart.line_items.each do |item|
-    %li
-      = item.screening.movie.title
-      = ", £"
-      = item.screening.price
-      = ", "
-      = item.screening.screening_date.strftime("%d %B")
-      = " "
-      = item.screening.screening_time.strftime("%H:%M")
+%br
 
-= link_to 'Edit', edit_cart_path(@cart)
-\|
-= link_to 'Back', carts_path
+%section{:class=>'section'}
+  .container
+    %hr
+    - @cart.line_items.each do |item|
+      .row
+        .col-xs-3.col-sm-2.table-quantity-cart
+          %p= item.quantity
+        .col-xs-9.col-sm-10.col-mid-9
+          %h4
+            = item.screening.movie.title
+            = " (" + item.screening.screening_type + ")"
+          %p
+            = item.screening.screening_date.strftime("%d %B %Y")
+            = " => "
+            = item.screening.screening_time.strftime("%H:%M")
+          %p
+            %b
+              = "Price: "
+            = number_to_currency(item.total_price)
+          %p
+            = "Arena: "
+            = item.screening.arena
+      .container
+        = link_to "Remove Item", item, method: :delete, data: {cofirm: "Are you sure?"}
+      %hr
+
+
+  -# - @cart.line_items.each do |item|
+  -#   %h3
+  -#     = item.screening.movie.title
+  -#   %p
+  -#     = item.screening.screening_date.strftime("%d %B %Y")
+  -#     = " => "
+  -#     = item.screening.screening_time.strftime("%H:%M")
+  -#   %p
+  -#     = number_to_currency(item.screening.price)
+  -#     = " | Quantity: "
+  -#     =  item.quantity
+  -#   .buttons
+  -#     = link_to "Remove Item", item, method: :delete, data: {cofirm: "Are you sure?"}, class: "button is-small mb4"
+  -# %br
+  -# %br
+
+
+  .container
+    .row
+      = button_to 'Book'
+      = button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you suere?"}, class: "button is-danger"
+    .row.total.has-text-right
+      %h4{:class => "title is-4"}
+        %span{:class => "f5 has-text-grey"}
+        = "Total:"
+        = number_to_currency(@cart.total_price)
+        = " | Quantity:"
+        = @cart.total_quantity
