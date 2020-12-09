@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  movie_title: MyString
+  booked_date: MyString
+  booke_time: MyString
+  quantity: 1
+  cinema: MyString
+  arena: MyString
+  total_price: 9.99
+
+two:
+  user: two
+  movie_title: MyString
+  booked_date: MyString
+  booke_time: MyString
+  quantity: 1
+  cinema: MyString
+  arena: MyString
+  total_price: 9.99

@@ -33,7 +33,7 @@
 
   .container
     .row
-      = button_to 'Book'
+      = button_to "Book", {:controller => "carts", :action => "create_booking", :cart => {"cart_id" => @cart}, :cart_id=> session[:cart_id]} , :method=>:post
       = button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you suere?"}, class: "button is-danger"
     .row.total.has-text-right
       %h4{:class => "title is-4"}

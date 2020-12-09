@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bookings
   resources :line_items, except: [:new, :edit, :index, :show]
   resources :carts, except: [:new,:edit,:index]
   devise_for :users
@@ -17,6 +18,12 @@ Rails.application.routes.draw do
   get 'booking', to: 'home#book_tickets'
 
   post 'request_contact', to: 'home#request_contact'
+
+  resources :carts do
+    collection do
+      post :create_booking
+    end
+  end
 
 
 end

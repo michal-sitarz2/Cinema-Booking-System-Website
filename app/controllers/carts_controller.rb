@@ -8,6 +8,20 @@ class CartsController < ApplicationController
   def show
   end
 
+  def create_booking
+    cart = Cart.find_by(id: cart_params[:cart_id])
+    cart.line_items.each do |item|
+      booking = Booking.create(user_id: cart.user_id, movie_title: item.screening.movie.title, booked_date: item.screening.screening_date.strftime("%d/%m/%Y"), booked_time: item.screening.screening_time.strftime("%H:%M"), quantity: item.quantity, cinema: item.screening.cinema, arena: item.screening.arena, total_price: item.total_price)
+      booking.save
+    end
+
+    cart.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'The item(s) were successfully booked.' }
+      format.json { head :no_content }
+    end
+  end
+
 
   # POST /carts
   # POST /carts.json
@@ -57,7 +71,7 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.require(:cart).permit(:user_id)
+      params.require(:cart).permit(:user_id, :cart_id)
     end
 
     def invalid_cart

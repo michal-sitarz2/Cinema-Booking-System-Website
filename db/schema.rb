@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_100632) do
+ActiveRecord::Schema.define(version: 2020_12_09_124650) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "movie_title", null: false
+    t.string "booked_date", null: false
+    t.string "booked_time", null: false
+    t.integer "quantity", null: false
+    t.string "cinema", null: false
+    t.string "arena", null: false
+    t.decimal "total_price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
