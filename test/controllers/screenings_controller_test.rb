@@ -25,7 +25,7 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Screening.count') do
       post screenings_url, params: { screening: { arena: @screening.arena, movie_id: @movie.id, cinema: @screening.cinema, available_seats: @screening.available_seats, price: @screening.price, screening_date: @screening.screening_date, screening_time: @screening.screening_time } }
     end
-    assert_redirected_to "/allresources"
+    assert_redirected_to allresources_url
   end
 
   test "should get edit" do
@@ -43,6 +43,6 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
       delete screening_url(@screening)
     end
 
-    assert_redirected_to "/allresources"
+    assert_redirected_to allresources_url
   end
 end

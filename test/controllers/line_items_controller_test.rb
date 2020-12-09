@@ -3,6 +3,8 @@ require 'test_helper'
 class LineItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @line_item = line_items(:one)
+    @cart = carts(:one)
+    @screenings = screenings(:one)
 
     get '/users/sign_in'
     sign_in users(:users_001)
@@ -11,7 +13,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create line_item" do
     assert_difference('LineItem.count') do
-      post line_items_url, params: { line_item: { cart_id: @line_item.cart_id, screening_id: @line_item.screening_id } }
+      post line_items_url, params: { line_item: { cart_id: @cart[:id], screening_id: @screening[:id] } }
     end
 
     assert_redirected_to line_item_url(LineItem.last)

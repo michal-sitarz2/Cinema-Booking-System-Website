@@ -23,8 +23,8 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to "/allresources", notice: 'Movie was successfully created.' }
-        format.json { render :show, status: :created, location: "/allresources" }
+        format.html { redirect_to allresources_url, notice: 'Movie was successfully created.' }
+        format.json { render :show, status: :created, location: allresources_url }
       else
         format.html { render :new }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -37,8 +37,8 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to "/allresources", notice: 'Movie was successfully updated.' }
-        format.json { render :show, status: :ok, location: "/allresources" }
+        format.html { redirect_to allresources_url, notice: 'Movie was successfully updated.' }
+        format.json { render :show, status: :ok, location: allresources_url }
       else
         format.html { render :edit }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie.destroy
     respond_to do |format|
-      format.html { redirect_to "/allresources", notice: 'Movie was successfully destroyed.' }
+      format.html { redirect_to allresources_url, notice: 'Movie was successfully destroyed.' }
       format.js   { flash[:notice] = 'Movie was succesfully destroyed.'}
       format.json { head :no_content }
     end

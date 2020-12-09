@@ -3,6 +3,7 @@ require 'test_helper'
 class CartsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @cart = carts(:one)
+    @user = users(:users_001)
 
     get '/users/sign_in'
     sign_in users(:users_001)
@@ -11,7 +12,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cart" do
     assert_difference('Cart.count') do
-      post carts_url, params: { cart: {  } }
+      post carts_url, params: { cart: { user_id: @user.id } }
     end
 
     assert_redirected_to cart_url(Cart.last)
@@ -22,9 +23,8 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-
   test "should update cart" do
-    patch cart_url(@cart), params: { cart: {  } }
+    patch cart_url(@cart), params: { cart: { user_id: @user.id  } }
     assert_redirected_to cart_url(@cart)
   end
 
@@ -33,6 +33,6 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
       delete cart_url(@cart)
     end
 
-    assert_redirected_to carts_url
+    assert_redirected_to root_path
   end
 end

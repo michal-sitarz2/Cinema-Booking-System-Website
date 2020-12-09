@@ -12,6 +12,15 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
   end
 
+  test "should get resource table" do
+    get '/users/sign_in'
+    sign_in users(:users_001)
+    post user_session_url
+
+    get allresources_url
+    assert_response :success
+  end
+
   test "should get contact" do
     get contact_url
     assert_response :success

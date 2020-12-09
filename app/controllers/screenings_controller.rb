@@ -6,7 +6,7 @@ class ScreeningsController < ApplicationController
   # GET /screenings.json
   def index
     screenings = Screening.search(params[:screening])
-    
+
     @screenings = {}
     screenings.each do |screening|
       if @screenings.key?(screening.movie)
@@ -40,8 +40,8 @@ class ScreeningsController < ApplicationController
 
     respond_to do |format|
       if @screening.save
-        format.html { redirect_to "/allresources", notice: 'Screening was successfully created.' }
-        format.json { render :show, status: :created, location: "/allresources" }
+        format.html { redirect_to allresources_url, notice: 'Screening was successfully created.' }
+        format.json { render :show, status: :created, location: allresources_url }
       else
         format.html { render :new }
         format.json { render json: @screening.errors, status: :unprocessable_entity }
@@ -54,8 +54,8 @@ class ScreeningsController < ApplicationController
   def update
     respond_to do |format|
       if @screening.update(screening_params)
-        format.html { redirect_to "/allresources", notice: 'Screening was successfully updated.' }
-        format.json { render :show, status: :ok, location: "/allresources" }
+        format.html { redirect_to allresources_url, notice: 'Screening was successfully updated.' }
+        format.json { render :show, status: :ok, location: allresources_url }
       else
         format.html { render :edit }
         format.json { render json: @screening.errors, status: :unprocessable_entity }
@@ -68,10 +68,10 @@ class ScreeningsController < ApplicationController
   def destroy
     respond_to do |format|
       if @screening.destroy
-        format.html { redirect_to "/allresources", notice: 'Screening was successfully destroyed.' }
+        format.html { redirect_to allresources_url, notice: 'Screening was successfully destroyed.' }
         format.js   { flash[:notice] = 'Screening was succesfully destroyed.'}
       else
-        format.html { redirect_to "/allresources", notice: 'Screening cannot be destroyed - in use.' }
+        format.html { redirect_to allresources_url, notice: 'Screening cannot be destroyed - in use.' }
 
       end
       format.json { head :no_content }

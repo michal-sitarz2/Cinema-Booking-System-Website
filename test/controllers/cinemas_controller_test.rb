@@ -24,7 +24,7 @@ class CinemasControllerTest < ActionDispatch::IntegrationTest
       post cinemas_url, params: { cinema: { address: @cinema.address, name: @cinema.name + " create"} }
     end
 
-    assert_redirected_to cinema_url(Cinema.last)
+    assert_redirected_to allresources_url
   end
 
   test "should get edit" do
@@ -34,7 +34,7 @@ class CinemasControllerTest < ActionDispatch::IntegrationTest
 
   test "should update cinema" do
     patch cinema_url(@cinema), params: { cinema: { address: @cinema.address, name: @cinema.name } }
-    assert_redirected_to cinema_url(@cinema)
+    assert_redirected_to allresources_url
   end
 
   test "should destroy cinema" do
@@ -42,6 +42,6 @@ class CinemasControllerTest < ActionDispatch::IntegrationTest
       delete cinema_url(@cinema)
     end
 
-    assert_redirected_to cinemas_url
+    assert_redirected_to allresources_url
   end
 end
