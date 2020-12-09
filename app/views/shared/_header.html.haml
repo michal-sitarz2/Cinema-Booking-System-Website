@@ -39,6 +39,10 @@
             = link_to t('login'),  new_user_session_path, class: "nav-link"
           %li{:class => "nav-item"}
             = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
+        - else
+          %li{:class => "nav-item"}
+            %a{:class => "nav-link", :href => "/bookings"}= "View Bookings"
+
 
 
   #mySidebar.sidebar
@@ -50,8 +54,9 @@
     %a{:href => "/contact"}= t('.contact')
     - if not user_signed_in?
       = link_to t('login'),  new_user_session_path, class: "nav-link"
-
       = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
+    - else
+      %a{:class => "nav-link", :href => "/bookings"}= "View Bookings"
 
 
 - flash.each do |key, value|

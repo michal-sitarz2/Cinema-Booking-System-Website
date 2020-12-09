@@ -70,13 +70,13 @@ class ScreeningTest < ActiveSupport::TestCase
   end
 
   test 'should destroy the screening if movie destroyed' do
-    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60)
+    screening = Screening.create(movie_id: @movie.id, cinema: @cinema.name, arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60)
     screening.save
     assert Screening.find_by(id: screening.id)
 
-    movie = Movie.find_by(id: screening.movie_id)
+    movie = Movie.find_by(id: @movie.id)
     movie.destroy
-    refute Screening.find_by(id: screening.id)
+    assert Screening.find_by(id: screening.id) == nil
   end
 
   test 'should restrict deleteing if associated to line item' do

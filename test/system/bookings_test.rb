@@ -15,7 +15,7 @@ class BookingsTest < ApplicationSystemTestCase
     click_on "New Booking"
 
     fill_in "Arena", with: @booking.arena
-    fill_in "Booke time", with: @booking.booke_time
+    fill_in "Booke time", with: @booking.booked_time
     fill_in "Booked date", with: @booking.booked_date
     fill_in "Cinema", with: @booking.cinema
     fill_in "Movie title", with: @booking.movie_title
@@ -33,7 +33,7 @@ class BookingsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Arena", with: @booking.arena
-    fill_in "Booke time", with: @booking.booke_time
+    fill_in "Booke time", with: @booking.booked_time
     fill_in "Booked date", with: @booking.booked_date
     fill_in "Cinema", with: @booking.cinema
     fill_in "Movie title", with: @booking.movie_title

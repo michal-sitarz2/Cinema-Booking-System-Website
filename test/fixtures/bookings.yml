@@ -4,7 +4,7 @@ one:
   user: one
   movie_title: MyString
   booked_date: MyString
-  booke_time: MyString
+  booked_time: MyString
   quantity: 1
   cinema: MyString
   arena: MyString
@@ -14,7 +14,7 @@ two:
   user: two
   movie_title: MyString
   booked_date: MyString
-  booke_time: MyString
+  booked_time: MyString
   quantity: 1
   cinema: MyString
   arena: MyString
