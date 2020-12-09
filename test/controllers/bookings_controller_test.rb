@@ -15,27 +15,12 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_booking_url
-    assert_response :success
-  end
-
   test "should create booking" do
     assert_difference('Booking.count') do
       post bookings_url, params: { booking: { arena: @booking.arena, booked_time: @booking.booked_time, booked_date: @booking.booked_date, cinema: @booking.cinema, movie_title: @booking.movie_title, quantity: @booking.quantity, total_price: @booking.total_price, user_id: @user.id } }
     end
 
     assert_redirected_to booking_url(Booking.last)
-  end
-
-  test "should show booking" do
-    get booking_url(@booking)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_booking_url(@booking)
-    assert_response :success
   end
 
   test "should update booking" do

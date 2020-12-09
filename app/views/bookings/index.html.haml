@@ -1,5 +1,4 @@
-%h1 Listing bookings
-
+%h1= t('.header')
 
 - if @bookings.length > 0
   %section{:class=>'section'}
@@ -13,18 +12,20 @@
             %h4
               = booking.movie_title
             %p
-              = booking.cinema + " in Arena: " + booking.arena
+              = booking.cinema
+              = t('.in_arena')
+              = booking.arena
             %p
               = booking.booked_date
-              = " => "
+              = t('arrow')
               = booking.booked_time
             %p
               %b
-                = "Price: "
+                = t('.price')
               = number_to_currency(booking.total_price)
         .container
-          = link_to "Remove Booking", booking, method: :delete, data: {cofirm: "Are you sure?"}
+          = link_to t('.cancel'), booking, method: :delete, data: {cofirm: "#{t('destroy_confirm')}"}
         %hr
 
 - else
-  %h3= "There are no bookings"
+  %h3= t('.empty')

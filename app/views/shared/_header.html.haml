@@ -1,7 +1,7 @@
 %header{:id => "pageHeader"}
   - if user_signed_in?
     %nav{:id => "login_nav"}
-      = "#{current_user.email} |"
+      = "#{current_user.email} #{t('vertical_line')}"
       = link_to t('profile'), edit_user_registration_path
       = "|"
       = link_to t('logout'), destroy_user_session_path, method: 'delete'
@@ -28,8 +28,9 @@
           %a{:class => "nav-link", :href => "/"}= t('.home')
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/booking"}= t('.book_tickets')
-        %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "/allresources"}= t('.resources_table')
+        - if user_signed_in? and current_user.admin
+          %li{:class => "nav-item"}
+            %a{:class => "nav-link", :href => "/allresources"}= t('.resources_table')
         %li{:class => "nav-item"}
           %a{:class => "nav-link", :href => "/cinemas"}= t('.about_us')
         %li{:class => "nav-item"}
@@ -41,7 +42,7 @@
             = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
         - else
           %li{:class => "nav-item"}
-            %a{:class => "nav-link", :href => "/bookings"}= "View Bookings"
+            %a{:class => "nav-link", :href => "/bookings"}= t('.view_booking')
 
 
 
@@ -49,14 +50,15 @@
     %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"}= t('.close_X')
     %a{:href => "/"}= t('.home')
     %a{:href => "/booking"}= t('.book_tickets')
-    %a{:href => "/allresources"}= t('.resources_table')
+    - if user_signed_in? and current_user.admin
+      %a{:href => "/allresources"}= t('.resources_table')
     %a{:href => "/cinemas"}= t('.about_us')
     %a{:href => "/contact"}= t('.contact')
     - if not user_signed_in?
       = link_to t('login'),  new_user_session_path, class: "nav-link"
       = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
     - else
-      %a{:class => "nav-link", :href => "/bookings"}= "View Bookings"
+      %a{:class => "nav-link", :href => "/bookings"}= t('.view_booking')
 
 
 - flash.each do |key, value|

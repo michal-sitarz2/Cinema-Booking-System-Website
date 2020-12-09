@@ -36,15 +36,52 @@ en:
   show_button: Show
   back_button: Back
   edit_button: Edit
+  save_button: Save
   destroy_button: Destroy
   destroy_confirm: Are you sure?
-  save_button: Save
+
+  error_lower: error
+
+  prohibited_p1: prohibited this
+  prohibited_p2: "from being saved:"
+
+  vertical_line: "|"
+  open_parantheses: "("
+  close_parantheses: ")"
+  arrow: "=>"
+  pound: "£"
+
+  date_format_1: "%d %B %Y"
+  date_format_2: "%d %B"
+
+  time_format_1: "%H:%M"
+
+  bookings:
+    index:
+      header: Listing Bookings
+      in_arena: in Arena
+      price: "Price: "
+      cancel: Cancel Booking
+      empty: Bookings are empty
+
+  carts:
+    show:
+      other: Other Screenings
+      price: "Price:"
+      arena: "Arena:"
+      remove: Remove Item
+      book: Book
+      confirm_book: "Do you want to book?"
+      empty_cart: Empty Cart
+      total: "Total: "
+      quantity: "Quantity: "
 
   cinemas:
     edit:
       header: Editing Cinema
     new:
       header: New Cinema
+      cinema: cinema
     index:
       about_header: About Us!
       about_paragraph: We are a cinema booking service. On our home page you can see the upcoming movies and the most recent releases. Our booking page shows all the current screenings available in all our cinemas. Below you can find all the locations and cinemas where we screen movies. If there is anything we can help you with please visit the contact page and send as a message.
@@ -63,6 +100,9 @@ en:
       genres: "Genres:"
       duration: "Duration:"
       minute: min
+      poster_unavailable: Poster Currently Unavailable
+      add_cart_confirm: Add this item to cart?
+      screening_for: Screenings for
 
   movies:
     edit:
@@ -85,6 +125,7 @@ en:
       home: Home
       book_tickets: Book Tickets
       resources_table: Resources Table
+      view_booking: View Bookings
       sign_up: Sign Up
       login: Login
       contact: Contact Us
@@ -100,6 +141,7 @@ en:
       name: "Name:"
       email: "Email:"
       telephone: "Telephone:"
+      dear: Dear
       thanks: Thanks,
 
   home:
@@ -108,7 +150,7 @@ en:
       view_more_current: View more currently playing movies...
       cinema_dropdown: Cinemas
       movies_dropdown: All the available movies
-      cinemas_title: Cinema Program
+      currently_screening: Currently in Cinemas
       poster_unavailable: poster currently unavailable
       upcoming_movies: Upcoming Movies
 

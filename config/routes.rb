@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :bookings
+  resources :bookings, except: [:new, :edit, :show]
   resources :line_items, except: [:new, :edit, :index, :show]
   resources :carts, except: [:new,:edit,:index]
   devise_for :users

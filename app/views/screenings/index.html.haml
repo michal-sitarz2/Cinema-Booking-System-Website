@@ -4,13 +4,13 @@
 
 %br
 .container{:id => "screenings_container"}
-  %h1{:id => "screenig_index_header"}= "Screenings for #{@date.strftime("%d %B")}"
+  %h1{:id => "screenig_index_header"}= "#{t('.screening_for')} #{@date.strftime(t('date_format_2'))}"
   %hr
   -@screenings.each do |movie, screenings|
     %br
     .row
       .col-xs-4.col-sm-3
-        %img{:class => "screening_index_images", :src => "#{movie.poster}", :alt => "#{movie.title} Poster Currently Unavailable"}
+        %img{:class => "screening_index_images", :src => "#{movie.poster}", :alt => "#{movie.title} #{t('.poster_unavailable')}"}
       .col-xs-7
         %h3= "#{movie.title}"
         %p
@@ -33,10 +33,11 @@
     .row.justify-content-start
       -screenings.each do |screening|
         .col-xs-2
-          = button_to screening.screening_time.strftime("%H:%M"), line_items_path(screening_id: screening), data: { confirm: "Add this item to cart?" }, class: "screening_button_times"
+          = button_to screening.screening_time.strftime("#{t('.time_format_1')}"), line_items_path(screening_id: screening), data: { confirm: "#{t('.add_cart_confirm')}" }, class: "screening_button_times"
           %p{:class => "text_screening_type"}
             %b= screening.screening_type
-            = " | £"
+            = t('vertical_line')
+            = t('pound')
             = screening.price
     %hr
     %br

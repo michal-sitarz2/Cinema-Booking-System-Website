@@ -1,6 +1,6 @@
 %br
 .keep-shopping.pv1.mt4.has-text-right
-  = link_to "Other Screenings", '/booking', class: 'button is-warning'
+  = link_to "#{t('.other')}", '/booking'
 
 %br
 
@@ -14,31 +14,32 @@
         .col-xs-9.col-sm-10.col-mid-9
           %h4
             = item.screening.movie.title
-            = " (" + item.screening.screening_type + ")"
+            = t('open_parantheses') + item.screening.screening_type + t('close_parantheses')
           %p
-            = item.screening.screening_date.strftime("%d %B %Y")
-            = " => "
-            = item.screening.screening_time.strftime("%H:%M")
+            = item.screening.screening_date.strftime(t('date_format_1'))
+            = t('arrow')
+            = item.screening.screening_time.strftime(t('time_format_1'))
           %p
             %b
-              = "Price: "
+              = t('.price')
             = number_to_currency(item.total_price)
           %p
-            = "Arena: "
+            = t('.arena')
             = item.screening.arena
       .container{id:"item_#{item.id}_remove"}
-        = link_to "Remove Item", item, method: :delete, data: {cofirm: "Are you sure?"}, remote: true
+        = link_to "#{t('.remove')}", item, method: :delete, data: {cofirm: "#{t('destroy_confirm')}"}, remote: true
       %hr
 
 
   .container
     .row
-      = button_to "Book", {:controller => "carts", :action => "create_booking", :cart => {"cart_id" => @cart}, :cart_id=> session[:cart_id]} , :method=>:post
-      = button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you suere?"}, class: "button is-danger"
+      = button_to "#{t('.book')}", {:controller => "carts", :action => "create_booking", :cart => {"cart_id" => @cart}, :cart_id=> session[:cart_id]} , data: {confirm: "#{t('.confirm_book')}"}, :method=>:post
+      = button_to "#{t('.empty_cart')}", @cart, method: :delete, data: { confirm: "#{t('destroy_confirm')}"}
     .row.total.has-text-right
-      %h4{:class => "title is-4"}
-        %span{:class => "f5 has-text-grey"}
-        = "Total:"
+      %h4
+        %span
+        = t('.total')
         = number_to_currency(@cart.total_price)
-        = " | Quantity:"
+        = t('vertical_line')
+        = t('.quantity')
         = @cart.total_quantity

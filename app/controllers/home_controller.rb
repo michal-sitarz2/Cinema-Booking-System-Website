@@ -3,32 +3,18 @@ class HomeController < ApplicationController
 
   def home
     @movies = Movie.all
-
-    movies = {}
+    
     @upcoming_movies = []
+    @released_movies = []
 
     @movies.each do |movie|
       if movie.release_date <= Date.today
-        movies[movie] = movie['release_date']
+        @released_movies.append(movie)
       else
         @upcoming_movies.append(movie)
 
       end
     end
-
-    movies.sort_by {|k,v| v}.reverse
-    counter = 0
-    movies.each do |movie,date|
-      if counter == 0
-         @movie1 = movie
-       elsif counter == 1
-         @movie2 = movie
-       elsif counter == 2
-         @movie3 = movie
-       end
-       counter = counter + 1
-    end
-
   end
 
   def restable

@@ -60,9 +60,15 @@ class BookingTest < ActiveSupport::TestCase
     refute booking.valid?
   end
 
+  test 'should destroy if user destroyed' do
+    booking = Booking.create(user_id: @user.id, movie_title: "Title", booked_date: "20/12/2020", booked_time: "15:30", quantity: 3, cinema: "Cinema", arena: "21", total_price: 15.0)
+    booking.save
+    assert booking.valid?
 
+    @user.destroy
+    refute Booking.find_by(user_id: @user.id)
 
-
+  end
 
 
 end

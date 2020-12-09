@@ -3,7 +3,7 @@ require 'test_helper'
 class ScreeningTest < ActiveSupport::TestCase
 
   setup do
-    @movie = movies(:one)
+    @movie = movies(:two)
     @cinema = cinemas(:one)
   end
 
@@ -69,16 +69,6 @@ class ScreeningTest < ActiveSupport::TestCase
     assert screening_saved.sold_seats == 0
   end
 
-  test 'should destroy the screening if movie destroyed' do
-    screening = Screening.create(movie_id: @movie.id, cinema: @cinema.name, arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60)
-    screening.save
-    assert Screening.find_by(id: screening.id)
-
-    movie = Movie.find_by(id: @movie.id)
-    movie.destroy
-    assert Screening.find_by(id: screening.id) == nil
-  end
-
   test 'should restrict deleteing if associated to line item' do
     screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60, screening_type: "3D")
     screening.save
@@ -88,6 +78,18 @@ class ScreeningTest < ActiveSupport::TestCase
     item.save
 
     refute screening.destroy
+  end
+
+  test 'should destroy the screening if movie destroyed' do
+    movie = Movie.create(title:"movieTitle", director: "director", genre: "genre", duration: 99, country: "country", release_date: Date.new(2020,11,12), poster: "posterLink", summary: "This is the movie summary", actors: "Actors", video: "Video_link", restrictions: "16+")
+    movie.save
+
+    screening = Screening.create(movie_id: movie.id, cinema: @cinema.name, arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60)
+    screening.save
+
+    assert Screening.find_by(id: screening.id)
+    assert Movie.find_by(id: movie.id).destroy
+    refute Screening.find_by(id: screening.id)
   end
 
 end

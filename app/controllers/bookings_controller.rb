@@ -1,24 +1,10 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:update, :destroy]
 
   # GET /bookings
   # GET /bookings.json
   def index
     @bookings = Booking.where(:user_id => current_user.id)
-  end
-
-  # GET /bookings/1
-  # GET /bookings/1.json
-  def show
-  end
-
-  # GET /bookings/new
-  def new
-    @booking = Booking.new
-  end
-
-  # GET /bookings/1/edit
-  def edit
   end
 
   # POST /bookings
@@ -56,7 +42,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to bookings_url, notice: 'Booking was successfully cancelled.' }
       format.json { head :no_content }
     end
   end
