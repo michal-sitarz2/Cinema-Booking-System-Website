@@ -78,4 +78,16 @@ class ScreeningTest < ActiveSupport::TestCase
     movie.destroy
     refute Screening.find_by(id: screening.id)
   end
+
+  test 'should restrict deleteing if associated to line item' do
+    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60, screening_type: "3D")
+    screening.save
+
+    cart = carts(:one)
+    item = LineItem.create(screening_id: screening.id, cart_id: cart.id)
+    item.save
+
+    refute screening.destroy
+  end
+
 end

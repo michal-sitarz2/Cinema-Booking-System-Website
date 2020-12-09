@@ -9,12 +9,11 @@ class AddUserToCart < ActiveRecord::Migration[5.2]
       cart.save!
     end
 
-    change_column_null :carts, :user_id, false
     add_foreign_key :carts, :users
   end
 
   def down
     remove_foreign_key :carts, :users
-    remove_refence :notes, :user, index: true
+    remove_reference :carts, :user, index: true
   end
 end

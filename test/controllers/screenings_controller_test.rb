@@ -5,6 +5,10 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
     @screening = screenings(:one)
     @movie = movies(:one)
     @cinema = cinemas(:one)
+
+    get '/users/sign_in'
+    sign_in users(:users_001)
+    post user_session_url
   end
 
   test "should get index" do
@@ -22,11 +26,6 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
       post screenings_url, params: { screening: { arena: @screening.arena, movie_id: @movie.id, cinema: @screening.cinema, available_seats: @screening.available_seats, price: @screening.price, screening_date: @screening.screening_date, screening_time: @screening.screening_time } }
     end
     assert_redirected_to "/allresources"
-  end
-
-  test "should show screening" do
-    get screening_url(@screening)
-    assert_response :success
   end
 
   test "should get edit" do

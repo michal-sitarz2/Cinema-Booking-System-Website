@@ -6,6 +6,7 @@ class ScreeningsController < ApplicationController
   # GET /screenings.json
   def index
     screenings = Screening.search(params[:screening])
+    
     @screenings = {}
     screenings.each do |screening|
       if @screenings.key?(screening.movie)

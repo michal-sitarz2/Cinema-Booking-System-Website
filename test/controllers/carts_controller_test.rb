@@ -3,16 +3,10 @@ require 'test_helper'
 class CartsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @cart = carts(:one)
-  end
 
-  test "should get index" do
-    get carts_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_cart_url
-    assert_response :success
+    get '/users/sign_in'
+    sign_in users(:users_001)
+    post user_session_url
   end
 
   test "should create cart" do
@@ -28,10 +22,6 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_cart_url(@cart)
-    assert_response :success
-  end
 
   test "should update cart" do
     patch cart_url(@cart), params: { cart: {  } }

@@ -3,6 +3,10 @@ require 'test_helper'
 class CinemasControllerTest < ActionDispatch::IntegrationTest
   setup do
     @cinema = cinemas(:one)
+
+    get '/users/sign_in'
+    sign_in users(:users_001)
+    post user_session_url
   end
 
   test "should get index" do
@@ -21,11 +25,6 @@ class CinemasControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to cinema_url(Cinema.last)
-  end
-
-  test "should show cinema" do
-    get cinema_url(@cinema)
-    assert_response :success
   end
 
   test "should get edit" do

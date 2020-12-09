@@ -3,7 +3,9 @@
 one:
   cart: one
   screening: one
+  quantity: 2
 
 two:
   cart: two
   screening: two
+  quantity: 1

@@ -9,7 +9,7 @@ class MovieTest < ActiveSupport::TestCase
   end
 
   test 'should not save movie without title' do
-      movie = Movie.create(title:"movieTitle", director: "director", genre: "genre", country: "country", release_date: Date.new(2020,11,12), poster: "posterLink", summary: "This is the movie summary")
+    movie = Movie.create(title:"movieTitle", director: "director", genre: "genre", country: "country", release_date: Date.new(2020,11,12), poster: "posterLink", summary: "This is the movie summary")
     movie.save
     refute movie.valid?
   end

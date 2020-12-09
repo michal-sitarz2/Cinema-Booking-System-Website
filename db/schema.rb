@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_194518) do
+ActiveRecord::Schema.define(version: 2020_12_09_100632) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_194518) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "screening_id"
+    t.integer "cart_id", null: false
+    t.integer "screening_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 1
