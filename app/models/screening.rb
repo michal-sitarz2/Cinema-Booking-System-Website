@@ -1,5 +1,7 @@
 class Screening < ApplicationRecord
 
+  
+
   belongs_to :movie
   validates :movie, :price, :screening_date, :cinema, :screening_time, :arena, :available_seats, presence: true
 

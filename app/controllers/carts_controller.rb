@@ -9,12 +9,16 @@ class CartsController < ApplicationController
   end
 
   def create_booking
+    # Finding the cart based on the passed parameters
     cart = Cart.find_by(id: cart_params[:cart_id])
+
+    # Creating a booking for every item in the cart, for that user (owner of the cart)
     cart.line_items.each do |item|
       booking = Booking.create(user_id: cart.user_id, movie_title: item.screening.movie.title, booked_date: item.screening.screening_date.strftime("%d/%m/%Y"), booked_time: item.screening.screening_time.strftime("%H:%M"), quantity: item.quantity, cinema: item.screening.cinema, arena: item.screening.arena, total_price: item.total_price)
       booking.save
     end
 
+    # Destroying the cart (and in turn all the line items in the cart) and redirecting the user to the home page
     cart.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'The item(s) were successfully booked.' }
@@ -74,6 +78,7 @@ class CartsController < ApplicationController
       params.require(:cart).permit(:user_id, :cart_id)
     end
 
+    # If the cart was not found it redirects the user to home page (uses rescue if record not found)
     def invalid_cart
       redirect_to root_path, notice: "Cart does not exist"
     end

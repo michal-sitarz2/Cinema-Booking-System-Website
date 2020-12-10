@@ -110,7 +110,7 @@ cinema2.save
 # Creates Screenings for the entire week at the same time and with same attributes
 i = 0
 loop do
-  screening = Screening.create(movie_id: movie1.id, cinema: cinema1.name, arena: "2", price: 5.99, screening_time: Time.new(2020, 1, 1, 18, 0), screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
+  screening = Screening.create(movie_id: movie1.id, cinema: cinema1.name, arena: "2", price: 5.99, screening_time: "18:00", screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
   screening.save
   i += 1
   if i == 7
@@ -122,7 +122,7 @@ end
 # Creates Screenings for the entire week at the same time and with same attributes
 i = 0
 loop do
-  screening = Screening.create(movie_id: movie1.id, cinema: cinema2.name, arena: "22", price: 5.99, screening_time: Time.new(2020, 1, 1, 19, 0), screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
+  screening = Screening.create(movie_id: movie1.id, cinema: cinema2.name, arena: "22", price: 5.99, screening_time: "19:00", screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
   screening.save
   i += 1
   if i == 7
@@ -134,7 +134,7 @@ end
 # Creates Screenings for the whole week in 2D
 i = 0
 loop do
-  screening = Screening.create(movie_id: movie2.id, cinema: cinema1.name, arena: "3", price: 6.99, screening_time: Time.new(2020, 1, 1, 18, 30), screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
+  screening = Screening.create(movie_id: movie2.id, cinema: cinema1.name, arena: "3", price: 6.99, screening_time: "18:30", screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
   screening.save
   i += 1
   if i == 6
@@ -146,7 +146,7 @@ end
 # Creates Screenings for every second day of the week in 3D
 i = 1
 loop do
-  screening = Screening.create(movie_id: movie2.id, cinema: cinema1.name, arena: "3", price: 5.99, screening_time: Time.new(2020, 1, 1, 19, 0), screening_date: Date.today+i, available_seats: 60, screening_type: "3D")
+  screening = Screening.create(movie_id: movie2.id, cinema: cinema1.name, arena: "3", price: 5.99, screening_time: "19:00", screening_date: Date.today+i, available_seats: 60, screening_type: "3D")
   screening.save
   i += 2
   if i == 5
@@ -158,7 +158,7 @@ end
 # Creates Screenings for the entire week at the same time and with same attributes
 i = 0
 loop do
-  screening = Screening.create(movie_id: movie2.id, cinema: cinema2.name, arena: "13", price: 5.99, screening_time: Time.new(2020, 1, 1, 20, 45), screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
+  screening = Screening.create(movie_id: movie2.id, cinema: cinema2.name, arena: "13", price: 5.99, screening_time: "20:45", screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
   screening.save
   i += 1
   if i == 7
@@ -170,7 +170,7 @@ end
 # Creates Screenings for the entire week at the same time and with same attributes
 i = 0
 loop do
-  screening = Screening.create(movie_id: movie3.id, cinema: cinema1.name, arena: "4", price: 4.99, screening_time: Time.new(2020, 1, 1, 20, 0), screening_date: Date.today+i, available_seats: 50, screening_type: "2D")
+  screening = Screening.create(movie_id: movie3.id, cinema: cinema1.name, arena: "4", price: 4.99, screening_time: "20:00", screening_date: Date.today+i, available_seats: 50, screening_type: "2D")
   screening.save
   i += 1
   if i == 7
@@ -182,7 +182,7 @@ end
 # Creates Screenings for the entire week at the same time and with same attributes
 i = 0
 loop do
-  screening = Screening.create(movie_id: movie3.id, cinema: cinema2.name, arena: "14", price: 4.99, screening_time: Time.new(2020, 1, 1, 19, 15), screening_date: Date.today+i, available_seats: 50, screening_type: "2D")
+  screening = Screening.create(movie_id: movie3.id, cinema: cinema2.name, arena: "14", price: 4.99, screening_time: "19:15", screening_date: Date.today+i, available_seats: 50, screening_type: "2D")
   screening.save
   i += 1
   if i == 7

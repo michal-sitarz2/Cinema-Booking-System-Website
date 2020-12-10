@@ -88,4 +88,6 @@ class ScreeningsController < ApplicationController
     def screening_params
       params.require(:screening).permit(:movie_id, :screening_type, :screening_date, :cinema, :price, :screening_time, :arena, :available_seats)
     end
+
+
 end

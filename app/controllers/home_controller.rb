@@ -2,19 +2,9 @@ class HomeController < ApplicationController
   before_action :is_admin, only: [:restable]
 
   def home
-    @movies = Movie.all
-    
-    @upcoming_movies = []
-    @released_movies = []
+    @upcoming_movies = Movie.release_after_today
+    @released_movies = Movie.release_before_today
 
-    @movies.each do |movie|
-      if movie.release_date <= Date.today
-        @released_movies.append(movie)
-      else
-        @upcoming_movies.append(movie)
-
-      end
-    end
   end
 
   def restable
