@@ -49,11 +49,39 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
-    @movie.destroy
-    respond_to do |format|
-      format.html { redirect_to allresources_url, notice: 'Movie was successfully destroyed.' }
-      format.js   { flash[:notice] = 'Movie was succesfully destroyed.'}
-      format.json { head :no_content }
+    # Defining a flag which determines whether a movie can be deleted
+    check = true
+
+    # If there is a booking with the movie, the movie cannot be deleted
+    if Booking.where(movie_title: @movie.title).first
+      check = false
+    end
+
+    # If the movie was already not found as booked
+    # The program will check are there any screenings in users' carts
+    if check
+      @movie.screenings.each do |screening|
+        if screening.line_items.length > 0
+          check = false
+          break
+        end
+      end
+    end
+
+    # If the screenings can be deleted the movie and its corresponding screenings are deleted
+    if check
+      @movie.screenings.destroy_all
+      @movie.destroy
+      respond_to do |format|
+        format.html { redirect_to allresources_url, notice: 'Movie was successfully destroyed.' }
+        format.js   { flash[:notice] = 'Movie was succesfully destroyed.'}
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to allresources_url, notice: 'Movie cannot be destroyed - the associated screenings are in use.' }
+        format.json { head :no_content }
+      end
     end
   end
 

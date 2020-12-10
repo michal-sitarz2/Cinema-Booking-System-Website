@@ -1,11 +1,15 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
+
+# ! WARNING: if this file is run, all the screenings, users and bookings get deleted
+
+# Destroys all the users and their corresponding bookings
+User.destroy_all
+
+#Clearing the database from Screenings
+Screening.destroy_all
 
 # Checking if the initial admin is already in the database
 adminDb = User.where(email: 'admin@gmail.com').first
@@ -89,12 +93,12 @@ movie7.save
 # +-----------------------------------+
 cinema1 = Cinema.where(name: 'ODEON BFI IMAX').first
 cinema1.delete if cinema1
-cinema1 = Cinema.create(name:"ODEON BFI IMAX", address:"1 Charlie Chaplin Walk, South Bank, Waterloo SE1 8XR")
+cinema1 = Cinema.create(name:"ODEON BFI IMAX", address:"1 Charlie Chaplin Walk, South Bank, Waterloo SE1 8XR", image: "https://odeonevents.co.uk/wp-content/uploads/2017/11/Artboard-2-Copy-3.jpg")
 cinema1.save
 
 cinema2 = Cinema.where(name: 'ODEON Guildford').first
 cinema2.delete if cinema2
-cinema2 = Cinema.create(name:"ODEON Guildford", address:"Bedford Rd, Guildford GU1 4SJ")
+cinema2 = Cinema.create(name:"ODEON Guildford", address:"Bedford Rd, Guildford GU1 4SJ", image: "https://odeonevents.co.uk/wp-content/uploads/2017/12/YPS3854.jpg")
 cinema2.save
 
 
@@ -109,7 +113,7 @@ loop do
   screening = Screening.create(movie_id: movie1.id, cinema: cinema1.name, arena: "2", price: 5.99, screening_time: Time.new(2020, 1, 1, 18, 0), screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
   screening.save
   i += 1
-  if i == 6
+  if i == 7
     break
   end
 end
@@ -121,7 +125,7 @@ loop do
   screening = Screening.create(movie_id: movie1.id, cinema: cinema2.name, arena: "22", price: 5.99, screening_time: Time.new(2020, 1, 1, 19, 0), screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
   screening.save
   i += 1
-  if i == 6
+  if i == 7
     break
   end
 end
@@ -157,7 +161,7 @@ loop do
   screening = Screening.create(movie_id: movie2.id, cinema: cinema2.name, arena: "13", price: 5.99, screening_time: Time.new(2020, 1, 1, 20, 45), screening_date: Date.today+i, available_seats: 60, screening_type: "2D")
   screening.save
   i += 1
-  if i == 6
+  if i == 7
     break
   end
 end
@@ -169,7 +173,7 @@ loop do
   screening = Screening.create(movie_id: movie3.id, cinema: cinema1.name, arena: "4", price: 4.99, screening_time: Time.new(2020, 1, 1, 20, 0), screening_date: Date.today+i, available_seats: 50, screening_type: "2D")
   screening.save
   i += 1
-  if i == 6
+  if i == 7
     break
   end
 end
@@ -181,7 +185,7 @@ loop do
   screening = Screening.create(movie_id: movie3.id, cinema: cinema2.name, arena: "14", price: 4.99, screening_time: Time.new(2020, 1, 1, 19, 15), screening_date: Date.today+i, available_seats: 50, screening_type: "2D")
   screening.save
   i += 1
-  if i == 6
+  if i == 7
     break
   end
 end
