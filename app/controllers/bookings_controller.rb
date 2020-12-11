@@ -1,10 +1,17 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:update, :destroy]
 
+  # Bookings don't need show, edit or new
+  # All bookings are created automatically based on selected line items
+  # And once created cannot be edited, they can only be destroyed
+
   # GET /bookings
   # GET /bookings.json
   def index
+    # Uses the scopes to find bookings associated to current user
+    # And filters them to show only the history
     @bookings_history = Booking.find_user(current_user.id).booking_history
+    # Filters the bookings to show the upcoming screenings
     @bookings = Booking.find_user(current_user.id).booking_upcoming
   end
 

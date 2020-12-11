@@ -74,9 +74,17 @@ en:
     remove: Remove
 
   messages:
+    validations:
+      screening_type: Not a valid screening type. (2D, 3D, 4D, Extreme 2D)
+      directors: The directors have to be composed only of letters and spaces (and commas if more than 1)
+      actors: The actors have to be composed only of letters and spaces (and commas if more than 1)
+      images: The link has to be valid png, gif or jpg file
+      youtube: The YouTube embedded link is invalid
+      restriction: Not a valid restriction
     request_contact:
       no_email: You must supply an email address
       email_sent: Thank you. We will be in touch shortly.
+      no_message: You must supply a message
     book_success: The item(s) were succesfully booked.
     success: " succesfully "
     fail_in_use: " cannot be removed - in use."

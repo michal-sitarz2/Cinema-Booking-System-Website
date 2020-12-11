@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
+  # Uses rescue if there is no cart found, shows an error message
+  # And redirects the user to the home page
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   before_action :set_cart, only: [:show, :update, :destroy]
+  # Can be accessed only if user signed in
   before_action :authenticate_user!
 
   # GET /carts/1
@@ -8,6 +11,7 @@ class CartsController < ApplicationController
   def show
   end
 
+  # Method created to make a booking automatically based on screenings in the cart
   def create_booking
     # Finding the cart based on the passed parameters
     cart = Cart.find_by(id: cart_params[:cart_id])

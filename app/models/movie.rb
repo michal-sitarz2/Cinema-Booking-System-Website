@@ -18,16 +18,16 @@ class Movie < ApplicationRecord
     # Checks whether the movie title is unique
     validates :title, uniqueness: true
     # Checks whether the director is only letters and spaces (and if more directors added, commas)
-    validates :director, format: { with:/\A[a-zA-Z, ]*\z/, message: "The directors have to be composed only of letters and spaces (and commas if more than 1)"}
+    validates :director, format: { with:/\A[a-zA-Z, ]*\z/, message: "#{I18n.t('messages.validations.directors')}"}
     # Checks whether the actors are only letters and spaces (and if more actors added, commas)
-    validates :actors, format: { with: /\A[a-zA-Z, ]*\z/, message: "The actors have to be composed only of letters and spaces (and commas if more than 1)"}
+    validates :actors, format: { with: /\A[a-zA-Z, ]*\z/, message: "#{I18n.t('messages.validations.actors')}"}
     # Checks if durations is a positive integer
     validates :duration, numericality: { only_integer: true, greater_than: 0}
     # Validates that the ending of the poster input is .jpg, .png or .gif
-    validates :poster, format: {with: /\A(.)+\.(jpg|png|gif)\z/, message: "The link has to be valid png, gif or jpg file."}
+    validates :poster, format: {with: /\A(.)+\.(jpg|png|gif)\z/, message: "#{I18n.t('messages.validations.images')}"}
     # Regex expression which verifies whether the link is youtube embedded link (e.g. https://www.youtube.com/embed/jkBfGvb7NzM)
-    validates :video, format: {with: /\A(https:\/\/www.youtube.com\/embed\/\w+)\z/, message: "The youtube embedded link is invalid."}
+    validates :video, format: {with: /\A(https:\/\/www.youtube.com\/embed\/\w+)\z/, message: "#{I18n.t('messages.validations.youtube')}"}
     # Checks if the restrictions are included in Motion Picture Association film rating system
-    validates :restrictions, inclusion: { in: %w(N/A R G PG PG-13 NC-17), message: "Not a valid restrictions."}
+    validates :restrictions, inclusion: { in: %w(N/A R G PG PG-13 NC-17), message: "#{I18n.t('messages.validations.restriction')}"}
 
 end

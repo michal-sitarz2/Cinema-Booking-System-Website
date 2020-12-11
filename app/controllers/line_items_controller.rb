@@ -1,14 +1,23 @@
 class LineItemsController < ApplicationController
+  # Uses the current cart
   include CurrentCart
 
   before_action :set_line_item, only: [:update, :destroy]
+  # When the line item is created, it needs to be put into a cart
   before_action :set_cart, only: [:create]
+  # Only accessible when users are logged in
   before_action :authenticate_user!
+
+  # Line items do not need any views as they are just used to store items
+  # in the cart. Once the cart is destroyed or emptied they are destroyed with it
+  # They are used to save a booking if user Books a screening.
 
   # POST /line_items
   # POST /line_items.json
   def create
+    # Finds screenings based on the screening id
     screening = Screening.find(params[:screening_id])
+    # Adds the newly created item to a cart
     @line_item = @cart.add_item(screening)
 
     respond_to do |format|

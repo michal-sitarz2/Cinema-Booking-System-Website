@@ -1,4 +1,6 @@
 class CinemasController < ApplicationController
+  # In order to perform any of the actions the user has to be an admin
+  # Except with index which are available to everyone accessing the site
   before_action :is_admin, except: [:index]
   before_action :set_cinema, only: [:edit, :update, :destroy]
 
@@ -6,7 +8,6 @@ class CinemasController < ApplicationController
   # GET /cinemas.json
   def index
     @cinemas = Cinema.all
-    @counter = 0
   end
 
 
@@ -54,6 +55,10 @@ class CinemasController < ApplicationController
   def destroy
     check = true
 
+    # Finds all the screenings that are played in the cinema, and filters them
+    # to be only the upcoming screenings. So that some old
+    # screenings that have not yet been deleted don't stop the cinema from
+    # being deleted.
     if Screening.where(cinema: @cinema.name).screening_upcoming.length > 0
       check = false
     end

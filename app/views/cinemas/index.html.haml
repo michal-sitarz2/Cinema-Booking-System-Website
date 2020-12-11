@@ -2,6 +2,7 @@
 %p=t('.about_paragraph')
 
 - if @cinemas.length != 0
+  - @counter = 0
   .container
     - @cinemas.each do |cinema|
       - if @counter.modulo(2) == 0

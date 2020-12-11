@@ -1,11 +1,12 @@
 class ScreeningsController < ApplicationController
+  # Users are not allowed to perform any actions except viewing show
+  # Only admin can perform the other actions and visit other views
   before_action :is_admin, except: [:index]
   before_action :set_screening, only: [:edit, :update, :destroy]
 
   # GET /screenings
   # GET /screenings.json
   def index
-
     # Checking if the parameters are defined
     if params[:screening]
       # Getting the date specified from the parameters

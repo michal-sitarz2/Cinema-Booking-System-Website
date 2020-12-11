@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  # Users are not allowed to perform any actions except viewing show
+  # Only admin can perform the other actions and visit other views
   before_action :is_admin, except: [:show]
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 

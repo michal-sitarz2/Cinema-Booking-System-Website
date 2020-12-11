@@ -22,14 +22,21 @@ class Screening < ApplicationRecord
   # Checks if available seats is a positive integer
   validates :available_seats, numericality: { only_integer: true, greater_than: 0}
   # Checks if the screening type is within the avaiable movie screening type
-  validates :screening_type, inclusion: { in: %w(2D 3D 4D), message: "Not a valid screening type. (2D, 3D, 4D, Extreme 2D)"}
+  validates :screening_type, inclusion: { in: %w(2D 3D 4D), message: "#{I18n.t('messages.validations.screening_type')}"}
 
+
+  # A method used to search for specific screenings based on the date and cinema it plays in
   def self.search(search)
+    # If parameters defined
     if search
       screenings = Screening.all
+      # Filters the screenings based on the cinema played in
       screenings = screenings.where(cinema: search[:":cinema"])
+      # Filters the filtered screenings based on the screening date passed in the parameter (search)
       screenings = screenings.where(screening_date: search[:":screening_date"])
+      # Returns filtered screenings
       return screenings
+    # If there are no parameters
     else
       return []
     end
