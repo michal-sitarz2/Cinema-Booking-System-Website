@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to allresources_url, notice: 'Movie was successfully created.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('movies.name') + I18n.t('messages.success') + I18n.t('messages.actions.create')}
         format.json { render :show, status: :created, location: allresources_url }
       else
         format.html { render :new }
@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to allresources_url, notice: 'Movie was successfully updated.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('movies.name') + I18n.t('messages.success') + I18n.t('messages.actions.update')}
         format.json { render :show, status: :ok, location: allresources_url }
       else
         format.html { render :edit }
@@ -74,13 +74,13 @@ class MoviesController < ApplicationController
       @movie.screenings.destroy_all
       @movie.destroy
       respond_to do |format|
-        format.html { redirect_to allresources_url, notice: 'Movie was successfully destroyed.' }
-        format.js   { flash[:notice] = 'Movie was succesfully destroyed.'}
+        format.html { redirect_to allresources_url, notice: I18n.t('movies.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy')}
+        format.js   { flash[:notice] = I18n.t('movies.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy')}
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to allresources_url, notice: 'Movie cannot be destroyed - the associated screenings are in use.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('movies.name') + I18n.t('messages.fail_screening_in_use')}
         format.json { head :no_content }
       end
     end

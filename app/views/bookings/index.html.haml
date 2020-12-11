@@ -1,6 +1,6 @@
-%h1= t('.header')
+%h1="#{t('actions.list')} #{t('bookings.name_p')}"
 
-%h3= t('.history')
+%h3= "#{t('bookings.name_p')} #{t('.history')}"
 - if @bookings_history.length > 0
   %section{:class=>'section'}
     .container
@@ -14,7 +14,7 @@
               = booking.movie_title
             %p
               = booking.cinema
-              = t('.in_arena')
+              = "#{t('in')} #{t('screenings.attributes.arena')}"
               = booking.arena
             %p
               = booking.booked_date
@@ -22,14 +22,14 @@
               = booking.booked_time
             %p
               %b
-                = t('.price')
+                = t('screenings.attributes.price')
               = number_to_currency(booking.total_price)
         %hr
 
 - else
-  %h3= t('.empty')
+  %h4= "#{t('bookings.name_p')}"
 
-%h3= t('.upcoming')
+%h3= "#{t('.upcoming')} #{t('bookings.name_p')}"
 - if @bookings.length > 0
   %section{:class=>'section'}
     .container
@@ -43,7 +43,7 @@
               = booking.movie_title
             %p
               = booking.cinema
-              = t('.in_arena')
+              = "#{t('in')} #{t('screenings.attributes.arena')}"
               = booking.arena
             %p
               = booking.booked_date
@@ -51,11 +51,11 @@
               = booking.booked_time
             %p
               %b
-                = t('.price')
+                = t('screenings.attributes.price')
               = number_to_currency(booking.total_price)
         .container
-          = link_to t('.cancel'), booking, method: :delete, data: {cofirm: "#{t('destroy_confirm')}"}
+          = link_to t('actions.cancel'), booking, method: :delete, data: {cofirm: "#{t('destroy_confirm')}"}
         %hr
 
 - else
-  %h3= t('.empty')
+  %h4= "#{t('bookings.name_p')} #{t('are')} #{t('actions.empty')}"

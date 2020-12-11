@@ -1,7 +1,7 @@
 = form_for @movie do |f|
   - if @movie.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@movie.errors.count, "error")} prohibited this movie from being saved:"
+      %h2= "#{pluralize(@movie.errors.count, "error")} #{t('prohibited_p1')} #{t('movies.name_l')} #{t('prohibited_p2')}#{t('colon')}"
       %ul
         - @movie.errors.full_messages.each do |message|
           %li= message

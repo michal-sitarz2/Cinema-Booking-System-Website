@@ -1,29 +1,29 @@
 %br
 .container{:id => "screenings_container"}
-  %h1{:id => "screenig_index_header"}= "#{t('.screening_for')} #{@date.strftime(t('date_format_2'))}"
+  %h1{:id => "screenig_index_header"}= "#{t('.screenings_for', date: @date.strftime(t('date_format_2')))}"
   %hr
   -@screenings.each do |movie, screenings|
     %br
     .row
       .col-xs-4.col-sm-3
-        %img{:class => "screening_index_images", :src => "#{movie.poster}", :alt => "#{movie.title} #{t('.poster_unavailable')}"}
+        %img{:class => "screening_index_images", :src => "#{movie.poster}", :alt => "#{movie.title} #{t('movies.errors.image_missing')}"}
       .col-xs-7
         %h3= "#{movie.title}"
         %p
-          %b= t('.director')
+          %b= "#{t('movies.attributes.director')}#{t('colon')}"
           = movie.director
         %p
           %b
-            = t('.actors')
+            = "#{t('movies.attributes.actors')}#{t('colon')}"
           = movie.actors
         %p
           %b
-            = t('.genres')
+            = "#{t('movies.attributes.genres')}#{t('colon')}"
           = movie.genre
         %p
           %b
-            = t('.duration')
-          = "#{movie.duration} #{t('.minute')}"
+            = "#{t('movies.attributes.duration')}#{t('colon')}"
+          = "#{t('minute', duration: movie.duration)}"
     %br
     %hr
     .row.justify-content-start
@@ -33,7 +33,6 @@
           %p{:class => "text_screening_type"}
             %b= screening.screening_type
             = t('vertical_line')
-            = t('pound')
-            = screening.price
+            = t('pound', price: screening.price)
     %hr
     %br

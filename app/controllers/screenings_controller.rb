@@ -40,7 +40,7 @@ class ScreeningsController < ApplicationController
 
     respond_to do |format|
       if @screening.save
-        format.html { redirect_to allresources_url, notice: 'Screening was successfully created.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('screenings.name') + I18n.t('messages.success') + I18n.t('messages.actions.create') }
         format.json { render :show, status: :created, location: allresources_url }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class ScreeningsController < ApplicationController
   def update
     respond_to do |format|
       if @screening.update(screening_params)
-        format.html { redirect_to allresources_url, notice: 'Screening was successfully updated.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('screenings.name') + I18n.t('messages.success') + I18n.t('messages.actions.update')}
         format.json { render :show, status: :ok, location: allresources_url }
       else
         format.html { render :edit }
@@ -68,10 +68,10 @@ class ScreeningsController < ApplicationController
   def destroy
     respond_to do |format|
       if @screening.destroy
-        format.html { redirect_to allresources_url, notice: 'Screening was successfully destroyed.' }
-        format.js   { flash[:notice] = 'Screening was succesfully destroyed.'}
+        format.html { redirect_to allresources_url, notice: I18n.t('screenings.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy')}
+        format.js   { flash[:notice] = I18n.t('screenings.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy')}
       else
-        format.html { redirect_to allresources_url, notice: 'Screening cannot be destroyed - in use.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('screenings.name') + I18n.t('messages.fail_in_use')}
 
       end
       format.json { head :no_content }

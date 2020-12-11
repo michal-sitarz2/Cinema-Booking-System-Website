@@ -7,28 +7,28 @@
       - if @counter.modulo(2) == 0
         .row
           .col-xs-6
-            %img{:class => "image_cinema_index",:src => "#{cinema.image}", :alt => "#{t('.image_missing')}"}
+            %img{:class => "image_cinema_index",:src => "#{cinema.image}", :alt => "#{t('movies.errors.image_missing')}"}
           .col-xs-6
             %p
-              %b= t('.name')
+              %b= "#{t('cinemas.attributes.name')}#{t('colon')}"
             %p= cinema.name
             %br
             %p
-              %b= t('.name')
+              %b= "#{t('cinemas.attributes.address')}#{t('colon')}"
             %p= cinema.name
 
       - else
         .row
           .col-xs-6
             %p
-              %b= t('.name')
+              %b= "#{t('cinemas.attributes.name')}#{t('colon')}"
             %p= cinema.name
             %br
             %p
-              %b= t('.address')
+              %b= "#{t('cinemas.attributes.address')}#{t('colon')}"
             %p= cinema.address
           .col-xs-6
-            %img{:class => "image_cinema_index", :src => "#{cinema.image}", :alt => "#{t('.image_missing')}"}
+            %img{:class => "image_cinema_index", :src => "#{cinema.image}", :alt => "#{t('movies.errors.image_missing')}"}
       - @counter+=1
       %br
       %hr

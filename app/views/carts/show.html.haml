@@ -1,6 +1,6 @@
 %br
 .keep-shopping.pv1.mt4.has-text-right
-  = link_to "#{t('.other')}", '/booking'
+  = link_to "#{t('.other')} #{t('screenings.name_p')}", '/booking'
 
 %br
 
@@ -21,10 +21,10 @@
             = item.screening.screening_time.strftime(t('time_format_1'))
           %p
             %b
-              = t('.price')
+              = "#{t('screenings.attributes.price')}#{t('colon')}"
             = number_to_currency(item.total_price)
           %p
-            = t('.arena')
+            = "#{t('screenings.attributes.arena')}#{t('colon')}"
             = item.screening.arena
       .container{id:"item_#{item.id}_remove"}
         = link_to "#{t('.remove')}", item, method: :delete, data: {cofirm: "#{t('destroy_confirm')}"}, remote: true
@@ -33,13 +33,13 @@
 
   .container
     .row
-      = button_to "#{t('.book')}", {:controller => "carts", :action => "create_booking", :cart => {"cart_id" => @cart}, :cart_id=> session[:cart_id]} , data: {confirm: "#{t('.confirm_book')}"}, :method=>:post
-      = button_to "#{t('.empty_cart')}", @cart, method: :delete, data: { confirm: "#{t('destroy_confirm')}"}
+      = button_to "#{t('bookings.name_v')}", {:controller => "carts", :action => "create_booking", :cart => {"cart_id" => @cart}, :cart_id=> session[:cart_id]} , data: {confirm: "#{t('.confirm_book')}"}, :method=>:post
+      = button_to "#{t('actions.empty')} #{t('carts.name')}", @cart, method: :delete, data: { confirm: "#{t('destroy_confirm')}"}
     .row.total.has-text-right
       %h4
         %span
-        = t('.total')
+        = "#{t('.total')}#{t('colon')}"
         = number_to_currency(@cart.total_price)
         = t('vertical_line')
-        = t('.quantity')
+        = "#{t('bookings.attributes.quantity')}#{t('colon')}"
         = @cart.total_quantity

@@ -13,7 +13,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to cart_url(@cart.id), notice: 'Item was successfully added.' }
+        format.html { redirect_to cart_url(@cart.id), notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.add') }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -27,7 +27,7 @@ class LineItemsController < ApplicationController
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
-        format.html { redirect_to cart_url(@cart.id), notice: 'Line item was successfully updated.' }
+        format.html { redirect_to cart_url(@cart.id), notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.update.')}
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -41,8 +41,8 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to cart_url(@cart.id), notice: 'Item was successfully removed.'}
-      format.js   { flash[:notice] = 'Item was removed.'}
+      format.html { redirect_to cart_url(@cart.id), notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.remove')}
+      format.js   { flash[:notice] = I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.remove')}
       format.json { head :no_content }
     end
   end

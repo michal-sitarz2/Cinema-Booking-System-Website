@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     def is_admin
       if user_signed_in?
         if not current_user.admin?
-          flash[:alert] = "Unauthorized access"
+          flash[:alert] = I18n.t('messages.unauthorized')
           redirect_to root_url
         end
       else

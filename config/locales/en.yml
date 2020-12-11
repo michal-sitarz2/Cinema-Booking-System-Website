@@ -33,6 +33,8 @@ en:
   app_title: Cinema Town
   app_description: A place where you reserve cinema tickets.
 
+
+  submit_button: Submit
   show_button: Show
   back_button: Back
   edit_button: Edit
@@ -42,173 +44,162 @@ en:
 
   error_lower: error
 
-  prohibited_p1: prohibited this
-  prohibited_p2: "from being saved:"
+  for: for
+  are: are
+  in: in
 
+  prohibited_p1: prohibited this
+  prohibited_p2: from being saved
+
+
+  pound: "£%{price}"
   vertical_line: "|"
   open_parantheses: "("
   close_parantheses: ")"
   arrow: "=>"
-  pound: "£"
+  comma: ","
+  colon: ":"
 
   date_format_1: "%d %B %Y"
   date_format_2: "%d %B"
-
   time_format_1: "%H:%M"
+  minute: "%{duration} min"
 
-  bookings:
-    index:
-      header: Listing Bookings
-      in_arena: in Arena
-      price: "Price: "
-      cancel: Cancel Booking
-      empty: Bookings are empty
-      history: Bookings History
-      upcoming: Upcoming Bookings
-  carts:
-    show:
-      other: Other Screenings
-      price: "Price:"
-      arena: "Arena:"
-      remove: Remove Item
-      book: Book
-      confirm_book: "Do you want to book?"
-      empty_cart: Empty Cart
-      total: "Total: "
-      quantity: "Quantity: "
+  actions:
+    edit: Editing
+    list: Listing
+    new: New
+    cancel: Cancel
+    empty: Empty
+    remove: Remove
 
-  cinemas:
-    edit:
-      header: Editing Cinema
-    new:
-      header: New Cinema
-      cinema: cinema
-    index:
-      about_header: About Us!
-      about_paragraph: We are a cinema booking service. On our home page you can see the upcoming movies and the most recent releases. Our booking page shows all the current screenings available in all our cinemas. Below you can find all the locations and cinemas where we screen movies. If there is anything we can help you with please visit the contact page and send as a message.
-      image_missing: Image Missing
-      name: "Name:"
-      address: "Address:"
-
-  screenings:
-    edit:
-      header: Editing Screening
-    new:
-      header: New Screening
-    index:
-      director: "Director:"
-      actors: "Actors:"
-      genres: "Genres:"
-      duration: "Duration:"
-      minute: min
-      poster_unavailable: Poster Currently Unavailable
-      add_cart_confirm: Add this item to cart?
-      screening_for: Screenings for
-
-  movies:
-    edit:
-      header: Editing Movie
-    new:
-      header: New Movie
-    show:
-      release_date: "Release Date:"
-      duration: "Duration:"
-      title: "Title:"
-      director: "Director:"
-      genres: "Genres:"
-      country: "Country:"
-      actors: "Actors:"
-      restrictions: "Age restrictions:"
-
-  shared:
-    header:
-      title: Cinema Town
-      home: Home
-      book_tickets: Book Tickets
-      resources_table: Resources Table
-      view_booking: View Bookings
-      sign_up: Sign Up
-      login: Login
-      contact: Contact Us
-      about_us: About Us
-      logo: Logo
-      burger_menu: ☰
-      close_X: ×
-
-
-  contact_mailer:
-    contact_email:
-      in_touch_message: Could you get in touch with me please?
-      name: "Name:"
-      email: "Email:"
-      telephone: "Telephone:"
-      dear: Dear
-      thanks: Thanks,
-
-  home:
-    home:
-      currently_playing: Currently Playing
-      view_more_current: View more currently playing movies...
-      cinema_dropdown: Cinemas
-      movies_dropdown: All the available movies
-      currently_screening: Currently in Cinemas
-      poster_unavailable: poster currently unavailable
-      upcoming_movies: Upcoming Movies
-
-
-    restable:
-      header_movies: Movies
-      header_screenings: Screenings
-      header_cinemas: Cinemas
-
-      table_header_poster: Poster
-      table_header_title: Title
-      table_header_director: Director
-      table_header_genre: Genre
-      table_header_duration: Duration
-      table_header_country: Country
-      table_header_release_date: Release Date
-      table_header_actors: Actors
-      table_header_restrictions: Restrict
-      table_header_summary: Summary
-
-      table_header_movie: Movie
-      table_header_price: Price
-      table_header_screening_time: Screening Time
-      table_header_screening_date: Screening Date
-      table_header_cinema: Cinema
-      table_header_arena: Arena
-      table_header_available_seats: Available Seats
-      table_hedear_sold_seats: Sold Seats
-      table_header_type: Type
-
-      table_header_cinema_name: Name
-      table_header_address: Address
-      table_header_image: Image
-
-      new_movie: New Movie
-      new_screening: New Screening
-      new_cinema: New Cinema
-
-    contact:
-      title: Get in Touch
-      contact_us: Please fill in the following form and we will be in touch shortly.
-
-      name: "Name:"
-      enter_name: Enter your Name
-      email: "Email:"
-      enter_email: Enter your email address
-      telephone: "Telephone:"
-      enter_telephone: Enter your telephone number
-      message: "Message"
-      enter_message: What do you want to say?
-      submit: Contact Us
-
+  messages:
     request_contact:
       no_email: You must supply an email address
       email_sent: Thank you. We will be in touch shortly.
+    book_success: The item(s) were succesfully booked.
+    success: " succesfully "
+    fail_in_use: " cannot be removed - in use."
+    fail_screening_in_use: " cannot be removed - associated screenings in use."
+    not_exist: " does not exist."
+    unauthorized: Unauthorized access
+    actions:
+      create: " created."
+      update: " updated."
+      destroy: " destroyed."
+      remove: " removed."
+      add: " added."
+      cancel: " cancelled."
+
+  items:
+    name: Item
+
+  movies:
+    name: Movie
+    name_p: Movies
+    name_l: movie
+    attributes:
+      title: Title
+      director: Director
+      genres: Genres
+      duration: Duration
+      country: Country
+      release_date: Release Date
+      poster: Poster
+      summary: Summary
+      actors: Actors
+      video: Video
+      restrictions: Restrictions
+    show:
+      age: Age
+
+  cinemas:
+    name: Cinema
+    name_p: Cinemas
+    name_l: cinema
+    attributes:
+      name: Name
+      address: Address
+      image: Image
+    index:
+      about_header: About Us!
+      about_paragraph: We are a cinema booking service. On our home page you can see the upcoming movies and the most recent releases. Our booking page shows all the current screenings available in all our cinemas. Below you can find all the locations and cinemas where we screen movies. If there is anything we can help you with please visit the contact page and send as a message.
+    errors:
+      image_missing: Poster Missing
+
+  screenings:
+    name: Screening
+    name_p: Screenings
+    name_l: screening
+    currently: Currently
+    attributes:
+      price: Price
+      arena: Arena
+      screening_time: Screening Time
+      screening_date: Screening Date
+      available: Available
+      sold: Sold
+      seats: Seats
+      type: Type
+    index:
+      add_cart_confirm: Add this item to cart?
+      screenings_for: "Screenings for %{date}"
+
+  carts:
+    name: Cart
+    name_p: Carts
+    name_l: cart
+    show:
+      other: Other
+      confirm_book: "Do you want to book?"
+      total: Total
+
+  bookings:
+    name: Booking
+    name_p: Bookings
+    name_l: booking
+    name_v: Book
+    attributes:
+      quantity: Quantity
+      user: User
+
+    index:
+      history: History
+      upcoming: Upcoming
+
+  contact:
+    name: Name
+    email: Email
+    telephone: Telephone
+
+  home:
+    contact:
+      title: Get in Touch
+      contact_us: Please fill in the following form and we will be in touch shortly.
+      enter: Enter your
+      number: number
+      message: Message
+      enter_message: What do you want to say?
+
+    contact_mailer:
+      contact_email:
+        in_touch_message: Could you get in touch with me please?
+        dear: Dear
+        thanks: Thanks,
 
     book_tickets:
-      header_book: "Currently Screening"
-      search_by: "Search By:"
-      submit_tag: Submit
+      search: Search By
+
+    shared:
+      header:
+        home: Home
+        book_tickets: Book Tickets
+        resources_table: Resources Table
+        view_booking: View Bookings
+        sign_up: Sign Up
+        login: Login
+        contact: Contact Us
+        about_us: About Us
+        logo: Logo
+        burger_menu: ☰
+        close_X: ×

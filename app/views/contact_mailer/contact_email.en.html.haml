@@ -1,13 +1,13 @@
 
-%p= "#{t('.dear')} #{t('app_title')},"
+%p= "#{t('.dear')} #{t('app_title')}#{t('comma')}"
 %p= t('.in_touch_message')
 
 %dl
-  %dt= t('.name')
+  %dt= "#{t('contact.name')}#{t('colon')}"
   %dd= @name
-  %dt= t('.email')
+  %dt= "#{t('contact.email')}#{t('colon')}"
   %dd= @email
-  %dt= t('.telephone')
+  %dt= "#{t('contact.telephone')}#{t('colon')}"
   %dd= @telephone
 
 %p= @message

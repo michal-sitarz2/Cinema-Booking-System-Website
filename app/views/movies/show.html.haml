@@ -12,11 +12,11 @@
         .row.justify-content-around
           .col-6
             %p
-              %b= t('.release_date')
+              %b= "#{t('movies.attributes.release_date')} #{t('colon')}"
             %p= @movie.release_date.strftime("%d/%m/%Y")
           .col-6
             %p
-              %b= t('.duration')
+              %b= "#{t('movies.attributes.duration')} #{t('colon')}"
             %p= @movie.duration
         %br
         %p{:id => "movie_summary_show"}= @movie.summary
@@ -24,22 +24,22 @@
         %table.table{:id => "movie_table_show"}
           %tbody
             %tr
-              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= t('.title')
+              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "#{t('movies.attributes.title')} #{t('colon')}"
               %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.title
             %tr
-              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= t('.director')
+              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "#{t('movies.attributes.director')} #{t('colon')}"
               %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.director
             %tr
-              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= t('.genres')
+              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "#{t('movies.attributes.genres')} #{t('colon')}"
               %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.genre
             %tr
-              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= t('.country')
+              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "#{t('movies.attributes.country')} #{t('colon')}"
               %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.country
             %tr
-              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= t('.actors')
+              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "#{t('movies.attributes.actors')} #{t('colon')}"
               %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.actors
             %tr
-              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= t('.restrictions')
+              %td{:scope => "row", :class => "movie_res_table_cell_first_col"}= "#{t('.age')} #{t('movies.attributes.restrictions')} #{t('colon')}"
               %td{:scope => "row", :class => "movie_res_table_cell_second_col"}= @movie.restrictions
 
       .col-sm-4

@@ -26,7 +26,7 @@ class CinemasController < ApplicationController
 
     respond_to do |format|
       if @cinema.save
-        format.html { redirect_to allresources_url, notice: 'Cinema was successfully created.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.create') }
         format.json { render :show, status: :created, location: allresources_url }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class CinemasController < ApplicationController
   def update
     respond_to do |format|
       if @cinema.update(cinema_params)
-        format.html { redirect_to allresources_url, notice: 'Cinema was successfully updated.' }
+        format.html { redirect_to allresources_url, notice: I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.update') }
         format.json { render :show, status: :ok, location: allresources_url }
       else
         format.html { render :edit }
@@ -54,8 +54,8 @@ class CinemasController < ApplicationController
   def destroy
     @cinema.destroy
     respond_to do |format|
-      format.html { redirect_to allresources_url, notice: 'Cinema was successfully destroyed.' }
-      format.js   { flash[:notice] = 'Cinema was succesfully destroyed.'}
+      format.html { redirect_to allresources_url, notice: I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy') }
+      format.js   { flash[:notice] = I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy')}
       format.json { head :no_content }
     end
   end

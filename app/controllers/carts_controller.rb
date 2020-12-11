@@ -21,7 +21,7 @@ class CartsController < ApplicationController
     # Destroying the cart (and in turn all the line items in the cart) and redirecting the user to the home page
     cart.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'The item(s) were successfully booked.' }
+      format.html { redirect_to root_path, notice: I18n.t('messages.book_success') }
       format.json { head :no_content }
     end
   end
@@ -34,7 +34,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        format.html { redirect_to @cart, notice: I18n.t('carts.name') + I18n.t('messages.success') + I18n.t('messages.actions.create') }
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class CartsController < ApplicationController
   def update
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to @cart, notice: I18n.t('carts.name') + I18n.t('messages.success') + I18n.t('messages.actions.update')}
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: I18n.t('carts.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy') }
       format.json { head :no_content }
     end
   end
@@ -80,6 +80,6 @@ class CartsController < ApplicationController
 
     # If the cart was not found it redirects the user to home page (uses rescue if record not found)
     def invalid_cart
-      redirect_to root_path, notice: "Cart does not exist"
+      redirect_to root_path, notice: I18n.t('carts.name') + I18n.t('messages.not_exist')
     end
 end

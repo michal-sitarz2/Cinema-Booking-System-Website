@@ -1,21 +1,21 @@
 #resources_div
-  %h2= t('.header_movies')
+  %h2= t('movies.name_p')
 
   %br
 
   %table.table.table-hover{:id => "movie_res_table"}
     %thead
       %tr
-        %th{:scope => "col"}= t('.table_header_poster')
-        %th{:scope => "col"}= t('.table_header_title')
-        %th{:scope => "col"}= t('.table_header_director')
-        %th{:scope => "col"}= t('.table_header_genre')
-        %th{:scope => "col"}= t('.table_header_duration')
-        %th{:scope => "col"}= t('.table_header_country')
-        %th{:scope => "col"}= t('.table_header_release_date')
-        %th{:scope => "col"}= t('.table_header_actors')
-        %th{:scope => "col"}= t('.table_header_restrictions')
-        %th{:scope => "col", :id => "summary_column"}= t('.table_header_summary')
+        %th{:scope => "col"}= t('movies.attributes.poster')
+        %th{:scope => "col"}= t('movies.attributes.title')
+        %th{:scope => "col"}= t('movies.attributes.director')
+        %th{:scope => "col"}= t('movies.attributes.genres')
+        %th{:scope => "col"}= t('movies.attributes.duration')
+        %th{:scope => "col"}= t('movies.attributes.country')
+        %th{:scope => "col"}= t('movies.attributes.release_date')
+        %th{:scope => "col"}= t('movies.attributes.actors')
+        %th{:scope => "col"}= t('movies.attributes.restrictions')
+        %th{:scope => "col", :id => "summary_column"}= t('movies.attributes.summary')
         %th{:scope => "col"}
     %tbody
       - @movies.each_with_index do |movie,i|
@@ -38,30 +38,29 @@
             %br
             = link_to t('destroy_button'), movie, method: :delete, data: { confirm: t('destroy_confirm') }, remote: true
 
-
   %br
 
-  = link_to t('.new_movie'), new_movie_path
+  = link_to "#{t('actions.new')} #{t('movies.name')}", new_movie_path
 
   %br
   %br
 
-  %h2= t('.header_screenings')
+  %h2= t('screenings.name_p')
 
   %br
 
   %table.table.table-hover
     %thead
       %tr
-        %th{:scope => "col"}= t('.table_header_movie')
-        %th{:scope => "col"}= t('.table_header_price')
-        %th{:scope => "col"}= t('.table_header_screening_time')
-        %th{:scope => "col"}= t('.table_header_screening_date')
-        %th{:scope => "col"}= t('.table_header_cinema')
-        %th{:scope => "col"}= t('.table_header_arena')
-        %th{:scope => "col"}= t('.table_header_available_seats')
-        %th{:scope => "col"}= t('.table_hedear_sold_seats')
-        %th{:scope => "col"}= t('.table_header_type')
+        %th{:scope => "col"}= t('movies.name')
+        %th{:scope => "col"}= t('screenings.attributes.price')
+        %th{:scope => "col"}= t('screening.attributes.screening_time')
+        %th{:scope => "col"}= t('screening.attributes.screening_date')
+        %th{:scope => "col"}= t('cinemas.name')
+        %th{:scope => "col"}= t('screenings.attributes.arena')
+        %th{:scope => "col"}= "#{t('screenings.attributes.available')} #{t('screenings.attributes.seats')}"
+        %th{:scope => "col"}= "#{t('screenings.attributes.sold')} #{t('screenings.attributes.seats')}"
+        %th{:scope => "col"}= t('screenings.attributes.type')
         %th{:scope => "col"}
         %th{:scope => "col"}
         %th{:scope => "col"}
@@ -82,19 +81,19 @@
           %td{:scope => "row"}= link_to t('destroy_button'), screening, method: :delete, data: { confirm: t('destroy_confirm') }, remote: true
   %br
 
-  = link_to t('.new_screening'), new_screening_path
+  = link_to "#{t('actions.new')} #{t('screenings.name')}", new_screening_path
 
   %br
   %br
 
-  %h2= t('.header_cinemas')
+  %h2= t('cinemas.name_p')
 
   %table.table.table-hover{:id => "cinema_res_table"}
     %thead
       %tr
-        %th{:scope => "col"}= t('.table_header_cinema_name')
-        %th{:scope => "col"}= t('.table_header_address')
-        %th{:scope => "col"}= t('.table_header_image')
+        %th{:scope => "col"}= t('cinemas.attributes.name')
+        %th{:scope => "col"}= t('cinemas.attributes.address')
+        %th{:scope => "col"}= t('cinemas.attributes.image')
         %th{:scope => "col"}
         %th{:scope => "col"}
         %th{:scope => "col"}
@@ -111,4 +110,32 @@
 
   %br
 
-  = link_to t('.new_cinema'), new_cinema_path
+  = link_to "#{t('actions.new')} #{t('cinemas.name')}", new_cinema_path
+
+  %br
+  %br
+
+  %h2= t('bookings.name_p')
+
+  %table.table.table-hover{:id => "cinema_res_table"}
+    %thead
+      %tr
+        %th{:scope => "col"}= t('bookings.attributes.user')
+        %th{:scope => "col"}= t('movies.name')
+        %th{:scope => "col"}= t('screenings.attributes.screening_time')
+        %th{:scope => "col"}= t('screenings.attributes.screening_time')
+        %th{:scope => "col"}= t('bookings.attributes.quantity')
+
+    %tbody
+      - @bookings.each do |booking|
+        %tr
+          %td{:scope => "row"}= User.find_by(booking.user_id).email
+          %td{:scope => "row"}= booking.movie_title
+          %td{:scope => "row"}= booking.booked_time
+          %td{:scope => "row"}= booking.booked_date
+          %td{:scope => "row"}= booking.quantity
+
+
+  %br
+
+  = link_to "#{t('actions.new')} #{t('bookings.name')}", new_cinema_path

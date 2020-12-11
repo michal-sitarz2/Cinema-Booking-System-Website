@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to @booking, notice: I18n.t('bookings.name') + I18n.t('messages.success') + I18n.t('messages.actions.create') }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
+        format.html { redirect_to @booking, notice: I18n.t('bookings.name') + I18n.t('messages.success') + I18n.t('messages.actions.update.')}
         format.json { render :show, status: :ok, location: @booking }
       else
         format.html { render :edit }
@@ -43,7 +43,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully cancelled.' }
+      format.html { redirect_to bookings_url, notice: I18n.t('bookings.name') + I18n.t('messages.success') + I18n.t('messages.actions.cancel') }
       format.json { head :no_content }
     end
   end
