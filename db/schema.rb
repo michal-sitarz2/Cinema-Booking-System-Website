@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_124650) do
+ActiveRecord::Schema.define(version: 2020_12_11_181815) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_124650) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "image", null: false
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2020_12_09_124650) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "actors"
-    t.string "video"
-    t.string "restrictions"
+    t.string "video", null: false
+    t.string "restrictions", default: "N/A"
     t.index ["title"], name: "index_movies_on_title", unique: true
   end
 

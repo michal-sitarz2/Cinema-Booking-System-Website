@@ -3,7 +3,9 @@
 one:
   name: MyString
   address: MyString
+  image: example.jpg
 
 two:
   name: MyString2
   address: MyString
+  image: example2.jpg

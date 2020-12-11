@@ -4,7 +4,7 @@ one:
   movie: one
   movie_id: 1
   price: 9.99
-  screening_time: 2020-11-24 08:14:39
+  screening_time: 2020-11-24 20:00:00
   screening_date: 2020-11-24
   arena: MyString
   cinema: Cinema
@@ -15,7 +15,7 @@ two:
   movie: two
   movie_id: 1
   price: 9.99
-  screening_time: 2020-11-24 08:14:39
+  screening_time: 2020-11-24 20:00:00
   screening_date: 2020-11-24
   arena: MyString
   cinema: Cinema
