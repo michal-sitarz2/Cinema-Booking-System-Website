@@ -1,18 +1,53 @@
-%h1= t('.title')
-%p= t('.contact_us')
 
-#ContactForm
-  = form_tag request_contact_path, method: 'post', :html => {:id => "contactForm"} do
-    = label_tag :name, "#{t('contact.name')}#{t('colon')}"
-    = text_field_tag :name, '', title: "#{t('.enter')} #{t('contact.name')}", size: 50
+.container-fluid
+  .col-md-6.mx-auto
+    = form_tag request_contact_path, method: 'post', :html => {:id => "contactForm"} do
+      .form-group.row
+        %h1= t('.title')
+        %br
+      .row
+        %p= t('.contact_us')
+      .row
+        = label_tag :name, "#{t('contact.name')}#{t('colon')}"
+      .row
+        = text_field_tag :name, '', title: "#{t('.enter')} #{t('contact.name')}", placeholder: "#{t('contact.name')}", size:40, class: "input_text_field"
+      .row
+        = label_tag :email, "#{t('contact.email')}#{t('colon')}"
+      .row
+        = email_field_tag :email, '', title: "#{t('.enter')} #{t('contact.email')}", placeholder: "#{t('contact.email')}", size:40, class: "input_text_field"
+      .row
+        = label_tag :telephone, "#{t('contact.telephone')}#{t('colon')}"
+      .row
+        = telephone_field_tag :telephone, '', title: "#{t('.enter')} #{t('contact.telephone')} #{t('.number')}", placeholder: "#{t('contact.telephone')}", size: 40, class: "input_text_field"
+      .row
+        = label_tag :message, t('.message')
+      .row
+        = text_area_tag :message, '', title: t('.enter_message'), id: "message_box_contact", placeholder: "#{t('.message')}"
+      .row.body
+        = submit_tag t('home.shared.header.contact'),:class => "btn btn-outline-secondary"
 
-    = label_tag :email, "#{t('contact.email')}#{t('colon')}"
-    = email_field_tag :email, '', title: "#{t('.enter')} #{t('contact.email')}"
+  .row
+    .col.column-2
+      .div-paragraph
+        %br
+        %br
+        %h2= "#{t('.connect')}#{t('colon')}"
+        %br
+        %p= "#{t('.support')}#{t('colon')}"
+        %p
+        = "#{t('.email_us')}"
+        = "#{t('.email_example')}"
 
-    = label_tag :telephone, "#{t('contact.telephone')}#{t('colon')}"
-    = telephone_field_tag :telephone, '', title: "#{t('.enter')} #{t('contact.telephone')} #{t('.number')}"
+      .div-paragraph
+        %h4
+          %b= "#{t('.town_country_1')}"
+        %p= "#{t('.random_street_1')}"
+        %p= "#{t('.town_1')}"
+        %p= "#{t('.country')}"
 
-    = label_tag :message, t('.message')
-    = text_field_tag :message, '', title: t('.enter_message'), size: 100
-
-    = submit_tag t('home.shared.header.contact')
+      .div-paragraph
+        %h4
+          %b= "#{t('.town_country_1')}"
+        %p= "#{t('.random_street_2')}"
+        %p= "#{t('.town_1')}"
+        %p= "#{t('.country')}"

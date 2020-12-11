@@ -3,7 +3,7 @@
 one:
   user: one
   movie_title: MyString
-  booked_date: MyString
+  booked_date: 2020-12-2
   booked_time: MyString
   quantity: 1
   cinema: MyString
@@ -13,7 +13,7 @@ one:
 two:
   user: two
   movie_title: MyString
-  booked_date: MyString
+  booked_date: 2020-12-2
   booked_time: MyString
   quantity: 1
   cinema: MyString

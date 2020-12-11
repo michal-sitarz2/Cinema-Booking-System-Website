@@ -306,3 +306,40 @@ form label, form input {
   display: block;
   margin: 10px;
 }
+
+
+/* Contact Page Style */
+#message_box_contact {
+  height: 150px;
+  resize: true;
+  width: 400px;
+  margin-left: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 12px 12px;
+  border: 1px solid #ccc;
+}
+
+.py-5.w-80 {
+  margin-left: 5%;
+}
+
+.input_text_field {
+  height: 40px;
+}
+
+.container-fluid{
+  width: 60% !important;
+  padding-top: 30px;
+}
+
+.div-paragraph {
+  padding-bottom: 40px;
+}
+
+.btn-outline-secondary {
+  margin-left: 150px;
+  margin-top: 20px;
+  border-color: grey !important;
+  border-style: solid 1px !important;
+}

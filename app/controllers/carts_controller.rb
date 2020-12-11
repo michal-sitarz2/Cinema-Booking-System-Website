@@ -11,7 +11,7 @@ class CartsController < ApplicationController
   def show
   end
 
-  # Method created to make a booking automatically based on screenings in the cart
+  # Method created to make a booking automatically based on screenings in the cart, passed as parameters
   def create_booking
     # Finding the cart based on the passed parameters
     cart = Cart.find_by(id: cart_params[:cart_id])

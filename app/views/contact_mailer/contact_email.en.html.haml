@@ -1,16 +1,30 @@
 
-%p= "#{t('.dear')} #{t('app_title')}#{t('comma')}"
-%p= t('.in_touch_message')
+%p= "#{t('home.contact_mailer.contact_email.dear')} #{t('app_title')}#{t('comma')}"
+%p= t('home.contact_mailer.contact_email.in_touch_message')
 
-%dl
-  %dt= "#{t('contact.name')}#{t('colon')}"
-  %dd= @name
-  %dt= "#{t('contact.email')}#{t('colon')}"
-  %dd= @email
-  %dt= "#{t('contact.telephone')}#{t('colon')}"
-  %dd= @telephone
+%table
+  %thead
+    %tr
+      %th{:scope => "col"}= "#{t('contact.name')}#{t('colon')}"
+      %th
+      %th{:scope => "col"}= "#{t('contact.email')}#{t('colon')}"
+      %th
+      %th{:scope => "col"}= "#{t('contact.telephone')}#{t('colon')}"
+  %tbody
+    %tr
+      %td{:scope => "row"}
+        %b= @name
+      %td
+      %td{:scope => "row"}
+        %b= @email
+      %td
+      %td{:scope => "row"}
+        %b= @telephone
 
-%p= @message
+%br
 
-%p= t('.thanks')
-%p= @name
+%em=@message
+
+%p= t('.regards')
+%p
+  %b= @name

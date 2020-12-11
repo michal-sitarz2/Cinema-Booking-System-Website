@@ -11,30 +11,31 @@
         %p{:id => "cart-number"}
           = cart_count_over_one
 
+  %br
   #nav_title
     %h1{:id => "pageTitle"}
-      %a{:id=>"pageTitleLink", :href => "/"}= t('app_title')
-      = image_tag("film-roll.png", :alt => "#{t('app_title')} #{t('.logo')}", :id => "imageLogo")
+      %a{:id=>"pageTitleLink", :href => root_url}= t('app_title')
+      = image_tag("film-roll.png", :alt => "#{t('app_title')} #{t('home.shared.header.logo')}", :id => "imageLogo")
 
   %hr{:id => "horizontalLine"}
 
   #navbar_button
-    %button.openbtn{:onclick => "openNav()"}= t('.burger_menu')
+    %button.openbtn{:onclick => "openNav()"}= t('home.shared.header.burger_menu')
 
   #nav
     %nav{:class => "navbar navbar-static-top navbar-expand-sm nav-pills nav-fill bg-dark navbar-dark justify-content-center"}
       %ul{:class => "navbar-nav"}
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "/"}= t('.home')
+          %a{:class => "nav-link", :href => root_url}= t('home.shared.header.home')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "/booking"}= t('.book_tickets')
+          %a{:class => "nav-link", :href => "/booking"}= t('home.shared.header.book_tickets')
         - if user_signed_in? and current_user.admin
           %li{:class => "nav-item"}
-            %a{:class => "nav-link", :href => "/allresources"}= t('.resources_table')
+            %a{:class => "nav-link", :href => allresources_url}= t('home.shared.header.resources_table')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "/cinemas"}= t('.about_us')
+          %a{:class => "nav-link", :href => cinemas_url}= t('home.shared.header.about_us')
         %li{:class => "nav-item"}
-          %a{:class => "nav-link", :href => "/contact"}= t('.contact')
+          %a{:class => "nav-link", :href => contact_url}= t('home.shared.header.contact')
         - if not user_signed_in?
           %li{:class => "nav-item"}
             = link_to t('login'),  new_user_session_path, class: "nav-link"
@@ -42,23 +43,23 @@
             = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
         - else
           %li{:class => "nav-item"}
-            %a{:class => "nav-link", :href => "/bookings"}= t('.view_booking')
+            %a{:class => "nav-link", :href => "/bookings"}= t('home.shared.header.view_booking')
 
 
 
   #mySidebar.sidebar
-    %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"}= t('.close_X')
-    %a{:href => "/"}= t('.home')
-    %a{:href => "/booking"}= t('.book_tickets')
+    %a.closebtn{:href => "javascript:void(0)", :onclick => "closeNav()"}= t('home.shared.header.close_X')
+    %a{:href => root_path}= t('home.shared.header.home')
+    %a{:href => "/booking"}= t('home.shared.header.book_tickets')
     - if user_signed_in? and current_user.admin
-      %a{:href => "/allresources"}= t('.resources_table')
-    %a{:href => "/cinemas"}= t('.about_us')
-    %a{:href => "/contact"}= t('.contact')
+      %a{:href => allresources_url}= t('home.shared.header.resources_table')
+    %a{:href => cinemas_url}= t('home.shared.header.about_us')
+    %a{:href => contact_url}= t('home.shared.header.contact')
     - if not user_signed_in?
       = link_to t('login'),  new_user_session_path, class: "nav-link"
       = link_to t('sign_up'), new_user_registration_path, class: "nav-link"
     - else
-      %a{:class => "nav-link", :href => "/bookings"}= t('.view_booking')
+      %a{:class => "nav-link", :href => "/bookings"}= t('home.shared.header.view_booking')
 
 
 - flash.each do |key, value|

@@ -188,12 +188,23 @@ en:
       number: number
       message: Message
       enter_message: What do you want to say?
+      connect: Connect with us
+      support: If you need support or got any questions
+      email_us: Email us at
+      email_example: cinema_town@gmail.com
+      town_country_1: GUILDFORD, ENGLAND
+      town_country_2: LONDON, ENGLAND
+      random_street_1: 15 Guildford Park Street 3D
+      random_street_2: 120 Hudson St. 2C
+      town_1: Surrey, Guildford
+      town_2: Greater London, London
+      country: England
 
     contact_mailer:
       contact_email:
         in_touch_message: Could you get in touch with me please?
         dear: Dear
-        thanks: Thanks,
+        regards: Kind Regards,
 
     book_tickets:
       search: Search By

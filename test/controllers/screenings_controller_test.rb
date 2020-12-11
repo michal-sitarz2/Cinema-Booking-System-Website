@@ -35,7 +35,7 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update screening" do
     patch screening_url(@screening), params: { screening: { arena: @screening.arena, movie_id: @movie.id, cinema: @screening.cinema, available_seats: @screening.available_seats, price: @screening.price, screening_date: @screening.screening_date, screening_time: @screening.screening_time } }
-    assert_redirected_to "/allresources"
+    assert_redirected_to allresources_url
   end
 
   test "should destroy screening" do
