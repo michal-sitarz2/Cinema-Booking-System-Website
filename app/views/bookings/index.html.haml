@@ -1,5 +1,35 @@
 %h1= t('.header')
 
+%h3= t('.history')
+- if @bookings_history.length > 0
+  %section{:class=>'section'}
+    .container
+      %hr
+      - @bookings_history.each do |booking|
+        .row
+          .col-xs-3.col-sm-2.table-quantity-booking
+            %p= booking.quantity
+          .col-xs-9.col-sm-10.col-mid-9
+            %h4
+              = booking.movie_title
+            %p
+              = booking.cinema
+              = t('.in_arena')
+              = booking.arena
+            %p
+              = booking.booked_date
+              = t('arrow')
+              = booking.booked_time
+            %p
+              %b
+                = t('.price')
+              = number_to_currency(booking.total_price)
+        %hr
+
+- else
+  %h3= t('.empty')
+
+%h3= t('.upcoming')
 - if @bookings.length > 0
   %section{:class=>'section'}
     .container

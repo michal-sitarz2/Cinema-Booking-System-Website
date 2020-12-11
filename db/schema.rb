@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_124650) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "movie_title", null: false
-    t.string "booked_date", null: false
+    t.date "booked_date", null: false
     t.string "booked_time", null: false
     t.integer "quantity", null: false
     t.string "cinema", null: false

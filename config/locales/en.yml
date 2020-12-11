@@ -63,7 +63,8 @@ en:
       price: "Price: "
       cancel: Cancel Booking
       empty: Bookings are empty
-
+      history: Bookings History
+      upcoming: Upcoming Bookings
   carts:
     show:
       other: Other Screenings

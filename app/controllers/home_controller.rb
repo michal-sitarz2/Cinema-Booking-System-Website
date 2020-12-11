@@ -2,15 +2,26 @@ class HomeController < ApplicationController
   before_action :is_admin, only: [:restable]
 
   def home
-    @upcoming_movies = Movie.release_after_today
-    @released_movies = Movie.release_before_today
+    @upcoming_movies = Movie.release_after(Date.today)
+    @released_movies = Movie.release_before(Date.today)
 
   end
 
   def restable
     @movies = Movie.all
     @cinemas = Cinema.all
-    @screenings = Screening.all
+
+    # Filters all the screenings that have not happened yet
+    @screenings = Screening.screening_upcoming
+
+    # Destroying screenings that have passed
+    screenings_passed = Screening.screening_passed
+    screenings_passed.destroy_all
+
+
+    # Bookings filtered to show upcoming ones, not the history
+    @bookings = Booking.booking_upcoming
+
   end
 
 

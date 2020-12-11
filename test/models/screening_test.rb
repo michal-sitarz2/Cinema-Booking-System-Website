@@ -92,4 +92,25 @@ class ScreeningTest < ActiveSupport::TestCase
     refute Screening.find_by(id: screening.id)
   end
 
+  test 'should get screenings in the past' do
+    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60, screening_type: "3D")
+    screening.save
+    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,03), available_seats: 60, screening_type: "3D")
+    screening.save
+    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2022,02,02), available_seats: 60, screening_type: "3D")
+    screening.save
+
+    assert Screening.screening_passed.length() == 4
+  end
+
+  test 'should get upcoming screening' do
+    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,02), available_seats: 60, screening_type: "3D")
+    screening.save
+    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2020,02,03), available_seats: 60, screening_type: "3D")
+    screening.save
+    screening = Screening.create(movie_id: @movie[:id], cinema: @cinema[:name], arena: "2C", price: 9.99, screening_time: Time.now, screening_date: Date.new(2022,02,02), available_seats: 60, screening_type: "3D")
+    screening.save
+
+    assert Screening.screening_upcoming.length() == 1
+  end
 end

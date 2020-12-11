@@ -1,6 +1,14 @@
 class Screening < ApplicationRecord
 
-  
+  # Filters the screenings on whether they have already been screened
+  scope :screening_passed, -> {
+    where("screening_date < ?", Date.today)
+  }
+
+  # Filters the screenings that have not yet screened
+  scope :screening_upcoming, -> {
+    where("screening_date >= ?", Date.today)
+  }
 
   belongs_to :movie
   validates :movie, :price, :screening_date, :cinema, :screening_time, :arena, :available_seats, presence: true

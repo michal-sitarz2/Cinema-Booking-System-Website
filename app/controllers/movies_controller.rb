@@ -52,8 +52,9 @@ class MoviesController < ApplicationController
     # Defining a flag which determines whether a movie can be deleted
     check = true
 
-    # If there is a booking with the movie, the movie cannot be deleted
-    if Booking.where(movie_title: @movie.title).first
+    # If there is a booking with the movie, the movie cannot be deleted unless the booking is past (in history)
+    bookings_with_movie = Booking.where(movie_title: @movie.title)
+    if bookings_with_movie.booking_upcoming.length > 0
       check = false
     end
 

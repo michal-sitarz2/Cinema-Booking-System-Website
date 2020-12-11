@@ -4,7 +4,8 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.where(:user_id => current_user.id)
+    @bookings_history = Booking.find_user(current_user.id).booking_history
+    @bookings = Booking.find_user(current_user.id).booking_upcoming
   end
 
   # POST /bookings

@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 
     # Creating a booking for every item in the cart, for that user (owner of the cart)
     cart.line_items.each do |item|
-      booking = Booking.create(user_id: cart.user_id, movie_title: item.screening.movie.title, booked_date: item.screening.screening_date.strftime("%d/%m/%Y"), booked_time: item.screening.screening_time.strftime("%H:%M"), quantity: item.quantity, cinema: item.screening.cinema, arena: item.screening.arena, total_price: item.total_price)
+      booking = Booking.create(user_id: cart.user_id, movie_title: item.screening.movie.title, booked_date: item.screening.screening_date, booked_time: item.screening.screening_time.strftime("%H:%M"), quantity: item.quantity, cinema: item.screening.cinema, arena: item.screening.arena, total_price: item.total_price)
       booking.save
     end
 
