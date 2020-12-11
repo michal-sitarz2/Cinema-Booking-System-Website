@@ -5,22 +5,43 @@ class ScreeningsController < ApplicationController
   # GET /screenings
   # GET /screenings.json
   def index
+
+    # Checking if the parameters are defined
+    if params[:screening]
+      # Getting the date specified from the parameters
+      date = params[:screening][:":screening_date"].split('-')
+      # Converting it from string to date to be used in the view
+      @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
+    # If no parameters (e.g. if back pressed) takes back to booking page with dropdowns
+    # to select the date and the cinema
+    else
+      redirect_to booking_url
+    end
+
+    # Uses a Screening method searching for screenings with
+    # specific date and specific cinema, passed in through parameters.
     screenings = Screening.search(params[:screening])
 
+    # Using a hash map to map movies to screenings on that day and in that cinema
     @screenings = {}
     screenings.each do |screening|
+      # If there is already a movie with the key then the screening is appended to already existing movie
       if @screenings.key?(screening.movie)
         @screenings[screening.movie].append(screening)
+      # Else the movie is added as the key and an empty array is defined as the key
       else
         @screenings[screening.movie] = []
+        # Add the screening as the value of the array corresponding to that movie
         @screenings[screening.movie].append(screening)
       end
     end
-    if params[:screening]
-      date = params[:screening][:":screening_date"].split('-')
-      @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
-    else
-      @date = Date.today()
+
+    # Iterating through all the movies in the hash
+    @screenings.each do |movie, screening|
+        # Sorting each screening array based on the screening_time
+        screening = screening.sort_by {|s| s.screening_time}
+        # Replacing the previous screening time with the sorted array of screenings for that movie
+        @screenings[movie] = screening
     end
   end
 

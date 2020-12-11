@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :bookings, except: [:new, :edit, :show]
   resources :line_items, except: [:new, :edit, :index, :show]
   resources :carts, except: [:new,:edit,:index]
-  devise_for :users
   resources :cinemas, except: [:show]
   resources :screenings, except: [:show]
   resources :movies, except: [:index]
+  devise_for :users
 
   root 'home#home'
   get 'home/book_tickets'
