@@ -52,11 +52,23 @@ class CinemasController < ApplicationController
   # DELETE /cinemas/1
   # DELETE /cinemas/1.json
   def destroy
-    @cinema.destroy
-    respond_to do |format|
-      format.html { redirect_to allresources_url, notice: I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy') }
-      format.js   { flash[:notice] = I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy')}
-      format.json { head :no_content }
+    check = true
+
+    if Screening.where(cinema: @cinema.name).screening_upcoming.length > 0
+      check = false
+    end
+
+    if check
+      @cinema.destroy
+      respond_to do |format|
+        format.html { redirect_to allresources_url, notice: I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy') }
+        format.js   { flash[:notice] = I18n.t('cinemas.name') + I18n.t('messages.success') + I18n.t('messages.actions.destroy')}
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to allresources_url, notice: I18n.t('cinemas.name') + I18n.t('messages.fail_in_use')}
+      end
     end
   end
 
