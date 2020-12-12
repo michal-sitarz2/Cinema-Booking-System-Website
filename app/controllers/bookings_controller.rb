@@ -31,20 +31,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookings/1
-  # PATCH/PUT /bookings/1.json
-  def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: I18n.t('bookings.name') + I18n.t('messages.success') + I18n.t('messages.actions.update.')}
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy

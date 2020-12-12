@@ -1,7 +1,7 @@
 
 .container-fluid
   .col-md-6.mx-auto
-    = form_tag request_contact_path, method: 'post', :html => {:id => "contactForm"} do
+    = form_tag request_contact_path, method: 'post', :id => "contactForm" do
       .form-group.row
         %h1= t('.title')
         %br

@@ -1,4 +1,4 @@
-= form_for @movie do |f|
+= form_for @movie, :html => {:id => "movieForm"} do |f|
   - if @movie.errors.any?
     #error_explanation
       %h2= "#{pluralize(@movie.errors.count, "error")} #{t('prohibited_p1')} #{t('movies.name_l')} #{t('prohibited_p2')}#{t('colon')}"
@@ -20,7 +20,7 @@
     = f.text_field :actors
   .field
     = f.label :restrictions
-    = f.text_field :restrictions
+    = f.text_field :restrictions, class: "isRestriction"
   .field
     = f.label :duration
     = f.number_field :duration

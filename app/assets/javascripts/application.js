@@ -35,72 +35,134 @@ function closeNav() {
   document.body.style.backgroundColor = "white";
 }
 
+$.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+    },
+    "Please check your input."
+);
+
+$.validator.addMethod('positiveNumber',
+    function (value) {
+        return Number(value) > 0;
+    }, 'Enter a positive number.');
+
+$.validator.addMethod("isRestriction", function(value) {
+    var states = [
+      "N/A", "R", "G", "PG", "PG-13", "NC-17"
+    ];
+    return $.inArray(value.toUpperCase(), states) != -1;
+}, "Please choose one of the following: 'N/A', 'R', 'G', 'PG', 'PG-13', 'NC-17'");
+
+$.validator.addMethod("isType", function(value) {
+    var states = [
+      "2D", "3D", "4D"
+    ];
+    return $.inArray(value.toUpperCase(), states) != -1;
+}, "Please choose one of the following: '2D', '3D', '4D'");
+
+
 function ValidateContactForm(){
-  $(request_contact_path).validate({
+  $('#contactForm').validate({
     rules: {
-      "name" : {required: true}
+      name: {required: true},
+      email: {required: true, email:true},
+      message: {required: true},
     },
     messages: {
-      "name" : {required: "You must enter the Name"}
+      name: {required: "You must enter a name"},
+      email: {required: "You must enter an email", email:"The input must be an email"},
+      message: {required: "Please enter a message you want to submit."},
     }
   });
 
-}
-
 function ValidateMovieForm(){
-    $('#MovieForm').validate({
+    $('#movieForm').validate({
       rules: {
         'movie[title]' : {required: true},
+        'movie[actors]' : {regex: "^[a-zA-Z, ]*$"},
+        'movie[director]' : {regex: "^[a-zA-Z, ]*$"},
         'movie[genre]' : {required: true},
+        'movie[restrictions]' : {required: true},
+        'movie[release_date]' : {required: true},
+        'movie[video]' : {required: true, regex: "^(https:\/\/www.youtube.com\/embed\/)(\w+)$"},
         'movie[duration]' : {required: true, digits: true, range: [1, 250]},
-        'movie[poster]' : {required:true, url: true},
+        'movie[poster]' : {required:true, regex: "\.(jpg|png|gif)$"},
         'movie[summary]' : {required: true}
       },
       messages: {
         'movie[title]' : {required: "You must enter the movie title"},
+        'movie[actors]' : {regex: "Can only use letters, spaces and commas."},
+        'movie[director]' : {regex: "Can only use letters, spaces and commas."},
         'movie[genre]' : {required: "You must enter the movie genre"},
         'movie[duration]' : {required: "You must enter the movie duration", digits: "Only digits", range: "The duration must range from 1 to 250"},
-        'movie[poster]' : {required: "Must enter a poster URL", url: "Must enter a poster URL"},
-        'movie[summary]' : {required: "You must enter the movie summary"}
+        'movie[poster]' : {required: "Must enter a poster for a movie", regex: "Must enter a link with '.png', '.gif' or '.jpg'"},
+        'movie[summary]' : {required: "You must enter the movie summary"},
+        'movie[restrictions]' : {required: "The restrictions must be entered"},
+        'movie[release_date]' : {required: "Restriction has to be defined"},
+        'movie[video]' : {required: "Video has to be defined", regex: "The video has to follow YouTube embedded format: https://www.youtube.com/embed/..."},
+      }
+    });
+}
+
+function ValidateScreeningForm(){
+    $('#screeningForm').validate({
+      rules: {
+        'screening[movie]' : {required: true},
+        'screening[cinema]' : {required: true},
+        'screening[price]' : {required: true, number: true},
+        'screening[screening_date]' : {required: true},
+        'screening[screening_time]' : {required: true},
+        'screening[arena]' : {required: true},
+        'screening[available_seats]' : {required: true, digits: true},
+      },
+      messages: {
+        'screening[movie]' : {required: "If there are no movies to select, please add movie first."},
+        'screening[cinema]' : {required: "If there are no cinemas to select, please add cinema first."},
+        'screening[price]' : {required: "Please add a price of the screening."},
+        'screening[screening_date]' : {required: "Please select a date for the screening."},
+        'screening[screening_time]' : {required: "Please specify the time for the screening."},
+        'screening[arena]' : {required: "Please specify the arena in which the movie will be screened."},
+        'screening[available_seats]' : {required: "Please specify how many seats will be available for the screening.", digits: "Has to be a positive integer."},
       }
     });
 }
 
 
-$(document).ready(function(){
+function ValidateCinemaForm(){
+    $('#cinemaForm').validate({
+      rules: {
+        'cinema[name]' : {required: true}
+        'cinema[address]' : {required : true}
+        'cinema[image]' : {required : true, regex: "\.(jpg|png|gif)$"}}
+      },
+      messages: {
+        'cinema[name]' : {required: "The cinema must have a defined name."}
+        'cinema[address]' : {required : "The cinema must have a defined address."}
+        'cinema[image]' : {required : "The cinema must have a picture added.", regex: "The image link has to be ending wiht '.jpg', '.gif' or '.png'."}
+      }
+    });
+}
 
-  // // Get click event, assign button to var, and get values from that var
-  // $('#aBtnGroup button').on('click', function() {
-  //   var thisBtn = $(this);
-  //
-  //   thisBtn.addClass('active').siblings().removeClass('active');
-  //   var btnText = thisBtn.text();
-  //   var btnValue = thisBtn.val();
-  //
-  //   $("table > tbody > tr").each(function () {
-  //     $(this).hide();
-  //   });
-  //
-  //   $('.'+btnValue).each(function() {
-  //     $(this).show();
-  //   });
-  // });
-  //
-  // var today = new Date();
-  // var dd = String(today.getDate()).padStart(2, '0');
-  // var mm = String(today.getMonth() + 1).padStart(2, '0');
-  //
-  // var date = dd + '/' + mm;
-  // $('#'+date).click();
 
-  if(document.getElementById('MovieForm')){
+$(document).on('turbolinks:load', function(){
+
+  if(document.getElementById('movieForm')){
     ValidateMovieForm();
   }
 
-  if(document.getElementById('ContactForm')){
+  if(document.getElementById('contactForm')){
     ValidateContactForm();
   }
 
+  if(document.getElementById('screeningForm')){
+    ValidateScreeningForm();
+  }
 
+  if(document.getElementById('cinemaForm')){
+    ValidateCinemaForm();
+  }
 
 });

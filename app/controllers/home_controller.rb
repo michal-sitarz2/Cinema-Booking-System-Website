@@ -43,15 +43,17 @@ class HomeController < ApplicationController
     # If there is no email, an error message will be displayed
     if email.blank?
       flash[:alert] = I18n.t('messages.request_contact.no_email')
+      redirect_to contact_url
     # Or if there is no message supplied
     elsif message.blank?
       flash[:alert] = I18n.t('messages.request_contact.no_message')
+      redirect_to contact_url
     # Otherwise the email will be sent
     else
       ContactMailer.contact_email(email, name, telephone, message).deliver_now
       flash[:notice] = I18n.t('messages.request_contact.email_sent')
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
 

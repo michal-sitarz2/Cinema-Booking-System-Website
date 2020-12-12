@@ -1,4 +1,4 @@
-= form_for @cinema do |f|
+= form_for @cinema, id: "cinemaForm" do |f|
   - if @cinema.errors.any?
     #error_explanation
       %h2= "#{pluralize(@cinema.errors.count, t('error_lower'))} #{t('prohibited_p1')} #{t('cinemas.name_l')} #{t('prohibited_p2')}#{t('colon')}"

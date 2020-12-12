@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :bookings, except: [:new, :edit, :show]
-  resources :line_items, except: [:new, :edit, :index, :show]
+  resources :bookings, except: [:new, :edit, :show, :update]
+  resources :line_items, except: [:new, :edit, :index, :show, :update]
   resources :carts, except: [:new,:edit,:index]
   resources :cinemas, except: [:show]
   resources :screenings, except: [:show]
