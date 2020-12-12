@@ -23,6 +23,7 @@ function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
   document.getElementById("pageHeader").style.marginLeft = "250px";
+  /* Changes the color and the opacity of the background */
   document.body.style.backgroundColor = "rgba(0,0,0,0.9)"
 }
 
@@ -31,10 +32,11 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
   document.getElementById("pageHeader").style.marginLeft = "0";
-  //document.getElementsByClass("navbar-nav")[0].style.color = "rgba(0,0,0,0.9)"
+  /* Changes the view back to normal*/
   document.body.style.backgroundColor = "white";
 }
 
+/* A method added to JQuery validator which checks inputted regular expression with the value*/
 $.validator.addMethod(
     "regex",
     function(value, element, regexp) {
@@ -44,11 +46,13 @@ $.validator.addMethod(
     "Please check your input."
 );
 
+/* A method added to JQuery validator which checks if the number is positive (the funciton is added as the class in the form input)*/
 $.validator.addMethod('positiveNumber',
     function (value) {
         return Number(value) > 0;
     }, 'Enter a positive number.');
 
+/* A method added to JQuery validator which checks if the value is within the specified values (the funciton is added as the class in the form input)*/
 $.validator.addMethod("isRestriction", function(value) {
     var states = [
       "N/A", "R", "G", "PG", "PG-13", "NC-17"
@@ -56,6 +60,7 @@ $.validator.addMethod("isRestriction", function(value) {
     return $.inArray(value.toUpperCase(), states) != -1;
 }, "Please choose one of the following: 'N/A', 'R', 'G', 'PG', 'PG-13', 'NC-17'");
 
+/* A method added to JQuery validator which checks if the value is within the specified values (the funciton is added as the class in the form input)*/
 $.validator.addMethod("isType", function(value) {
     var states = [
       "2D", "3D", "4D"
@@ -63,33 +68,54 @@ $.validator.addMethod("isType", function(value) {
     return $.inArray(value.toUpperCase(), states) != -1;
 }, "Please choose one of the following: '2D', '3D', '4D'");
 
-
+/*
+* Function to validate the contact form
+*/
 function ValidateContactForm(){
   $('#contactForm').validate({
     rules: {
+      // The name cannot be blank
       name: {required: true},
+      // The email must be an email, and also cannot be left blank
       email: {required: true, email:true},
+      // A message has to be provided
       message: {required: true},
     },
+    /* Messages which pop up if the input is incorrect */
     messages: {
       name: {required: "You must enter a name"},
       email: {required: "You must enter an email", email:"The input must be an email"},
       message: {required: "Please enter a message you want to submit."},
     }
   });
+}
 
+/*
+* Function to validate the form as the user inputs the data.
+* This validates the form when new movies are created or edited.
+*/
 function ValidateMovieForm(){
     $('#movieForm').validate({
       rules: {
+        // A movie cannot be defined without title
         'movie[title]' : {required: true},
+        // Actors have to be defined only with letters, spaces and commas if there are more than one
         'movie[actors]' : {regex: "^[a-zA-Z, ]*$"},
+        // Directors have to be defined only with letters, spaces and commas if there are more than one
         'movie[director]' : {regex: "^[a-zA-Z, ]*$"},
+        // A movie cannot be defined without genre
         'movie[genre]' : {required: true},
+        // A movie cannot be defined without restrictions
         'movie[restrictions]' : {required: true},
+        // A movie has to have specified releas date
         'movie[release_date]' : {required: true},
+        // A movie has to have a video link, which will have a correct embedded link format
         'movie[video]' : {required: true, regex: "^(https:\/\/www.youtube.com\/embed\/)(\w+)$"},
-        'movie[duration]' : {required: true, digits: true, range: [1, 250]},
+        // A movies has to have a duration and has to be a positive integer
+        'movie[duration]' : {required: true, digits: true, range: [1, 500]},
+        // A movies has to have a correct image link for the poster
         'movie[poster]' : {required:true, regex: "\.(jpg|png|gif)$"},
+        // A movie must have a summary
         'movie[summary]' : {required: true}
       },
       messages: {
@@ -107,15 +133,25 @@ function ValidateMovieForm(){
     });
 }
 
+/*
+* Function to validate the form as the user inputs the data.
+* This validates the form when new screenings are created or edited.
+*/
 function ValidateScreeningForm(){
     $('#screeningForm').validate({
       rules: {
+        // A movie and cinema must be defined
         'screening[movie]' : {required: true},
         'screening[cinema]' : {required: true},
+        // A price is required and has to be a number
         'screening[price]' : {required: true, number: true},
+        // Needs a screening date and a screening time
         'screening[screening_date]' : {required: true},
-        'screening[screening_time]' : {required: true},
+        // Screening time has to have a correct format
+        'screening[screening_time]' : {required: true, regex:"\.(jpg|png|gif)$"},
+        // Arena must be defined where the screening will take place
         'screening[arena]' : {required: true},
+        // Available seats are defined as a number
         'screening[available_seats]' : {required: true, digits: true},
       },
       messages: {
@@ -130,17 +166,22 @@ function ValidateScreeningForm(){
     });
 }
 
-
+/*
+* Function to validate the form as the user inputs the data.
+* This validates the form when new cinemas are created or edited.
+*/
 function ValidateCinemaForm(){
     $('#cinemaForm').validate({
       rules: {
-        'cinema[name]' : {required: true}
-        'cinema[address]' : {required : true}
-        'cinema[image]' : {required : true, regex: "\.(jpg|png|gif)$"}}
+        // A name and address are required
+        'cinema[name]' : {required: true},
+        'cinema[address]' : {required : true},
+        // Image must have a correct format
+        'cinema[image]' : {required : true, regex: "\.(jpg|png|gif)$"},
       },
       messages: {
-        'cinema[name]' : {required: "The cinema must have a defined name."}
-        'cinema[address]' : {required : "The cinema must have a defined address."}
+        'cinema[name]' : {required: "The cinema must have a defined name."},
+        'cinema[address]' : {required : "The cinema must have a defined address."},
         'cinema[image]' : {required : "The cinema must have a picture added.", regex: "The image link has to be ending wiht '.jpg', '.gif' or '.png'."}
       }
     });

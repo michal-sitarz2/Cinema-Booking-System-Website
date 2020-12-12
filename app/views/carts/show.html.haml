@@ -27,7 +27,7 @@
             = "#{t('screenings.attributes.arena')}#{t('colon')}"
             = item.screening.arena
       .container{id:"item_#{item.id}_remove"}
-        = link_to "#{t('.remove')}", item, method: :delete, data: {cofirm: "#{t('destroy_confirm')}"}, remote: true
+        = link_to "#{t('actions.remove')}", item, method: :delete, data: {cofirm: "#{t('destroy_confirm')}"}, remote: true
       %hr
 
 
