@@ -9,3 +9,8 @@ two:
   cart: two
   screening: two
   quantity: 1
+
+three:
+  cart: two
+  screening: two
+  quantity: 2

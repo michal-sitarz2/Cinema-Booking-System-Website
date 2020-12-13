@@ -12,7 +12,7 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get screenings_url
+    get screenings_url, params: { "screening"=> {":cinema"=>"ODEON BFI IMAX", ":screening_date"=>"2020-12-13"} }
     assert_response :success
   end
 

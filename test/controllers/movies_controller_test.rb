@@ -16,7 +16,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create movie" do
     assert_difference('Movie.count') do
-      post movies_url, params: { movie: {genre: @movie.genre, duration: @movie.duration, release_date: @movie.release_date, poster: @movie.poster, summary: @movie.summary, title: @movie.title + " create"} }
+      post movies_url, params: { movie: {genre: @movie.genre, actors: @movie.actors, restrictions: @movie.restrictions, video: @movie.video, duration: @movie.duration, director: @movie.director, release_date: @movie.release_date, poster: @movie.poster, summary: @movie.summary, title: @movie.title + " create"} }
     end
 
     assert_redirected_to allresources_url

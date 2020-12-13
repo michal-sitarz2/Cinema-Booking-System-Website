@@ -7,8 +7,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_select 'title', 'Cinema Town'
-    assert_select 'h2', 'Cinema Program'
-    assert_select 'a', 'All the available movies'
+    assert_select 'h2', 'Currently in Cinemas'
+    assert_select 'h2', 'Upcoming Movies'
 
   end
 
@@ -19,7 +19,23 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
     get allresources_url
     assert_response :success
+
+    assert_select 'title', 'Cinema Town'
+    assert_select 'h2', 'Movies'
+    assert_select 'h2', 'Screenings'
+    assert_select 'h2', 'Cinemas'
+    assert_select 'h2', 'Bookings'
   end
+
+  test 'should get book tickets' do
+    get '/booking'
+    assert_response :success
+
+    assert_select 'title', 'Cinema Town'
+    assert_select 'h2', 'Currently Screening'
+    assert_select 'h3', 'Search By:'
+  end
+
 
   test "should get contact" do
     get contact_url
@@ -46,7 +62,6 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_nil flash[:alert]
     assert_not_empty flash[:notice]
-
   end
 
 

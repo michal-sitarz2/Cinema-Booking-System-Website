@@ -4,7 +4,7 @@ class LineItemsController < ApplicationController
 
   before_action :set_line_item, only: [:update, :destroy]
   # When the line item is created, it needs to be put into a cart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :destroy]
   # Only accessible when users are logged in
   before_action :authenticate_user!
 
@@ -17,13 +17,14 @@ class LineItemsController < ApplicationController
   def create
     # Finds screenings based on the screening id
     screening = Screening.find(params[:screening_id])
+
     # Adds the newly created item to a cart
     @line_item = @cart.add_item(screening)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to cart_url(@cart.id), notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.add') }
-        format.json { render :show, status: :created, location: @line_item }
+        format.html { redirect_to '/booking', notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.add') }
+        format.json { render :show, status: :created, location: '/booking' }
       else
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
@@ -36,7 +37,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to cart_url(@cart.id), notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.remove')}
+      format.html { redirect_to '/booking', notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.remove')}
       format.js   { flash[:notice] = I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.remove')}
       format.json { head :no_content }
     end

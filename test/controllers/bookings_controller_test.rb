@@ -23,11 +23,6 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to booking_url(Booking.last)
   end
 
-  test "should update booking" do
-    patch booking_url(@booking), params: { booking: { arena: @booking.arena, booked_time: @booking.booked_time, booked_date: @booking.booked_date, cinema: @booking.cinema, movie_title: @booking.movie_title, quantity: @booking.quantity, total_price: @booking.total_price, user_id: @user.id} }
-    assert_redirected_to booking_url(@booking)
-  end
-
   test "should destroy booking" do
     assert_difference('Booking.count', -1) do
       delete booking_url(@booking)
