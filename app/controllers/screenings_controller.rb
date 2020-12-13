@@ -8,9 +8,9 @@ class ScreeningsController < ApplicationController
   # GET /screenings.json
   def index
     # Checking if the parameters are defined
-    if params[:screening]
+    if screening_params
       # Getting the date specified from the parameters
-      date = params[:screening][:":screening_date"].split('-')
+      date = screening_params[:screening_date].split('-')
       # Converting it from string to date to be used in the view
       @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
     # If no parameters (e.g. if back pressed) takes back to booking page with dropdowns
@@ -21,7 +21,7 @@ class ScreeningsController < ApplicationController
 
     # Uses a Screening method searching for screenings with
     # specific date and specific cinema, passed in through parameters.
-    screenings = Screening.search(params[:screening])
+    screenings = Screening.search(screening_params)
 
     # Using a hash map to map movies to screenings on that day and in that cinema
     @screenings = {}

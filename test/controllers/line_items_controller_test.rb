@@ -13,7 +13,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create line_item" do
     assert_difference('LineItem.count') do
-      post line_items_url, params: { screening_id: @screenings.id }
+      post line_items_url(line_item: {screening_id: @screenings.id})
     end
 
     assert_redirected_to '/booking'

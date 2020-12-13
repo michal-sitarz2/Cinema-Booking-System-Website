@@ -31,9 +31,9 @@ class Screening < ApplicationRecord
     if search
       screenings = Screening.all
       # Filters the screenings based on the cinema played in
-      screenings = screenings.where(cinema: search[:":cinema"])
+      screenings = screenings.where(cinema: search[:cinema])
       # Filters the filtered screenings based on the screening date passed in the parameter (search)
-      screenings = screenings.where(screening_date: search[:":screening_date"])
+      screenings = screenings.where(screening_date: search[:screening_date])
       # Returns filtered screenings
       return screenings
     # If there are no parameters
