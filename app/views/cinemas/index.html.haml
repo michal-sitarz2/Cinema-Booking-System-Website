@@ -1,15 +1,17 @@
-%h2=t('.about_header')
-%p=t('.about_paragraph')
 
+.container
+  .row.text_paragraph
+    %h2=t('.about_header')
+    %p=t('.about_paragraph')
 - if @cinemas.length != 0
   - @counter = 0
   .container
     - @cinemas.each do |cinema|
       - if @counter.modulo(2) == 0
         .row
-          .col-xs-6
+          .col-l-8
             %img{:class => "image_cinema_index",:src => "#{cinema.image}", :alt => "#{t('movies.errors.image_missing')}"}
-          .col-xs-6
+          .col-l-4.image_text
             %p
               %b= "#{t('cinemas.attributes.name')}#{t('colon')}"
             %p= cinema.name
@@ -28,7 +30,7 @@
             %p
               %b= "#{t('cinemas.attributes.address')}#{t('colon')}"
             %p= cinema.address
-          .col-xs-6
+          .col-xs-6.image_text
             %img{:class => "image_cinema_index", :src => "#{cinema.image}", :alt => "#{t('movies.errors.image_missing')}"}
       - @counter+=1
       %br

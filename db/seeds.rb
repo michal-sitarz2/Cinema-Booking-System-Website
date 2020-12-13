@@ -30,7 +30,7 @@ movie = Movie.where(title: 'Honest Thief').first
 # Deleted if found
 movie.delete if movie
 # Creating and saving a movie
-movie1 = Movie.create(title:"Honest Thief", director: "Mark Williams", genre: "Action", duration: 99, country: "USA", release_date: Date.new(2020,11,12), poster: "https://m.media-amazon.com/images/M/MV5BZjEwNjYyMTMtODc5Yi00NTg5LTkwMzAtZTkyOTcyNTFkMGIyXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UY1200_CR90,0,630,1200_AL_.jpg", summary: "Hoping to cut a deal, a professional bank robber agrees to return all the money he stole in exchange for a reduced sentence. But when two FBI agents set him up for murder, he must now go on the run to clear his name and bring them to justice.", actors: "Liam Neeson, Kate Walsh, Jai Courtney", video: "https://www.youtube.com/embed/jG1X67vnYM0", restrictions: "PG-13")
+movie1 = Movie.create(title:"Honest Thief", director: "Mark Williams", genre: "Action", duration: 99, country: "USA", release_date: Date.new(2020,11,12), poster: "https://www.joblo.com/assets/images/joblo/posters/2020/07/honesttheifposterman.jpg", summary: "Hoping to cut a deal, a professional bank robber agrees to return all the money he stole in exchange for a reduced sentence. But when two FBI agents set him up for murder, he must now go on the run to clear his name and bring them to justice.", actors: "Liam Neeson, Kate Walsh, Jai Courtney", video: "https://www.youtube.com/embed/jG1X67vnYM0", restrictions: "PG-13")
 movie1.save
 
 # Movie 2 - Released

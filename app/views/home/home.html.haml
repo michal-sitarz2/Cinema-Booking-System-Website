@@ -8,7 +8,7 @@
       - @released_movies.each do |movie|
         .col-sm-3
           %a{:href => "movies/#{movie.id}", class: "poster_link"}
-            %img{:src => "#{movie.poster}", :alt => "#{movie.title} #{t('movies.errors.image_missing')}", :class => "poster_home"}
+            %img{:src => "#{movie.poster}", :alt => "#{movie.title} #{t('movies.errors.image_missing')}", :class => "poster_home img-responsive"}
           %h2
             %a{:href => "movies/#{movie.id}", :class => "title_links_upcoming"}= movie.title
         .col-sm-1
@@ -22,7 +22,7 @@
       - @upcoming_movies.each do |movie|
         .col-sm-3
           %a{:href => "movies/#{movie.id}"}
-            %img{:src => "#{movie.poster}", :alt => "#{movie.title} #{t('.movies.errors.image_missing')}", :class => "poster_home"}
+            %img{:src => "#{movie.poster}", :alt => "#{movie.title} #{t('.movies.errors.image_missing')}", :class => "poster_home img-responsive"}
           %h2
             %a{:href => "movies/#{movie.id}", :class => "title_links_upcoming"}= movie.title
         .col-sm-1

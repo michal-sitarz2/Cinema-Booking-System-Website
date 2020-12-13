@@ -1,7 +1,7 @@
 #resources_div
   %h2= t('movies.name_p')
   %br
-  %table.table.table-hover{:id => "movie_res_table"}
+  %table{:id => "movie_res_table", :class => "table table-striped table-sm table-hover"}
     %thead
       %tr
         %th{:scope => "col"}= t('movies.attributes.poster')
@@ -20,7 +20,7 @@
         %tr{:id => "movie_#{movie.id}"}
           %td{:scope => "row", :class => "movie_res_table_cell"}
             %a{:href => "movies/#{movie.id}"}
-              %img{:src => "#{movie.poster}", :alt => "NaN", :class => "movie_poster_res_table"}
+              %img{:src => "#{movie.poster}", :alt => "NaN", :class => "movie_poster_res_table "}
           %td{:scope => "row", :class => "movie_res_table_cell"}
             %a{:href => "movies/#{movie.id}", :class => "resource_table_links"}= movie.title
           %td{:scope => "row", :class => "movie_res_table_cell"}= movie.director
@@ -47,7 +47,7 @@
 
   %br
 
-  %table.table.table-hover
+  %table{:class => "table table-striped table-sm table-hover"}
     %thead
       %tr
         %th{:scope => "col"}= t('movies.name')
@@ -86,7 +86,7 @@
 
   %h2= t('cinemas.name_p')
 
-  %table.table.table-hover{:id => "cinema_res_table"}
+  %table{:id => "cinema_res_table", :class => "table table-striped table-sm table-hover"}
     %thead
       %tr
         %th{:scope => "col"}= t('cinemas.attributes.name')
@@ -115,7 +115,7 @@
 
   %h2= t('bookings.name_p')
 
-  %table.table.table-hover{:id => "cinema_res_table"}
+  %table{:id => "cinema_res_table", :class => "table table-striped table-sm table-hover"}
     %thead
       %tr
         %th{:scope => "col"}= t('bookings.attributes.user')

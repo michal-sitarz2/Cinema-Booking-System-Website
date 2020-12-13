@@ -110,7 +110,7 @@ function ValidateMovieForm(){
         // A movie has to have specified releas date
         'movie[release_date]' : {required: true},
         // A movie has to have a video link, which will have a correct embedded link format
-        'movie[video]' : {required: true, regex: "^(https:\/\/www.youtube.com\/embed\/)(\w+)$"},
+        //'movie[video]' : {required: true, regex: "^(https:\/\/www.youtube.com\/embed\/)(\w+)$"},
         // A movies has to have a duration and has to be a positive integer
         'movie[duration]' : {required: true, digits: true, range: [1, 500]},
         // A movies has to have a correct image link for the poster
