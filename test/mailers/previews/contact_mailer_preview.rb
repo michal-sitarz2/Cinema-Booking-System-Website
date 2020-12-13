@@ -2,6 +2,6 @@
 class ContactMailerPreview < ActionMailer::Preview
 
   def contact_email
-    ContactMailer.contact_email("matthew@me.com", "Matthew Casey", "1234567890", @message = "Hello")
+    ContactMailer.contact_email("matthew@me.com", "Matthew Casey", "1234567890", @message = "I was just wondering if you sell popcorn in your cinemas.")
   end
 end

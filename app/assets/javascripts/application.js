@@ -148,7 +148,7 @@ function ValidateScreeningForm(){
         // Needs a screening date and a screening time
         'screening[screening_date]' : {required: true},
         // Screening time has to have a correct format
-        'screening[screening_time]' : {required: true, regex:"\.(jpg|png|gif)$"},
+        'screening[screening_time]' : {required: true, regex:"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"},
         // Arena must be defined where the screening will take place
         'screening[arena]' : {required: true},
         // Available seats are defined as a number
@@ -159,7 +159,7 @@ function ValidateScreeningForm(){
         'screening[cinema]' : {required: "If there are no cinemas to select, please add cinema first."},
         'screening[price]' : {required: "Please add a price of the screening."},
         'screening[screening_date]' : {required: "Please select a date for the screening."},
-        'screening[screening_time]' : {required: "Please specify the time for the screening."},
+        'screening[screening_time]' : {required: "Please specify the time for the screening.", regex: "The format must be 'HH:MM'"},
         'screening[arena]' : {required: "Please specify the arena in which the movie will be screened."},
         'screening[available_seats]' : {required: "Please specify how many seats will be available for the screening.", digits: "Has to be a positive integer."},
       }

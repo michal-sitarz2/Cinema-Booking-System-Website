@@ -1,30 +1,29 @@
+%div{:style => "width:600px;"}
 
-%p= "#{t('home.contact_mailer.contact_email.dear')} #{t('app_title')}#{t('comma')}"
-%p= t('home.contact_mailer.contact_email.in_touch_message')
+  %div{:style => "width:600px; height:88px; background-color: black;"}
+    %h2{:style => "color:white; padding-top: 28px; padding-left: 208px;"}= "Cinema Town"
 
-%table
-  %thead
-    %tr
-      %th{:scope => "col"}= "#{t('contact.name')}#{t('colon')}"
-      %th
-      %th{:scope => "col"}= "#{t('contact.email')}#{t('colon')}"
-      %th
-      %th{:scope => "col"}= "#{t('contact.telephone')}#{t('colon')}"
-  %tbody
-    %tr
-      %td{:scope => "row"}
-        %b= @name
-      %td
-      %td{:scope => "row"}
-        %b= @email
-      %td
-      %td{:scope => "row"}
-        %b= @telephone
+  %div{:style => "padding-left: 15px;"}
+    %br
+    %table
+      %tr
+        %td= "#{t('contact.name')}#{t('colon')}"
+        %td
+          %b= @name
+      %tr
+        %td= "#{t('contact.email')}#{t('colon')}"
+        %td
+          %b= @email
+      %tr
+        %td= "#{t('contact.telephone')}#{t('colon')}"
+        %td
+          %b= @telephone
 
-%br
+    %p= "#{t('home.contact_mailer.contact_email.dear')} #{t('app_title')}#{t('comma')}"
+    %p= t('home.contact_mailer.contact_email.in_touch_message')
 
-%em=@message
+    %em=@message
 
-%p= t('.regards')
-%p
-  %b= @name
+    %p= t('.regards')
+    %p
+      %b= @name
