@@ -12,8 +12,13 @@ class ScreeningsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get screenings_url, params: { "screening"=> {":cinema"=>"ODEON BFI IMAX", ":screening_date"=>"2020-12-13"} }
+    get screenings_url, params: {"screening"=> {"cinema"=>"ODEON BFI IMAX", "screening_date"=>"2020-12-13"}}
     assert_response :success
+  end
+
+  test "should redirect to booking page if no parameters" do
+    get screenings_url
+    assert_redirected_to '/booking'
   end
 
   test "should get new" do

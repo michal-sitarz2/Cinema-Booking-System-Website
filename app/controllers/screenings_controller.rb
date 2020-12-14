@@ -8,16 +8,11 @@ class ScreeningsController < ApplicationController
   # GET /screenings.json
   def index
     # Checking if the parameters are defined
-    if screening_params
-      # Getting the date specified from the parameters
-      date = screening_params[:screening_date].split('-')
-      # Converting it from string to date to be used in the view
-      @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
-    # If no parameters (e.g. if back pressed) takes back to booking page with dropdowns
-    # to select the date and the cinema
-    else
-      redirect_to booking_url
-    end
+
+    # Getting the date specified from the parameters
+    date = screening_params[:screening_date].split('-')
+    # Converting it from string to date to be used in the view
+    @date = Date.new(date[0].to_i, date[1].to_i, date[2].to_i)
 
     # Uses a Screening method searching for screenings with
     # specific date and specific cinema, passed in through parameters.
@@ -44,6 +39,12 @@ class ScreeningsController < ApplicationController
         # Replacing the previous screening time with the sorted array of screenings for that movie
         @screenings[movie] = screening
     end
+  end
+
+  # If a parameters are missing (specifically in the index)
+  # The program will take the user to the book tickets view
+  rescue_from ActionController::ParameterMissing do |exception|
+    redirect_to '/booking'
   end
 
   # GET /screenings/new

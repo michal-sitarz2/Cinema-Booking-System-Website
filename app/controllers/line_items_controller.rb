@@ -15,7 +15,6 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-
     # Finds screenings based on the screening id
     screening = Screening.find(line_item_params[:screening_id])
 

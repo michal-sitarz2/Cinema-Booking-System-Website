@@ -127,7 +127,7 @@
     %tbody
       - @bookings.each do |booking|
         %tr
-          %td{:scope => "row"}= User.find_by(booking.user_id).email
+          %td{:scope => "row"}= User.find_by(id: booking.user_id).email
           %td{:scope => "row"}= booking.movie_title
           %td{:scope => "row"}= booking.booked_time
           %td{:scope => "row"}= booking.booked_date
