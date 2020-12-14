@@ -16,7 +16,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
       post line_items_url(line_item: {screening_id: @screenings.id})
     end
 
-    assert_redirected_to '/booking'
+    assert_redirected_to screenings_url(screening: {screening_date: @screenings.screening_date, cinema: @screenings.cinema})
   end
 
   test "should destroy line_item" do

@@ -23,8 +23,11 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to '/booking', notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.add') }
-        format.json { render :show, status: :created, location: '/booking' }
+        format.html { redirect_to screenings_url(:screening => {cinema: screening.cinema, screening_date: screening.screening_date}), notice: I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.add') }
+        format.json { render :show, status: :created, location: screenings_url(:screening => {cinema: screening.cinema, screening_date: screening.screening_date}) }
+        if @cart.line_items.length > 1
+          format.js   { flash[:notice] = I18n.t('items.name') + I18n.t('messages.success') + I18n.t('messages.actions.add') }
+        end
       else
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
