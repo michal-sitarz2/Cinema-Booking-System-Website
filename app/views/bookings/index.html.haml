@@ -1,8 +1,12 @@
 %h1="#{t('actions.list')} #{t('bookings.name_p')}"
 
 %h3= "#{t('bookings.name_p')} #{t('.history')}"
+
+%button.btn.btn-link{class: "toggleButton", id: "1"}
+  = "Hide"
+
 - if @bookings_history.length > 0
-  %section{:class=>'section'}
+  %section{:class=>'section', id: "section1"}
     .container
       %hr
       - @bookings_history.each do |booking|
@@ -25,13 +29,17 @@
                 = t('screenings.attributes.price')
               = number_to_currency(booking.total_price)
         %hr
-
 - else
   %h4= "#{t('bookings.name_p')} #{t('are')} #{t('actions.empty')}"
 
+
 %h3= "#{t('.upcoming')} #{t('bookings.name_p')}"
+
+%button.btn.btn-link{class: "toggleButton", id: "2"}
+  = "Hide"
+
 - if @bookings.length > 0
-  %section{:class=>'section'}
+  %section{:class=>'section', id: "section2"}
     .container
       %hr
       - @bookings.each do |booking|

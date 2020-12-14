@@ -187,8 +187,22 @@ function ValidateCinemaForm(){
     });
 }
 
+// Function used in Bookings Index to hide and show the bookings
+function toggleBooking(id) {
+  var x = $('#' + id);
+  $(x).toggle();
+}
+
 
 $(document).on('turbolinks:load', function(){
+
+  // Checking if the current page has an element with id: section1 (Booking page)
+  if(document.getElementById('section1')){
+    // Using JQuery so that the user can hide and show the two sections in the booking page
+    $(".toggleButton").click(function(){
+      $('#section' + $(this).attr('id')).toggle();
+    });
+  }
 
   if(document.getElementById('movieForm')){
     ValidateMovieForm();
