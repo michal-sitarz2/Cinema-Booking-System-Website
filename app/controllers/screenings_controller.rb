@@ -7,8 +7,6 @@ class ScreeningsController < ApplicationController
   # GET /screenings
   # GET /screenings.json
   def index
-    # Checking if the parameters are defined
-
     # Getting the date specified from the parameters
     date = screening_params[:screening_date].split('-')
     # Converting it from string to date to be used in the view

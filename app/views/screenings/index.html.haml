@@ -33,6 +33,7 @@
             = button_to screening.screening_time.strftime("%H:%M"), line_items_path(line_item: {screening_id: screening}), data: { confirm: "#{t('.add_cart_confirm')}" }, class: "screening_button_times", remote: true
           - else
             = button_to screening.screening_time.strftime("%H:%M"), line_items_path(line_item: {screening_id: screening}), data: { confirm: "#{t('.add_cart_confirm')}" }, class: "screening_button_times"
+
           %p{:class => "text_screening_type"}
             %b= screening.screening_type
             = t('vertical_line')
