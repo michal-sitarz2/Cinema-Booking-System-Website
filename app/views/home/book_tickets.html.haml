@@ -11,4 +11,5 @@
       %select{:name => "screening[screening_date]", :class => "form-control"}
         - @dates_week.each do |date|
           %option{:value => "#{date}"}= date
+
       =submit_tag(t('submit_button'))

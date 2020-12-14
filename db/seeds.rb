@@ -48,8 +48,10 @@ movie = Movie.where(title: 'Greenland').first
 # Deleted if found
 movie.delete if movie
 # Creating and saving a movie
-movie3 = Movie.create(title:"Greenland", director: "Ric Roman Waugh", genre: "Action", duration: 119, country: "USA", release_date: Date.new(2020,10,1), poster: "https://movies.sterkinekor.co.za/CDN/media/entity/get/FilmPosterGraphic/HO00002054?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500", summary: "John Garrity, his estranged wife and their young son embark on a perilous journey to find sanctuary as a planet-killing comet hurtles toward Earth. Amid terrifying accounts of cities getting leveled, the Garrity's experience the best and worst in humanity. As the countdown to the global apocalypse approaches zero, their incredible trek culminates in a desperate and last-minute flight to a possible safe haven.", actors: "Gerard Butler, Morena Baccarin", video: "https://www.youtube.com/embed/1M8s0w1Fzm4", restrictions: "PG-13")
+movie3 = Movie.create(title:"Greenland", director: "Ric Roman Waugh", genre: "Action", duration: 119, country: "USA", release_date: Date.new(2020,10,1), poster: "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/4125S2R-lg.jpg", summary: "John Garrity, his estranged wife and their young son embark on a perilous journey to find sanctuary as a planet-killing comet hurtles toward Earth. Amid terrifying accounts of cities getting leveled, the Garrity's experience the best and worst in humanity. As the countdown to the global apocalypse approaches zero, their incredible trek culminates in a desperate and last-minute flight to a possible safe haven.", actors: "Gerard Butler, Morena Baccarin", video: "https://www.youtube.com/embed/1M8s0w1Fzm4", restrictions: "PG-13")
 movie3.save
+
+#
 
 # Movie 4 - Upcoming
 # Checking if the movie is already in the database
@@ -57,7 +59,7 @@ movie = Movie.where(title: 'Monster Hunter').first
 # Deleted if found
 movie.delete if movie
 # Creating and saving a movie
-movie4 = Movie.create(title:"Monster Hunter", director: "Paul W.S. Anderson", genre: "Action, Fantasy", duration: 120, country: "USA", release_date: Date.new(2020,12,25), poster: "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/4078S2R-lg.jpg", summary: "A portal transports Lt. Artemis and an elite unit of soldiers to a strange world where powerful monsters rule with deadly ferocity. Faced with relentless danger, the team encounters a mysterious hunter who may be its only hope to find a way home.", actors: "Milla Jovovich, Ron Perlman, Tony Jaa", video: "https://www.youtube.com/embed/3od-kQMTZ9M", restrictions: "PG-13")
+movie4 = Movie.create(title:"Monster Hunter", director: "Paul Anderson", genre: "Action, Fantasy", duration: 120, country: "USA", release_date: Date.new(2020,12,25), poster: "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/4078S2R-lg.jpg", summary: "A portal transports Lt. Artemis and an elite unit of soldiers to a strange world where powerful monsters rule with deadly ferocity. Faced with relentless danger, the team encounters a mysterious hunter who may be its only hope to find a way home.", actors: "Milla Jovovich, Ron Perlman, Tony Jaa", video: "https://www.youtube.com/embed/3od-kQMTZ9M", restrictions: "PG-13")
 movie4.save
 
 # Movie 5 - Upcoming
